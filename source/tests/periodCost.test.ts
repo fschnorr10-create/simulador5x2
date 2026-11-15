@@ -112,7 +112,7 @@ test('short term uses calendar months, and demand cannot outlast experience', ()
 });
 
 test('long periods and unknown global charges are shown but excluded from period recommendations', () => {
-  const p = settings(); p.period.end = '2026-12-31';
+  const p = settings(); p.period.end = '2027-01-31';
   assert.ok(contractPeriodCost(3000, 1, p).reasons.some(reason => reason.includes('férias')));
   assert.ok(contractPeriodCost(3000, 1, { ...settings(), taxProfile: 'custom' }).reasons.length);
 });

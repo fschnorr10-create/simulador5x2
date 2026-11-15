@@ -479,3 +479,64 @@ input.visually-hidden { width: 1px; height: 1px; min-height: 0; padding: 0; bord
 .daily-coverage summary { font-size: 13px; font-weight: 600; margin-bottom: 12px; }
 .coverage-map .coverage-summary { flex-wrap: wrap; }
 @media(max-width: 650px) { .coverage-key { grid-template-columns: 1fr; } .coverage-map .coverage-number { font-size: 30px; } .coverage-map .card-title { flex-wrap: wrap; gap: 15px; } }
+
+.weekly-general { min-width: 0; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin: 18px 0; }
+.weekly-general legend { font-size: 12px; font-weight: 600; padding: 0 6px; }
+.weekly-general .field-grid { margin: 0; }
+.weekday-choice { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0; }
+.weekday-choice label { display: flex; flex-direction: row; align-items: center; gap: 4px; font-size: 11px; margin: 0; }
+.weekday-choice input[type=checkbox] { width: 15px; min-height: 15px; margin: 0; }
+.weekday-choice button { padding: 8px 10px; border: 1px solid var(--border); border-radius: 5px; font-size: 11px; }
+.weekday-choice button[aria-pressed=true] { background: var(--gold-soft); border-color: var(--gold); }
+.operating-overview { margin: 18px 0; }
+.operating-overview > summary { font-size: 12px; margin-bottom: 12px; }
+.operating-overview > div { display: grid; grid-template-columns: 27px 1fr auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 10px; line-height: 1.7; }
+.operating-overview .text-button { font-size: 10px; }
+.day-exception-editor { margin: 18px 0; padding: 14px 0; border-block: 1px solid var(--border); }
+.day-exception-editor > strong { display: block; font-size: 13px; margin-bottom: 16px; }
+.daily-hours-total { font-size: 12px; line-height: 1.8; margin: 15px 0; }
+.daily-hours-total > strong { color: var(--gold); font-size: 17px; }
+.planned-week article { display: grid; grid-template-columns: 30px 76px minmax(0,1fr) auto; gap: 8px; align-items: center; border-bottom: 1px solid var(--border); padding: 12px 0; }
+.planned-week article > div { min-width: 0; font-size: 11px; line-height: 1.6; }
+.planned-week article > div:first-child { font-size: 12px; }
+.planned-week small, .planned-week b { display: block; font-size: 10px; }
+.planned-week small { color: var(--muted); }
+.planned-week label { margin: 0; }
+.planned-week select { padding: 8px 3px; min-height: 36px; font-size: 10px; }
+.planned-week .text-button { font-size: 10px; }
+.collective-alert { color: #922d2d; border: 1px solid #b83d3d; background: #fff0ee; border-left: 4px solid #b83d3d; padding: 14px; border-radius: 6px; font-size: 12px; line-height: 1.8; margin: 16px 0; }
+.dark .collective-alert { color: #ffb4ac; background: #3a2020; border-color: #ed7770; }
+.collective-alert p { margin-top: 8px; }
+.collective-alert ul { padding-left: 17px; }
+.schedule-legal-notes { margin-top: 16px; font-size: 12px; }
+.schedule-legal-notes p { margin-top: 12px; }
+.workday-total { color: var(--gold) !important; font-weight: 600; }
+.schedule-table th small { display: block; font-size: 8px; font-weight: normal; margin-top: 5px; }
+.work-schedule-editor > .comparison-stage { margin: 12px 0; }
+.cycle-tabs { display: flex; flex-wrap: wrap; gap: 5px; }
+.cycle-tabs button { font-size: 10px; padding: 8px; }
+
+.contract-wizard { margin: 30px 0; }
+.contract-wizard .page-intro { max-width: 850px; margin-bottom: 24px; }
+.registration-note { border-left: 3px solid var(--gold); background: var(--surface-soft); padding: 18px 22px; margin: 22px 0; font-size: 14px; line-height: 1.8; }
+.registration-note p { margin-top: 6px; color: var(--muted); }
+.contract-questionnaire { max-width: 900px; }
+.contract-questionnaire label, .wizard-months label { display: flex; flex-direction: column; gap: 10px; margin: 22px 0; font-size: 14px; line-height: 1.6; }
+.contract-questionnaire input, .contract-questionnaire select, .wizard-months select { background: var(--bg); color: var(--ink); border: 1px solid var(--border); padding: 12px; min-width: 0; width: 100%; border-radius: 6px; }
+.contract-questionnaire .check-field { flex-direction: row; align-items: flex-start; }
+.contract-questionnaire input[type=checkbox] { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; }
+.wizard-question > span { font-weight: 600; }
+.wizard-rates { padding: 16px 0; border-block: 1px solid var(--border); font-size: 13px; }
+.wizard-rates summary { font-weight: 600; }
+.wizard-rates p { margin-top: 14px; }
+.wizard-explanation { padding: 16px; background: var(--surface-soft); font-size: 13px; line-height: 1.8; border-radius: 6px; }
+.wizard-results h2 { margin-bottom: 20px; }
+.wizard-comparison { min-width: 750px; }
+.wizard-comparison small, .wizard-months th small { display: block; margin-top: 7px; font-size: 11px; font-weight: normal; color: var(--muted); }
+.wizard-months { margin: 26px 0; }
+.wizard-months > summary { font-weight: 600; }
+.wizard-months .payroll-table { min-width: 720px; }
+.wizard-rights { margin: 24px 0; }
+.wizard-rights article { border-top: 1px solid var(--border); margin-top: 20px; padding-top: 20px; }
+.wizard-rights p { font-size: 14px; line-height: 1.8; margin: 12px 0; color: var(--muted); }
+@media(max-width:650px) { .contract-questionnaire label { font-size: 13px; } .registration-note { padding: 16px; font-size: 13px; } }

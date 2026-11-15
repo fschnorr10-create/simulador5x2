@@ -1,6 +1,8 @@
 # Simulador 5 × 2 — Schnorr
 
-Versão 1.4: **5×2** com apresentação simples inspirada na CNC e regra transitória da cautelar Dino; **Simulação de contratos** em aba própria, para PJ rural/PF, com seleção das modalidades, datas e custo total com encerramento. Detalhes em [docs/SIMPLIFICACAO_E_RESCISAO.md](docs/SIMPLIFICACAO_E_RESCISAO.md).
+Versão 1.5: horário semanal geral com exceções; jornada manual com almoço/DSR e alertas de ACT/CCT; questionário de contratos **independente**, PF/PJ, base fiscal e projeção de12meses com encerramento. Ver [docs/JORNADA_E_QUESTIONARIO_12_MESES.md](docs/JORNADA_E_QUESTIONARIO_12_MESES.md).
+
+Histórico da versão1.4: **5×2** com apresentação simples inspirada na CNC e regra transitória da cautelar Dino; **Simulação de contratos** em aba própria, para PJ rural/PF, com seleção das modalidades, datas e custo total com encerramento. Detalhes em [docs/SIMPLIFICACAO_E_RESCISAO.md](docs/SIMPLIFICACAO_E_RESCISAO.md).
 
 Simulador local de planejamento de jornada e contratação rural, com comparação das etapas de 42h e 40h, custos, mapa de cobertura e sugestão de escala. Implementação independente inspirada na experiência da calculadora CNC.
 

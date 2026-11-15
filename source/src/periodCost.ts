@@ -26,8 +26,9 @@ export function contractPeriodCost(monthlySalary: number, headcount: number, p: 
   const rates = contributionRates(p);
   const socialRate = (rates.cpp + rates.rat + rates.third + (p.taxProfile === 'cebas' && p.taxConfirmed ? 0 : p.payrollPis)) / 100;
   const fgtsRate = p.fgts / 100;
-  const fixed = ['experience', 'harvest', 'short'].includes(p.contract);
   const fixedEnd = p.contract === 'experience' ? addDays(start, p.experienceDays - 1) : parseDate(period.fixedEnd)!;
+  const experienceConverted = p.contract === 'experience' && p.experienceContinues && end > fixedEnd;
+  const fixed = ['experience', 'harvest', 'short'].includes(p.contract) && !experienceConverted;
   if (fixed && fixedEnd < end) reasons.push('O contrato a prazo termina antes da demanda. A continuidade exige novo planejamento.');
   const normalExpiry = fixed && fixedEnd.getTime() === end.getTime();
   output.normalExpiry = normalExpiry;
@@ -44,7 +45,7 @@ export function contractPeriodCost(monthlySalary: number, headcount: number, p: 
   const projectedEnd = addDays(end, output.noticeDays);
   output.projectedEnd = dateString(projectedEnd);
   // Vacation coverage is not silently assumed. Long horizons remain visible but cannot win without a leave/coverage model.
-  if (addMonths(start, 12) <= addDays(end, 1)) reasons.push('Período de 12 meses ou mais exige planejamento de férias e substituições. O custo é ilustrativo e fica fora da indicação.');
+  if (addMonths(start, 12) < addDays(end, 1)) reasons.push('Período superior a 12 meses exige planejamento de férias e substituições. O custo é ilustrativo e fica fora da indicação.');
   const intermittent = p.contract === 'intermittent';
   const short = p.contract === 'short';
   const wage = monthlySalary * months;

@@ -1,3 +1,4 @@
+import { addDays, dateString, parseDate } from '../periodDates';
 import { CoverageMap } from './CoverageMap';
 import { EmploymentResults } from './EmploymentResults';
 import { useI18n } from '../i18n';
@@ -16,6 +17,7 @@ export function Results({ scenario, results, stage, setStage, detailsOnly = fals
   const formatDecimal = (value: number) => decimal(value, locale);
   const [showAll, setShowAll] = useState(false);
   const current = results.find(result => result.stage === stage)!;
+  const workPlan = scenario.workSchedules?.[stage];
   const special = scenario.scale === '12x36' || scenario.scale === 'turnos';
   return <div className="results-panel">
     {!detailsOnly && <>
@@ -56,13 +58,14 @@ export function Results({ scenario, results, stage, setStage, detailsOnly = fals
     <section className="result-card">
       <div className="card-title"><div><span className="eyebrow">{t("PROPOSTA DE ORGANIZAÇÃO")}</span><h3><CalendarDays size={20} /> {t(" A escala da sua equipe")}</h3></div><span className="simulation-tag">{t("Sugestão automática")}</span></div>
       <p className="muted">{t("Até ")}{duration(current.dailyCap / 60)} {t(" de trabalho por dia e ")}{current.target}{t("h por semana. Intervalo fora da jornada. Horários com “+1” terminam no dia seguinte.")}</p>
-      <div className="schedule-scroll"><table className="schedule-table"><thead><tr><th>{t("Empregado")}</th>{shortDays.map(day => <th key={day}>{t(day)}</th>)}<th>{t("Semana")}</th></tr></thead><tbody>{current.workers.map((worker, index) => <tr key={worker.number} className={index >= 12 && !showAll ? 'extra-worker' : ''}><th>E{String(worker.number).padStart(2, '0')}</th>{shortDays.map((_, day) => {
+      <div className="schedule-scroll"><table className="schedule-table"><thead><tr><th>{t("Empregado")}</th>{shortDays.map((day,index) => <th key={day}>{t(day)}{workPlan && <small>{dateString(addDays(parseDate(workPlan.cycleStart)!,workPlan.shownWeek*7+index))}</small>}</th>)}<th>{t("Semana")}</th></tr></thead><tbody>{current.workers.map((worker, index) => <tr key={worker.number} className={index >= 12 && !showAll ? 'extra-worker' : ''}><th>E{String(worker.number).padStart(2, '0')}</th>{shortDays.map((_, day) => {
         const shift = worker.shifts.find(s => s.day === day);
-        return <td className={shift ? '' : 'off-cell'} key={day}>{shift ? <><strong>{clockTime(shift.start)}–{clockTime(shift.end)}{Math.floor(shift.end / 1440) > day ? ' +1' : ''}</strong><small>{shift.breakMinutes ? `${clockTime(shift.breakStart)} · ${t(`${shift.breakMinutes}min pausa`)}` : t("Sem intervalo obrigatório")}</small></> : t("Folga / não alocado")}</td>;
+        return <td className={shift ? '' : 'off-cell'} key={day}>{shift ? <><strong>{clockTime(shift.start)}–{clockTime(shift.end)}{Math.floor(shift.end / 1440) > day ? ' +1' : ''}</strong><small>{shift.breakMinutes ? `${t('Intervalo')}: ${clockTime(shift.breakStart)}–${clockTime(shift.breakStart + shift.breakMinutes)}` : t("Sem intervalo obrigatório")}</small><small className="workday-total">{duration(shift.workMinutes / 60)} {t('trabalhadas')}</small></> : workPlan?.weeks[workPlan.shownWeek][day].kind === 'dsr' ? 'DSR' : t("Folga / não alocado")}</td>;
       })}<td className="week-total">{duration(worker.minutes / 60)}</td></tr>)}</tbody></table></div>
       {current.workers.length > 12 && <button className="text-button" onClick={() => setShowAll(!showAll)}>{showAll ? t("Mostrar menos") : t(`Mostrar os ${current.workers.length} empregados`)}</button>}
-      <div className="schedule-checks"><span>{t("✓ Máximo de cinco dias de início de jornada")}</span><span>{t("✓ Descanso entre jornadas ≥ 11h")}</span><span>{t("✓ Uma janela de descanso ≥ 35h no ciclo")}</span><span>{t("✓ Limites diário e semanal do modelo")}</span></div>
-      <p className="footnote">{t("O motor usa busca heurística e duas folgas consecutivas. Não prova que a lacuna seja inevitável: outras escalas podem melhorar a cobertura. Folgas e repousos em turnos noturnos, domingos, feriados, pausas de SST e regras específicas precisam de revisão. “Não alocado” não indica redução salarial.")}</p>
+      {!workPlan && <div className="schedule-checks"><span>{t("✓ Máximo de cinco dias de início de jornada")}</span><span>{t("✓ Descanso entre jornadas ≥ 11h")}</span><span>{t("✓ Uma janela de descanso ≥ 35h no ciclo")}</span><span>{t("✓ Limites diário e semanal do modelo")}</span></div>}
+      {workPlan && <p className="field-help">{t('Escala definida pelo usuário. O almoço e o total diário são mostrados por empregado. Confira os alertas de ACT/CCT e de descansos antes de utilizar.')}</p>}
+      {!workPlan && <p className="footnote">{t("O motor usa busca heurística e duas folgas consecutivas. Não prova que a lacuna seja inevitável: outras escalas podem melhorar a cobertura. Folgas e repousos em turnos noturnos, domingos, feriados, pausas de SST e regras específicas precisam de revisão. “Não alocado” não indica redução salarial.")}</p>}
     </section>
 
     <section className="result-card compact-card"><h3><CircleHelp size={19} /> {t(" Como interpretar os resultados")}</h3><div className="interpret-grid"><div><strong>{duration(current.lostHours)}</strong><span>{t("Redução da capacidade contratada")}</span></div><div><strong>{duration(current.capacityGap)}</strong><span>{t("Déficit mínimo por volume de horas")}</span></div><div><strong>{duration(current.gap)}</strong><span>{t("Lacuna da escala proposta")}</span></div></div><p className="field-help">{t("Capacidade semanal não equivale a disponibilidade simultânea. A escala atual não foi reconstruída; a diferença contratual usa apenas a jornada informada. Se a operação já demanda mais do que a equipe oferece hoje, o problema antecede a mudança.")}</p></section>

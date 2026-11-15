@@ -3491,5 +3491,893 @@ export default {
   "Intervalo": {
     "es": "Intervalo",
     "en": "Interval"
+  },
+  "Configuração de jornada inválida.": {
+    "es": "Configuración de jornada no válida.",
+    "en": "Invalid work schedule configuration."
+  },
+  "Revise os horários de entrada, almoço e saída.": {
+    "es": "Revise las horas de entrada, almuerzo y salida.",
+    "en": "Review start, lunch and end times."
+  },
+  "Revise o horário geral da semana.": {
+    "es": "Revise el horario general de la semana.",
+    "en": "Review the general weekly hours."
+  },
+  "É necessário ACT ou CCT aplicável e referência do documento para esta compensação de jornada ou DSR.": {
+    "es": "Esta compensación de jornada o descanso requiere un ACT o CCT aplicable y la referencia del documento.",
+    "en": "This working-time or rest compensation requires an applicable ACT/CCT and its document reference."
+  },
+  "Distribuição personalizada: ACT/CCT necessário. A confirmação não dispensa conferir conteúdo, vigência e categoria.": {
+    "es": "Distribución personalizada: se requiere ACT/CCT. La confirmación no sustituye la revisión de contenido, vigencia y categoría.",
+    "en": "Custom distribution: ACT/CCT required. Confirmation does not replace checking its terms, validity and category."
+  },
+  "A distribuição de até 8h24 em cinco dias pode usar a exceção da liminar na etapa de 42h, se não houver ACT/CCT celebrado até 15/12/2026. Havendo instrumento, conferir suas cláusulas.": {
+    "es": "La distribución de hasta 8h24 en cinco días puede usar la excepción cautelar de la etapa de 42h si no existe ACT/CCT celebrado hasta el 15/12/2026. Si existe, revise sus cláusulas.",
+    "en": "Up to 8h24 across five days may use the injunction's 42h transition exception when no ACT/CCT was concluded by 15 Dec 2026. If one exists, review its terms."
+  },
+  "Confirme se existe ACT/CCT aplicável antes de utilizar a exceção de 8h24 da liminar.": {
+    "es": "Confirme si existe un ACT/CCT aplicable antes de usar la excepción cautelar de 8h24.",
+    "en": "Confirm whether an applicable ACT/CCT exists before using the injunction's 8h24 exception."
+  },
+  "Informe a referência e confira as cláusulas do ACT/CCT vigente para a distribuição de 42h.": {
+    "es": "Indique la referencia y revise las cláusulas del ACT/CCT vigente para distribuir las 42h.",
+    "en": "Enter the reference and check the current ACT/CCT terms for distributing the 42h week."
+  },
+  "O plano não possui dias de trabalho.": {
+    "es": "El plan no tiene días de trabajo.",
+    "en": "The plan has no workdays."
+  },
+  "A carga planejada supera o limite médio da etapa. ACT/CCT não elimina o excesso: reveja a jornada, a compensação ou as horas extras.": {
+    "es": "La carga planificada supera el promedio máximo de la etapa. El ACT/CCT no elimina el exceso: revise jornada, compensación u horas extras.",
+    "en": "Planned hours exceed the stage's average limit. ACT/CCT does not eliminate excess hours: review the schedule, compensation or overtime."
+  },
+  "O ciclo não preserva a quantidade de dois DSR por semana de referência. Acrescente os descansos compensatórios.": {
+    "es": "El ciclo no preserva dos descansos por semana de referencia. Añada descansos compensatorios.",
+    "en": "The cycle does not preserve two rest days per reference week. Add compensatory rest days."
+  },
+  "O almoço deve ficar dentro da jornada e a duração do trabalho deve ser positiva.": {
+    "es": "El almuerzo debe estar dentro de la jornada y el tiempo trabajado debe ser positivo.",
+    "en": "Lunch must fall within the shift, and working time must be positive."
+  },
+  "A jornada excede o limite conservador de 10h de trabalho por dia deste simulador.": {
+    "es": "La jornada supera el límite conservador de 10h diarias de trabajo de este simulador.",
+    "en": "The shift exceeds this simulator's conservative limit of 10 working hours daily."
+  },
+  "O intervalo informado não atende às premissas mínimas do simulador. Revise a duração do almoço ou da pausa.": {
+    "es": "La pausa indicada no cumple las premisas mínimas del simulador. Revise la duración del almuerzo o descanso.",
+    "en": "The stated break does not meet the simulator's minimum assumptions. Review lunch or break duration."
+  },
+  "Há mais de seis horas contínuas de trabalho antes ou depois do intervalo.": {
+    "es": "Hay más de seis horas de trabajo continuo antes o después de la pausa.",
+    "en": "There are more than six continuous working hours before or after the break."
+  },
+  "O plano não preserva 11h entre jornadas, inclusive na passagem entre ciclos.": {
+    "es": "El plan no preserva 11h entre jornadas, incluso entre ciclos.",
+    "en": "The plan does not preserve 11h between shifts, including cycle boundaries."
+  },
+  "Um DSR marcado é atingido por uma jornada noturna do dia anterior. Reserve o dia integral de descanso ou revise o regime.": {
+    "es": "Un descanso marcado coincide con trabajo nocturno del día anterior. Reserve el día completo o revise el régimen.",
+    "en": "A marked rest day overlaps a night shift from the previous day. Reserve the full rest day or review the arrangement."
+  },
+  "O plano não garante um domingo de descanso em cada mês na repetição do ciclo. Reserve ao menos um domingo a cada quatro semanas.": {
+    "es": "Al repetir el ciclo no se garantiza un domingo libre por mes. Reserve al menos uno cada cuatro semanas.",
+    "en": "Repeating this cycle does not guarantee a Sunday off each month. Reserve at least one every four weeks."
+  },
+  "No comércio, confira o repouso dominical no máximo a cada três semanas e as demais regras aplicáveis.": {
+    "es": "En comercio, revise el descanso dominical como máximo cada tres semanas y las demás reglas aplicables.",
+    "en": "In commerce, check Sunday rest at most every three weeks and other applicable rules."
+  },
+  "Um domingo de descanso por mês é uma premissa deste planejamento. A categoria, a norma coletiva e regras específicas podem exigir frequência maior.": {
+    "es": "Un domingo libre por mes es una premisa de este plan. La categoría, el convenio y reglas específicas pueden exigir mayor frecuencia.",
+    "en": "A Sunday off each month is a planning assumption. The category, collective terms and specific rules may require more frequent Sunday rest."
+  },
+  "A decisão permite negociar a distribuição dos DSR sem as antigas travas de semana ou mês, preservando todos os repousos. O ciclo de quatro semanas é apenas a janela de planejamento exibida.": {
+    "es": "La decisión permite negociar la distribución de descansos sin las antiguas restricciones semanales o mensuales, preservándolos todos. El ciclo de cuatro semanas es solo la ventana mostrada.",
+    "en": "The decision allows negotiating rest distribution without the former weekly or monthly restrictions, while preserving all entitlements. The four-week cycle is only the planning window shown."
+  },
+  "Ciclo compensatório: cobertura e escala são exibidas por semana selecionada. A conclusão de custo mensal e de horas extras exige apuração do ciclo completo e fica suspensa.": {
+    "es": "Ciclo compensatorio: cobertura y turnos se muestran para la semana seleccionada. La conclusión sobre costo mensual y horas extras requiere calcular todo el ciclo y queda suspendida.",
+    "en": "Compensatory cycle: coverage and shifts show the selected week. Monthly cost and overtime conclusions require assessment of the full cycle and are suspended."
+  },
+  "A data do ciclo é anterior à vigência desta etapa. Revise o início do planejamento.": {
+    "es": "El ciclo empieza antes de la vigencia de esta etapa. Revise la fecha inicial.",
+    "en": "The cycle starts before this stage takes effect. Review the planning start date."
+  },
+  "O ciclo atravessa a mudança para 40h. Divida o planejamento ou aplique o menor limite.": {
+    "es": "El ciclo atraviesa el cambio a 40h. Divida el plan o aplique el límite menor.",
+    "en": "The cycle spans the change to 40h. Split the plan or use the lower limit."
+  },
+  "Informe se o empregador é PF ou PJ.": {
+    "es": "Indique si el empleador es persona física o jurídica.",
+    "en": "Specify whether the employer is an individual or legal entity."
+  },
+  "Informe como as contribuições serão recolhidas.": {
+    "es": "Indique cómo se pagarán las contribuciones.",
+    "en": "Specify how contributions will be paid."
+  },
+  "Informe a receita mensal e a alíquota efetiva para incluir as contribuições sobre faturamento.": {
+    "es": "Indique ingresos mensuales y tasa efectiva para incluir las contribuciones sobre ingresos.",
+    "en": "Enter monthly revenue and the effective rate to include revenue-based contributions."
+  },
+  "Simples Nacional não é enquadramento de produtor rural pessoa física.": {
+    "es": "Simples Nacional no es un régimen del productor rural persona física.",
+    "en": "Simples Nacional is not a tax regime for individual rural producers."
+  },
+  "Informe a necessidade de contratação.": {
+    "es": "Indique la necesidad de contratación.",
+    "en": "Specify the hiring need."
+  },
+  "Revise a quantidade de pessoas, os valores e os prazos informados.": {
+    "es": "Revise cantidad de personas, importes y plazos.",
+    "en": "Review headcount, amounts and contract periods."
+  },
+  "O volume de convocação supera 220h por mês, limite deste formulário. Revise os dias e horários.": {
+    "es": "La convocatoria supera 220h mensuales, límite de este formulario. Revise días y horas.",
+    "en": "Call-up volume exceeds this form's 220h monthly limit. Review days and hours."
+  },
+  "Informe uma data válida de admissão.": {
+    "es": "Introduzca una fecha válida de contratación.",
+    "en": "Enter a valid hiring date."
+  },
+  "Safra · término no fim da atividade": {
+    "es": "Cosecha · finalización al terminar la actividad",
+    "en": "Harvest · ends with the activity"
+  },
+  "Experiência até 90 dias → prazo indeterminado": {
+    "es": "Prueba hasta 90 días → duración indefinida",
+    "en": "Probation up to 90 days → indefinite employment"
+  },
+  "Intermitente · convocações eventuais": {
+    "es": "Intermitente · convocatorias ocasionales",
+    "en": "Intermittent · occasional call-ups"
+  },
+  "Tempo parcial · até 30h semanais": {
+    "es": "Tiempo parcial · hasta 30h semanales",
+    "en": "Part-time · up to 30h weekly"
+  },
+  "Pequeno prazo rural · até dois meses": {
+    "es": "Plazo rural corto · hasta dos meses",
+    "en": "Short rural term · up to two months"
+  },
+  "Experiência exige finalidade real de avaliar uma nova relação de trabalho; não deve ser escolhida apenas pelo custo.": {
+    "es": "La prueba exige una finalidad real de evaluar una nueva relación laboral; no debe elegirse solo por costo.",
+    "en": "Probation requires a real purpose of assessing a new employment relationship; it should not be chosen solely for cost."
+  },
+  "Informe se o empregado já trabalhou na mesma função antes de indicar experiência.": {
+    "es": "Indique si el empleado ya trabajó en la misma función antes de recomendar un período de prueba.",
+    "en": "State whether the employee has performed the same role before recommending probation."
+  },
+  "Confirme o enquadramento e as alíquotas, incluindo a receita quando houver contribuição sobre faturamento.": {
+    "es": "Confirme el régimen y las tasas, incluidos los ingresos si hay contribución sobre facturación.",
+    "en": "Confirm the tax profile and rates, including revenue when contributions are revenue-based."
+  },
+  "Preencha o horário geral uma vez e marque os dias em que ele se aplica. A demanda é o número de pessoas que precisam trabalhar ao mesmo tempo.": {
+    "es": "Complete el horario general una vez y marque los días en que se aplica. La demanda es el personal que debe trabajar al mismo tiempo.",
+    "en": "Enter general hours once and select the applicable days. Demand is the number of people who must work simultaneously."
+  },
+  "Horário geral da semana": {
+    "es": "Horario general de la semana",
+    "en": "General weekly hours"
+  },
+  "Abertura geral": {
+    "es": "Apertura general",
+    "en": "General opening time"
+  },
+  "Fechamento geral": {
+    "es": "Cierre general",
+    "en": "General closing time"
+  },
+  "Pessoas ao mesmo tempo": {
+    "es": "Personas al mismo tiempo",
+    "en": "People at the same time"
+  },
+  "Aplicar o horário geral nestes dias": {
+    "es": "Aplicar el horario general estos días",
+    "en": "Apply general hours on these days"
+  },
+  "Aplicar de segunda a sexta": {
+    "es": "Aplicar de lunes a viernes",
+    "en": "Apply Monday to Friday"
+  },
+  "O horário é diferente em algum dia": {
+    "es": "El horario es diferente algún día",
+    "en": "Hours differ on some days"
+  },
+  "Escolha o dia que deseja editar. Os outros dias mantêm o horário geral.": {
+    "es": "Elija el día que desea editar. Los demás mantienen el horario general.",
+    "en": "Choose the day to edit. Other days keep the general hours."
+  },
+  "Voltar ao horário geral neste dia": {
+    "es": "Volver al horario general este día",
+    "en": "Restore general hours for this day"
+  },
+  "Resumo dos horários por dia": {
+    "es": "Resumen de horarios por día",
+    "en": "Daily operating hours summary"
+  },
+  "pessoas": {
+    "es": "personas",
+    "en": "people"
+  },
+  "Editar": {
+    "es": "Editar",
+    "en": "Edit"
+  },
+  "Funcionamento da empresa e jornada do empregado são diferentes. Os dias de DSR e o almoço da equipe são definidos no quadro de jornada abaixo.": {
+    "es": "El funcionamiento de la empresa y la jornada del empleado son distintos. El almuerzo y los descansos del equipo se definen abajo.",
+    "en": "Business operating hours and employee shifts are different. Staff lunch and rest days are defined below."
+  },
+  "Intervalo usado na escala automática": {
+    "es": "Pausa usada en los turnos automáticos",
+    "en": "Break used in automatic scheduling"
+  },
+  "03 Jornada e descansos da equipe": {
+    "es": "03 Jornada y descansos del equipo",
+    "en": "03 Staff working hours and rest days"
+  },
+  "Defina a jornada de um grupo de empregados com o mesmo horário. A demanda de funcionamento permanece separada.": {
+    "es": "Defina el horario de un grupo con la misma jornada. La demanda de funcionamiento se mantiene separada.",
+    "en": "Define hours for a group of employees sharing the same shift. Operating demand stays separate."
+  },
+  "Como deseja montar a jornada?": {
+    "es": "¿Cómo desea crear la jornada?",
+    "en": "How would you like to build the schedule?"
+  },
+  "Automática · o sistema organiza a equipe": {
+    "es": "Automática · el sistema organiza el equipo",
+    "en": "Automatic · the system schedules staff"
+  },
+  "Segunda a sexta · DSR no sábado e domingo": {
+    "es": "Lunes a viernes · descansos sábado y domingo",
+    "en": "Monday to Friday · Saturday and Sunday rest"
+  },
+  "Personalizada · escolher horários e DSR": {
+    "es": "Personalizada · elegir horarios y descansos",
+    "en": "Custom · choose hours and rest days"
+  },
+  "Na opção automática, o intervalo é descontado e as horas trabalhadas aparecem em cada dia da escala. Escolha uma das outras opções para definir os horários e os DSR.": {
+    "es": "En modo automático se descuentan pausas y se muestran horas trabajadas por día. Elija otra opción para definir horarios y descansos.",
+    "en": "Automatic mode deducts breaks and displays daily working hours. Choose another option to define shifts and rest days."
+  },
+  "Jornada geral dos dias de trabalho": {
+    "es": "Horario general de los días de trabajo",
+    "en": "General hours for workdays"
+  },
+  "Início do almoço": {
+    "es": "Inicio del almuerzo",
+    "en": "Lunch starts"
+  },
+  "Fim do almoço": {
+    "es": "Fin del almuerzo",
+    "en": "Lunch ends"
+  },
+  "de trabalho por dia": {
+    "es": "de trabajo al día",
+    "en": "working hours per day"
+  },
+  "de intervalo": {
+    "es": "de pausa",
+    "en": "break"
+  },
+  "Acrescentar 24 minutos por dia": {
+    "es": "Añadir 24 minutos al día",
+    "en": "Add 24 minutes per day"
+  },
+  "Distribuição dos DSR": {
+    "es": "Distribución de descansos remunerados",
+    "en": "Paid rest-day distribution"
+  },
+  "Repetir esta semana": {
+    "es": "Repetir esta semana",
+    "en": "Repeat this week"
+  },
+  "Organizar compensações em quatro semanas": {
+    "es": "Organizar compensaciones en cuatro semanas",
+    "en": "Plan compensation across four weeks"
+  },
+  "Início do ciclo · segunda-feira": {
+    "es": "Inicio del ciclo · lunes",
+    "en": "Cycle starts · Monday"
+  },
+  "Selecione uma segunda-feira para iniciar o ciclo.": {
+    "es": "Seleccione un lunes para empezar el ciclo.",
+    "en": "Select a Monday to start the cycle."
+  },
+  "Tipo do dia": {
+    "es": "Tipo de día",
+    "en": "Day type"
+  },
+  "Trabalho": {
+    "es": "Trabajo",
+    "en": "Work"
+  },
+  "Descanso remunerado": {
+    "es": "Descanso remunerado",
+    "en": "Paid rest"
+  },
+  "Almoço": {
+    "es": "Almuerzo",
+    "en": "Lunch"
+  },
+  "trabalhadas": {
+    "es": "trabajadas",
+    "en": "worked"
+  },
+  "Horário diferente": {
+    "es": "Horario diferente",
+    "en": "Different hours"
+  },
+  "Trabalho na semana selecionada": {
+    "es": "Trabajo en la semana seleccionada",
+    "en": "Working time in selected week"
+  },
+  "DSR no ciclo": {
+    "es": "Descansos del ciclo",
+    "en": "Rest days in cycle"
+  },
+  "Referência de descansos": {
+    "es": "Referencia de descansos",
+    "en": "Rest-day reference"
+  },
+  "Há ACT/CCT aplicável a este plano?": {
+    "es": "¿Hay ACT/CCT aplicable a este plan?",
+    "en": "Is there an ACT/CCT applicable to this plan?"
+  },
+  "Não há instrumento coletivo": {
+    "es": "No existe instrumento colectivo",
+    "en": "No collective instrument exists"
+  },
+  "Sim · conferir conteúdo e vigência": {
+    "es": "Sí · revisar contenido y vigencia",
+    "en": "Yes · review terms and validity"
+  },
+  "Documento de ACT/CCT · número, vigência e cláusula": {
+    "es": "Documento ACT/CCT · número, vigencia y cláusula",
+    "en": "ACT/CCT document · number, validity and clause"
+  },
+  "ACT OU CCT NECESSÁRIO": {
+    "es": "SE REQUIERE ACT O CCT",
+    "en": "ACT OR CCT REQUIRED"
+  },
+  "A compensação ou a distribuição personalizada de DSR precisa estar prevista em instrumento coletivo aplicável. Um acordo individual ou apenas marcar esta opção não substitui o ACT/CCT.": {
+    "es": "La compensación o distribución personalizada de descansos debe estar prevista en un instrumento colectivo aplicable. Un acuerdo individual o marcar esta opción no lo sustituye.",
+    "en": "Compensation or custom rest distribution must be provided for by an applicable collective instrument. An individual agreement or checking this option does not replace it."
+  },
+  "Plano para revisão · não validado": {
+    "es": "Plan para revisión · no validado",
+    "en": "Plan under review · not validated"
+  },
+  "Regras dos 24 minutos, DSR e domingo mensal": {
+    "es": "Reglas de los 24 minutos, descansos y domingo mensual",
+    "en": "Rules for 24 minutes, rest days and monthly Sunday rest"
+  },
+  "Os DSR podem ocorrer em outros dias. Guarde o ACT/CCT e o controle dos descansos concedidos e compensatórios. A liminar não autoriza eliminar repousos ou considerar qualquer jornada automaticamente regular.": {
+    "es": "Los descansos pueden concederse otros días. Conserve el ACT/CCT y el control de descansos y compensaciones. La cautelar no permite eliminar descansos ni validar automáticamente cualquier jornada.",
+    "en": "Rest may be scheduled on other days. Retain the ACT/CCT and records of rest and compensation. The injunction does not allow removing rest entitlements or automatically validating any schedule."
+  },
+  "A safra precisa corresponder à variação estacional real da atividade rural. O empregador registra o vínculo e documenta a causa e o evento de término.": {
+    "es": "La cosecha debe corresponder a una variación estacional real de la actividad rural. El empleador registra el vínculo y documenta su causa y el evento de finalización.",
+    "en": "Harvest employment must match genuine seasonal variation in rural activity. The employer registers employment and documents its grounds and ending event."
+  },
+  "São considerados salários, 13º, férias com terço, FGTS, encargos aplicáveis e a indenização própria de safra. No término normal, não se presume aviso prévio nem multa de 40% do FGTS.": {
+    "es": "Se consideran salarios, 13.º, vacaciones con tercio, FGTS, cargas e indemnización de cosecha. Al vencimiento normal no se presume preaviso ni multa del 40% del FGTS.",
+    "en": "Costs include wages, 13th salary, vacation plus one-third, FGTS, applicable charges and harvest indemnity. Normal expiry does not presume notice pay or the 40% FGTS penalty."
+  },
+  "O encerramento antes do fim previsto da safra tem regras próprias e exige revisão da causa e das indenizações. Os valores de saída antecipada são ilustrativos.": {
+    "es": "El cierre antes del fin previsto de la cosecha tiene reglas propias y exige revisar la causa e indemnizaciones. Las cifras de salida anticipada son ilustrativas.",
+    "en": "Ending before the planned harvest conclusion has specific rules and requires review of grounds and indemnities. Early-termination figures are illustrative."
+  },
+  "O período de experiência não pode ultrapassar 90 dias no total. A continuidade depois do prazo passa a ser tratada como contrato por prazo indeterminado.": {
+    "es": "La prueba no puede superar 90 días en total. La continuación después del plazo se considera relación por tiempo indefinido.",
+    "en": "Probation cannot exceed 90 days in total. Continued employment after that period is treated as indefinite employment."
+  },
+  "Se o empregado já exerceu a mesma função para o empregador, a nova experiência fica bloqueada nesta simulação. Eventual exceção exige análise jurídica específica.": {
+    "es": "Si el empleado ya ejerció la misma función para el empleador, se bloquea una nueva prueba. Una posible excepción requiere análisis jurídico específico.",
+    "en": "If the employee has already performed the same role for the employer, a new probation period is blocked. Any exception requires specific legal review."
+  },
+  "Até o fim da experiência, término normal e saída antecipada geram verbas diferentes. Após a conversão, a dispensa segue as regras de prazo indeterminado, sem uma segunda rescisão na data da conversão.": {
+    "es": "Durante la prueba, vencimiento normal y terminación anticipada generan conceptos distintos. Tras la conversión, el despido sigue las reglas de duración indefinida, sin una segunda liquidación al convertir.",
+    "en": "During probation, normal expiry and early termination produce different payments. After conversion, dismissal follows indefinite-employment rules, without a second settlement at conversion."
+  },
+  "O intermitente é indicado para alternância real entre trabalho e inatividade, com contrato escrito, registro e regras de convocação. O empregado pode recusar a convocação.": {
+    "es": "El intermitente es adecuado para alternancia real de trabajo e inactividad, con contrato escrito, registro y reglas de convocatoria. El empleado puede rechazar la convocatoria.",
+    "en": "Intermittent employment suits genuine alternation of work and inactivity, with a written contract, registration and call-up rules. The employee may refuse a call-up."
+  },
+  "A projeção inclui as horas convocadas, DSR estimado, férias e 13º proporcionais pagos por período, FGTS e encargos. Essas parcelas não são pagas novamente na rescisão.": {
+    "es": "La proyección incluye horas convocadas, descanso estimado, vacaciones y 13.º proporcionales pagados por período, FGTS y cargas. No se repiten estas partidas al rescindir.",
+    "en": "The projection includes called-up hours, estimated paid rest, proportional vacation and 13th salary paid per period, FGTS and charges. These payments are not duplicated at termination."
+  },
+  "A quantidade mensal de convocações é uma projeção. Antes de utilizar, confira o calendário de trabalho, os descansos, o valor-hora e a disponibilidade dos empregados.": {
+    "es": "La cantidad mensual de convocatorias es una proyección. Revise calendario, descansos, valor por hora y disponibilidad del personal antes de utilizarla.",
+    "en": "Monthly call-ups are a projection. Review actual dates, rest, hourly rates and employee availability before use."
+  },
+  "O vínculo não tem término previamente fixado. A simulação considera a dispensa sem justa causa na data de encerramento de cada hipótese, com aviso indenizado e multa de FGTS quando devidos.": {
+    "es": "El vínculo no tiene fecha final fijada. Cada hipótesis supone despido sin justa causa, con preaviso indemnizado y multa del FGTS cuando correspondan.",
+    "en": "Employment has no predetermined end. Each horizon assumes employer dismissal without cause, with pay in lieu of notice and FGTS penalty where due."
+  },
+  "O pequeno prazo rural é exclusivo do produtor rural pessoa física, para necessidade temporária e até dois meses acumulados em um ano. Exige registro e pagamentos proporcionais.": {
+    "es": "El plazo rural corto es exclusivo de productor rural persona física para necesidad temporal, hasta dos meses acumulados al año. Exige registro y pagos proporcionales.",
+    "en": "Short rural employment is exclusive to individual rural producers for temporary needs, up to two cumulative months per year. Registration and proportional payments are required."
+  },
+  "O tempo parcial é uma jornada reduzida. O modelo utiliza até 30 horas semanais sem horas extras. O salário de referência é proporcional às horas, sujeito ao piso aplicável.": {
+    "es": "El tiempo parcial es una jornada reducida. El modelo usa hasta 30h semanales sin horas extras. La referencia salarial es proporcional a las horas, sujeta al mínimo aplicable.",
+    "en": "Part-time is a reduced schedule. The model uses up to 30h weekly without overtime. Reference pay is proportional to hours, subject to the applicable wage floor."
+  },
+  "Mês": {
+    "es": "Mes",
+    "en": "Month"
+  },
+  "Fim da atividade simulada": {
+    "es": "Fin de la actividad simulada",
+    "en": "Simulated activity end"
+  },
+  "Custos do trabalho no período": {
+    "es": "Costos laborales del período",
+    "en": "Employment costs during period"
+  },
+  "Rescisão": {
+    "es": "Liquidación",
+    "en": "Termination payments"
+  },
+  "Contribuições sobre receita e custos comuns": {
+    "es": "Contribuciones sobre ingresos y costos comunes",
+    "en": "Revenue contributions and common costs"
+  },
+  "Total acumulado se encerrar": {
+    "es": "Total acumulado si se termina",
+    "en": "Cumulative cost if ended"
+  },
+  "Premissas atendidas no modelo": {
+    "es": "Premisas cumplidas en el modelo",
+    "en": "Model assumptions met"
+  },
+  "CONTRATOS · QUESTIONÁRIO INDEPENDENTE": {
+    "es": "CONTRATOS · CUESTIONARIO INDEPENDIENTE",
+    "en": "CONTRACTS · INDEPENDENT QUESTIONNAIRE"
+  },
+  "Qual contrato atende à sua necessidade?": {
+    "es": "¿Qué contrato responde a su necesidad?",
+    "en": "Which contract meets your need?"
+  },
+  "Responda às perguntas para comparar custos mensais e uma projeção de 12 meses, incluindo a rescisão.": {
+    "es": "Responda para comparar costos mensuales y una proyección de 12 meses, incluida la liquidación.",
+    "en": "Answer the questions to compare monthly costs and a 12-month projection, including termination."
+  },
+  "Todos os contratos apresentados exigem registro.": {
+    "es": "Todos los contratos presentados exigen registro.",
+    "en": "All contracts shown require registration."
+  },
+  "O vínculo deve ser registrado na CTPS Digital e informado ao eSocial, com as formalidades e os direitos próprios de cada modalidade.": {
+    "es": "El vínculo debe registrarse en la CTPS Digital e informarse al eSocial, con las formalidades y derechos de cada modalidad.",
+    "en": "Employment must be registered in CTPS Digital and reported to eSocial, following each contract type's formalities and entitlements."
+  },
+  "1. O empregador é pessoa física ou pessoa jurídica?": {
+    "es": "1. ¿El empleador es persona física o jurídica?",
+    "en": "1. Is the employer an individual or a legal entity?"
+  },
+  "Selecione quem contrata": {
+    "es": "Seleccione quién contrata",
+    "en": "Select who is hiring"
+  },
+  "PF · produtor rural pessoa física": {
+    "es": "PF · productor rural persona física",
+    "en": "PF · individual rural producer"
+  },
+  "PJ · empresa rural": {
+    "es": "PJ · empresa rural",
+    "en": "PJ · rural company"
+  },
+  "2. Como o empregador recolhe as contribuições?": {
+    "es": "2. ¿Cómo paga las contribuciones el empleador?",
+    "en": "2. How does the employer pay contributions?"
+  },
+  "Ainda preciso confirmar com a contabilidade": {
+    "es": "Debo confirmarlo con contabilidad",
+    "en": "I still need to confirm with the accountant"
+  },
+  "Sobre a folha de pagamento": {
+    "es": "Sobre la nómina",
+    "en": "Based on payroll"
+  },
+  "FUNRURAL · sobre a receita da comercialização rural": {
+    "es": "FUNRURAL · sobre ingresos de comercialización rural",
+    "en": "FUNRURAL · based on rural sales revenue"
+  },
+  "Simples Nacional · CPP incluída no DAS": {
+    "es": "Simples Nacional · CPP incluida en DAS",
+    "en": "Simples Nacional · CPP included in DAS"
+  },
+  "As alíquotas iniciais são referências editáveis, não um enquadramento automático de PF ou PJ. Confira os valores abaixo com a contabilidade antes da indicação.": {
+    "es": "Las tasas iniciales son referencias editables, no un régimen automático de PF o PJ. Confirme los valores con contabilidad antes de recomendar.",
+    "en": "Initial rates are editable references, not an automatic PF or PJ tax classification. Confirm them with the accountant before a recommendation."
+  },
+  "Quais alíquotas e valores a contabilidade confirmou?": {
+    "es": "¿Qué tasas e importes confirmó contabilidad?",
+    "en": "Which rates and amounts did the accountant confirm?"
+  },
+  "PF ou PJ não define sozinho todos os encargos. Confirme o enquadramento, a opção de recolhimento, a atividade e as alíquotas vigentes.": {
+    "es": "Ser PF o PJ no determina todas las cargas. Confirme el régimen, la opción de contribución, la actividad y las tasas vigentes.",
+    "en": "PF or PJ status alone does not determine all charges. Confirm classification, contribution basis, activity and current rates."
+  },
+  "Qual é a CPP patronal · %?": {
+    "es": "¿Cuál es la CPP patronal · %?",
+    "en": "What is the employer CPP rate · %?"
+  },
+  "Qual é o RAT · %?": {
+    "es": "¿Cuál es el RAT · %?",
+    "en": "What is the RAT rate · %?"
+  },
+  "Qual é o FAP?": {
+    "es": "¿Cuál es el FAP?",
+    "en": "What is the FAP?"
+  },
+  "Há contribuições a terceiros sobre a folha · %?": {
+    "es": "¿Hay contribuciones a terceros sobre nómina · %?",
+    "en": "Are third-party contributions due on payroll · %?"
+  },
+  "Qual é a receita mensal tributável · R$?": {
+    "es": "¿Cuál es el ingreso mensual sujeto a contribución · R$?",
+    "en": "What is monthly taxable revenue · R$?"
+  },
+  "Qual é a alíquota total efetiva sobre a receita · %?": {
+    "es": "¿Cuál es la tasa efectiva total sobre ingresos · %?",
+    "en": "What is the total effective revenue rate · %?"
+  },
+  "Há PIS sobre a folha · %?": {
+    "es": "¿Hay PIS sobre nómina · %?",
+    "en": "Is payroll PIS due · %?"
+  },
+  "Qual é o piso mensal integral aplicável · R$?": {
+    "es": "¿Cuál es el salario mínimo mensual integral aplicable · R$?",
+    "en": "What is the applicable full-time monthly wage floor · R$?"
+  },
+  "Há benefícios sem natureza salarial por empregado · R$/mês?": {
+    "es": "¿Hay beneficios no salariales por empleado · R$/mes?",
+    "en": "Are there non-wage benefits per employee · R$/month?"
+  },
+  "FGTS de 8% permanece na folha. Na contribuição substitutiva rural, não se somam novamente CPP e RAT substituídos. Não repita na folha parcelas já incluídas na alíquota da receita.": {
+    "es": "El FGTS del 8% permanece en nómina. Con la contribución rural sustitutiva no se añaden de nuevo CPP y RAT sustituidos. No duplique en nómina partidas ya incluidas en la tasa sobre ingresos.",
+    "en": "8% FGTS remains on payroll. Under rural substitution, replaced CPP and RAT are not added again. Do not duplicate payroll items already included in the revenue rate."
+  },
+  "O tributo sobre receita é custo comum do empregador: entra uma vez por mês, sem ser multiplicado pelo número de empregados, inclusive nos meses sem safra, se a receita informada continuar.": {
+    "es": "El tributo sobre ingresos es común al empleador: se incluye una vez al mes, sin multiplicarlo por empleados, incluso fuera de cosecha si continúan los ingresos indicados.",
+    "en": "Revenue tax is an employer-wide cost: included once monthly, not multiplied by headcount, including outside harvest when stated revenue continues."
+  },
+  "Receita Federal · contribuição rural": {
+    "es": "Receita Federal · contribución rural",
+    "en": "Receita Federal · rural contributions"
+  },
+  "3. Qual é a sua necessidade de contratação?": {
+    "es": "3. ¿Cuál es su necesidad de contratación?",
+    "en": "3. What is your hiring need?"
+  },
+  "Selecione a necessidade": {
+    "es": "Seleccione la necesidad",
+    "en": "Select the need"
+  },
+  "Trabalhar uma safra": {
+    "es": "Trabajar una cosecha",
+    "en": "Work a harvest"
+  },
+  "Trabalhar alguns dias em atividades eventuais": {
+    "es": "Trabajar algunos días en actividades ocasionales",
+    "en": "Work some days on occasional activities"
+  },
+  "Manter uma equipe permanente": {
+    "es": "Mantener una plantilla permanente",
+    "en": "Maintain permanent staff"
+  },
+  "Atividade rural temporária por até dois meses": {
+    "es": "Actividad rural temporal hasta dos meses",
+    "en": "Temporary rural activity up to two months"
+  },
+  "Trabalhar com jornada parcial contínua": {
+    "es": "Trabajar con jornada parcial continua",
+    "en": "Work a continuous part-time schedule"
+  },
+  "4. Quando começa a contratação?": {
+    "es": "4. ¿Cuándo empieza la contratación?",
+    "en": "4. When does employment start?"
+  },
+  "5. Quantas pessoas serão contratadas?": {
+    "es": "5. ¿Cuántas personas contratará?",
+    "en": "5. How many people will be hired?"
+  },
+  "6. Qual é o salário mensal integral de referência · R$?": {
+    "es": "6. ¿Cuál es el salario mensual integral de referencia · R$?",
+    "en": "6. What is the full-time reference monthly salary · R$?"
+  },
+  "Referência nacional de 2026": {
+    "es": "Referencia nacional de 2026",
+    "en": "2026 national reference"
+  },
+  "Salário, piso e alíquotas são mantidos constantes na projeção. Informe reajustes aplicáveis; o mínimo de 2027 não é presumido.": {
+    "es": "Salario, mínimo y tasas se mantienen constantes en la proyección. Indique ajustes aplicables; no se presume el mínimo de 2027.",
+    "en": "Pay, wage floor and rates remain constant in the projection. Enter applicable adjustments; the 2027 minimum is not assumed."
+  },
+  "Por quantos meses a safra precisará desta equipe?": {
+    "es": "¿Por cuántos meses necesitará este equipo la cosecha?",
+    "en": "For how many months will the harvest need this team?"
+  },
+  "Vamos comparar safra com experiência e eventual continuidade por prazo indeterminado, para a mesma duração da necessidade. Os meses seguintes sem vínculo ficam sem salário; a projeção continua até o mês 12.": {
+    "es": "Compararemos cosecha con prueba y posible continuación indefinida durante la misma necesidad. Los meses posteriores sin vínculo no tienen salarios; la proyección sigue hasta el mes 12.",
+    "en": "We compare harvest with probation and possible indefinite continuation for the same demand period. Later months without employment have no wages; the projection continues to month 12."
+  },
+  "Por quantos meses haverá a necessidade temporária?": {
+    "es": "¿Por cuántos meses existirá la necesidad temporal?",
+    "en": "For how many months will the temporary need last?"
+  },
+  "Quantos meses de pequeno prazo já foram utilizados no ano?": {
+    "es": "¿Cuántos meses de plazo rural corto ya se usaron este año?",
+    "en": "How many short rural contract months have already been used this year?"
+  },
+  "Quantas horas por semana serão necessárias?": {
+    "es": "¿Cuántas horas semanales se necesitan?",
+    "en": "How many hours per week are needed?"
+  },
+  "Quantos dias terá a experiência · máximo de 90?": {
+    "es": "¿Cuántos días durará la prueba · máximo 90?",
+    "en": "How many days will probation last · maximum 90?"
+  },
+  "O empregado já trabalhou nesta mesma função para este empregador?": {
+    "es": "¿El empleado ya trabajó en esta misma función para este empleador?",
+    "en": "Has the employee already performed this same role for this employer?"
+  },
+  "Ainda preciso conferir": {
+    "es": "Aún debo verificarlo",
+    "en": "I still need to check"
+  },
+  "Sim": {
+    "es": "Sí",
+    "en": "Yes"
+  },
+  "Existe finalidade real de avaliar uma nova relação de trabalho por experiência": {
+    "es": "Existe una finalidad real de evaluar una nueva relación laboral mediante prueba",
+    "en": "There is a genuine purpose of assessing a new employment relationship through probation"
+  },
+  "A experiência termina em até 90 dias. Havendo continuidade, o vínculo passa a prazo indeterminado, com o tempo de serviço contado desde a admissão. Não há nova rescisão na conversão.": {
+    "es": "La prueba termina dentro de 90 días. Si continúa, el vínculo pasa a indefinido, contando servicio desde la contratación. La conversión no genera otra liquidación.",
+    "en": "Probation ends within 90 days. Continued employment becomes indefinite, with service counted from initial hiring. Conversion does not trigger another settlement."
+  },
+  "Experiência bloqueada: não se repete experiência para a mesma função já exercida para este empregador.": {
+    "es": "Prueba bloqueada: no se repite para la misma función ya ejercida para este empleador.",
+    "en": "Probation blocked: it cannot be repeated for the same role already performed for this employer."
+  },
+  "Para alternância real entre dias de atividade e inatividade, o contrato intermitente pode atender à necessidade. Ele exige registro, contrato escrito e regras de convocação.": {
+    "es": "Con alternancia real de trabajo e inactividad, el intermitente puede atender la necesidad. Exige registro, contrato escrito y reglas de convocatoria.",
+    "en": "With genuine alternation between work and inactivity, intermittent employment may meet the need. Registration, a written contract and call-up rules are required."
+  },
+  "Quantos dias por mês haverá convocação?": {
+    "es": "¿Cuántos días al mes habrá convocatoria?",
+    "en": "How many days per month will staff be called up?"
+  },
+  "Quantas horas de trabalho por dia de convocação?": {
+    "es": "¿Cuántas horas trabajarán por día convocado?",
+    "en": "How many working hours per call-up day?"
+  },
+  "Qual é o valor-hora contratado · R$?": {
+    "es": "¿Cuál es el valor por hora contratado · R$?",
+    "en": "What is the agreed hourly rate · R$?"
+  },
+  "Confirmo alternância real, regras de convocação e revisão do calendário de descansos": {
+    "es": "Confirmo alternancia real, reglas de convocatoria y revisión del calendario de descansos",
+    "en": "I confirm genuine alternation, call-up rules and review of the rest-day calendar"
+  },
+  "O valor-hora deve observar o mínimo e o piso aplicáveis. As convocações e o DSR de 1/6 são estimativas; confira datas, feriados e intervalos antes de utilizar.": {
+    "es": "El valor por hora debe respetar el mínimo aplicable. Convocatorias y DSR de 1/6 son estimaciones; revise fechas, festivos y pausas.",
+    "en": "The hourly rate must respect applicable wage floors. Call-ups and 1/6 DSR are estimates; check dates, holidays and breaks."
+  },
+  "A contabilidade confirmou o enquadramento, a forma de recolhimento, as alíquotas e o piso": {
+    "es": "Contabilidad confirmó régimen, base de contribución, tasas y mínimo salarial",
+    "en": "The accountant confirmed classification, contribution basis, rates and wage floor"
+  },
+  "Ver custos mensais e de 12 meses": {
+    "es": "Ver costos mensuales y de 12 meses",
+    "en": "View monthly and 12-month costs"
+  },
+  "Quanto custa contratar?": {
+    "es": "¿Cuánto cuesta contratar?",
+    "en": "How much does hiring cost?"
+  },
+  "Menor custo estimado para a mesma necessidade": {
+    "es": "Menor costo estimado para la misma necesidad",
+    "en": "Lowest estimated cost for the same need"
+  },
+  "Valores estimados: confirme as condições e as contribuições para indicar a alternativa compatível de menor custo.": {
+    "es": "Importes estimados: confirme condiciones y contribuciones para indicar la alternativa válida de menor costo.",
+    "en": "Estimated amounts: confirm conditions and contributions to identify the compatible lowest-cost option."
+  },
+  "As alternativas destacadas têm o mesmo custo total estimado em 12 meses.": {
+    "es": "Las alternativas destacadas tienen el mismo costo total estimado en 12 meses.",
+    "en": "Highlighted alternatives have the same estimated 12-month total cost."
+  },
+  "Mês 1 com encerramento": {
+    "es": "Mes 1 con finalización",
+    "en": "Month 1 including termination"
+  },
+  "Total em 12 meses com encerramento": {
+    "es": "Total de 12 meses con finalización",
+    "en": "12-month total including termination"
+  },
+  "Condições e detalhes": {
+    "es": "Condiciones y detalles",
+    "en": "Conditions and details"
+  },
+  "Atividade por": {
+    "es": "Actividad durante",
+    "en": "Activity for"
+  },
+  "meses dentro da projeção de 12 meses": {
+    "es": "meses dentro de la proyección de 12 meses",
+    "en": "months within the 12-month projection"
+  },
+  "Saída antecipada · revisar indenizações": {
+    "es": "Salida anticipada · revisar indemnizaciones",
+    "en": "Early departure · review indemnities"
+  },
+  "Média por mês do ano": {
+    "es": "Promedio mensual del año",
+    "en": "Average per month of the year"
+  },
+  "Ver mês a mês e verbas": {
+    "es": "Ver mes a mes y pagos",
+    "en": "View monthly figures and payments"
+  },
+  "Cada linha mensal é uma hipótese independente de encerramento naquele mês. O total anual é a hipótese do mês 12: não soma doze rescisões. Na safra ou no pequeno prazo, o vínculo termina no período informado e os demais meses ficam sem salários.": {
+    "es": "Cada fila mensual es una hipótesis independiente de finalización en ese mes. El total anual corresponde al mes 12: no suma doce liquidaciones. En cosecha o plazo corto, el vínculo termina en el período indicado y después no hay salarios.",
+    "en": "Each monthly row is an independent termination hypothesis for that month. Annual cost is the month-12 scenario, not twelve settlements added together. Harvest or short-term employment ends at the stated period, with no wages afterward."
+  },
+  "Como os custos mudam ao final de cada mês?": {
+    "es": "¿Cómo cambian los costos al final de cada mes?",
+    "en": "How do costs change at each month-end?"
+  },
+  "Qual contrato deseja detalhar?": {
+    "es": "¿Qué contrato desea detallar?",
+    "en": "Which contract would you like to inspect?"
+  },
+  "Vínculo já encerrado": {
+    "es": "Vínculo ya finalizado",
+    "en": "Employment already ended"
+  },
+  "Quais verbas entram no encerramento da projeção?": {
+    "es": "¿Qué conceptos se incluyen en la liquidación de la proyección?",
+    "en": "Which payments are included at the projection's termination?"
+  },
+  "O saldo salarial já está nos salários do período. Não há dupla cobrança de férias e 13º já pagos nem soma de uma reserva genérica à mesma verba rescisória.": {
+    "es": "El saldo salarial ya está incluido. No se duplican vacaciones ni 13.º pagados ni una reserva genérica de la misma obligación.",
+    "en": "Salary balances are already included. Previously paid vacation and 13th salary are not duplicated, nor is a generic reserve added to the same termination obligation."
+  },
+  "Quais são os direitos e deveres de cada contrato?": {
+    "es": "¿Cuáles son los derechos y deberes de cada contrato?",
+    "en": "What are the rights and duties of each contract?"
+  },
+  "Projeção de novas admissões, sem férias gozadas no primeiro período aquisitivo, com dispensa pela empresa e aviso indenizado quando devido. Salários e alíquotas constantes. Estabilidades, afastamentos, adicionais e condições especiais precisam de cálculo próprio.": {
+    "es": "Proyección de nuevas contrataciones sin vacaciones disfrutadas en el primer período de adquisición, con despido por la empresa y preaviso indemnizado cuando corresponda. Salarios y tasas constantes. Estabilidad, bajas, complementos y condiciones especiales exigen cálculo propio.",
+    "en": "Projection of new hires without vacation taken during the first accrual period, with employer dismissal and pay in lieu of notice where due. Pay and rates remain constant. Protected employment, leave, premiums and special conditions require specific calculations."
+  },
+  "Baixar comparação de 12 meses": {
+    "es": "Descargar comparación de 12 meses",
+    "en": "Download 12-month comparison"
+  },
+  "Jornada personalizada aplicada à etapa selecionada": {
+    "es": "Jornada personalizada aplicada a la etapa seleccionada",
+    "en": "Custom schedule applied to the selected stage"
+  },
+  "Os horários e o almoço informados são aplicados a todos os empregados deste grupo. Os DSR escolhidos aparecem na escala.": {
+    "es": "Horarios y almuerzo se aplican a todos los empleados del grupo. Los descansos elegidos aparecen en los turnos.",
+    "en": "Entered hours and lunch apply to all employees in this group. Chosen rest days appear in the schedule."
+  },
+  "Revisar plano": {
+    "es": "Revisar plan",
+    "en": "Review plan"
+  },
+  "A comparação de custo fica suspensa enquanto houver pendências na jornada personalizada.": {
+    "es": "La comparación de costos se suspende mientras haya asuntos pendientes en la jornada personalizada.",
+    "en": "Cost comparison is suspended while the custom schedule has unresolved issues."
+  },
+  "Escala definida pelo usuário. O almoço e o total diário são mostrados por empregado. Confira os alertas de ACT/CCT e de descansos antes de utilizar.": {
+    "es": "Turnos definidos por el usuario. Se muestran almuerzo y total diario por empleado. Revise alertas de ACT/CCT y descanso antes de usar.",
+    "en": "User-defined schedule. Lunch and daily totals are shown per employee. Review ACT/CCT and rest alerts before use."
+  },
+  "Data": {
+    "es": "Fecha",
+    "en": "Date"
+  },
+  "Revisar ACT/CCT e regras da categoria antes de implementar": {
+    "es": "Revisar ACT/CCT y reglas de la categoría antes de implementar",
+    "en": "Review ACT/CCT and category rules before implementation"
+  },
+  "Jornada personalizada exportada com almoço, horas diárias e DSR. Confira os alertas antes de implementar.": {
+    "es": "Jornada personalizada exportada con almuerzo, horas diarias y descansos. Revise alertas antes de implementar.",
+    "en": "Custom schedule exported with lunch, daily hours and rest days. Review alerts before implementation."
+  },
+  "Versão 1.5 · Referência jurídica: 15/11/2026": {
+    "es": "Versión 1.5 · Referencia jurídica: 15/11/2026",
+    "en": "Version 1.5 · Legal reference: 15 Nov 2026"
+  },
+  "Período superior a 12 meses exige planejamento de férias e substituições. O custo é ilustrativo e fica fora da indicação.": {
+    "es": "Un período superior a 12 meses exige planificar vacaciones y sustituciones. El costo es ilustrativo y no participa en la recomendación.",
+    "en": "Periods longer than 12 months require vacation and replacement planning. Costs are illustrative and excluded from recommendations."
+  },
+  "O valor-hora está abaixo do piso de referência dividido pela jornada aplicável no período. Revise com a contabilidade.": {
+    "es": "El valor por hora es inferior al mínimo de referencia dividido por la jornada del período. Revíselo con contabilidad.",
+    "en": "The hourly rate is below the reference wage floor divided by the applicable hours for the period. Review with your accountant."
+  },
+  "O valor-hora deve observar o mínimo e o piso aplicáveis. A referência inicial usa divisor 200, correspondente a 40h; ajuste ao contrato e às datas. As convocações e o DSR de 1/6 são estimativas; confira datas, feriados e intervalos.": {
+    "es": "El valor por hora debe respetar el mínimo aplicable. La referencia inicial usa divisor 200, de 40h; ajústelo al contrato y fechas. Convocatorias y DSR de 1/6 son estimaciones; revise fechas, festivos y pausas.",
+    "en": "The hourly rate must respect applicable wage floors. The initial reference uses a 200 divisor for a 40h week; adjust it to the contract and dates. Call-ups and 1/6 DSR are estimates; review dates, holidays and breaks."
+  },
+  "No ciclo compensatório, o mapa mostra a semana selecionada e a referência mensal por volume usa a lacuna média de todas as semanas. A viabilidade de horas extras exige apuração específica do ciclo.": {
+    "es": "En el ciclo compensatorio, el mapa muestra la semana elegida y la referencia mensual por volumen usa el déficit promedio de todas las semanas. Las horas extras exigen cálculo específico del ciclo.",
+    "en": "For compensatory cycles, the map shows the selected week and the monthly hours-based reference uses the average gap across all weeks. Overtime feasibility requires specific cycle assessment."
+  },
+  "Ciclo compensatório: horas extras precisam de apuração do ciclo completo; o valor por volume é apenas referência.": {
+    "es": "Ciclo compensatorio: las horas extras requieren calcular el ciclo completo; el valor por volumen es solo una referencia.",
+    "en": "Compensatory cycle: overtime requires assessment of the full cycle; the hours-based amount is only a reference."
+  },
+  "DSR distribuídos no ciclo por ACT/CCT": {
+    "es": "Descansos distribuidos en el ciclo por ACT/CCT",
+    "en": "Rest distributed across the cycle by ACT/CCT"
+  },
+  "O mapa e a lacuna acima são da semana selecionada. A referência mensal abaixo usa a lacuna média por semana do ciclo": {
+    "es": "El mapa y el déficit anterior corresponden a la semana elegida. La referencia mensual siguiente usa el déficit semanal promedio del ciclo",
+    "en": "The map and gap above refer to the selected week. The monthly reference below uses the cycle’s average weekly gap"
+  },
+  "Lacuna média do ciclo": {
+    "es": "Déficit promedio del ciclo",
+    "en": "Average cycle gap"
+  },
+  "A escala automática semanal repetida tem empregados sem domingo de descanso. Monte um ciclo de revezamento para garantir ao menos um domingo por mês e conferir a regra da categoria.": {
+    "es": "La repetición semanal automática deja empleados sin domingo libre. Cree un ciclo de rotación que garantice al menos un domingo mensual y revise la regla de la categoría.",
+    "en": "The repeated automatic weekly schedule leaves some staff without Sunday rest. Build a rotating cycle ensuring at least one Sunday off monthly and check category rules."
+  },
+  "Confira o revezamento e os descansos": {
+    "es": "Revise la rotación y los descansos",
+    "en": "Review rotation and rest days"
+  },
+  "Domingo de descanso: pelo menos um por mês neste planejamento.": {
+    "es": "Domingo libre: al menos uno al mes en este plan.",
+    "en": "Sunday rest: at least once monthly in this plan."
+  },
+  "A categoria ou norma coletiva pode exigir frequência maior.": {
+    "es": "La categoría o el convenio pueden exigir mayor frecuencia.",
+    "en": "The category or collective terms may require more frequent rest."
+  },
+  "A busca descrita abaixo é do modo automático. No modo personalizado, o sistema aplica os horários, o almoço e os DSR informados, verifica o ciclo e destaca as pendências de ACT/CCT e descanso dominical.": {
+    "es": "La búsqueda siguiente corresponde al modo automático. En el personalizado se aplican horarios, almuerzo y descansos indicados, se revisa el ciclo y se señalan asuntos pendientes de ACT/CCT y descanso dominical.",
+    "en": "The search below applies to automatic mode. Custom mode uses the entered shifts, lunch and rest days, reviews the cycle and highlights ACT/CCT and Sunday-rest issues."
+  },
+  "Contratos em 12 meses": {
+    "es": "Contratos en 12 meses",
+    "en": "Contracts over 12 months"
+  },
+  "O questionário de contratos tem dados próprios e começa por PF/PJ e forma de contribuição. Cada mês representa uma hipótese independente de encerramento. O mês 12 é o total anual, sem somar doze rescisões. A experiência permanece limitada a 90 dias e a continuidade é indeterminada. Na safra, todas as opções usam a mesma duração da necessidade.": {
+    "es": "El cuestionario usa datos propios y empieza con PF/PJ y la base de contribución. Cada mes es una hipótesis independiente de finalización. El mes 12 es el total anual, sin sumar doce liquidaciones. La prueba se limita a 90 días y la continuidad es indefinida. En cosecha, todas las opciones usan la misma duración de la necesidad.",
+    "en": "The contract questionnaire has independent data and starts with PF/PJ status and contribution basis. Each month is an independent termination scenario. Month 12 is the annual total, without adding twelve settlements. Probation is limited to 90 days, with indefinite continuation afterward. Harvest options use the same demand period."
+  },
+  "Confirme se há contribuição complementar sobre comercialização na opção pela folha.": {
+    "es": "Confirme si hay contribución complementaria sobre comercialización al optar por nómina.",
+    "en": "Confirm whether a supplementary sales-based contribution applies when opting for payroll."
+  },
+  "Na opção pela folha, há contribuição complementar sobre a comercialização, como SENAR na PF?": {
+    "es": "Al optar por nómina, ¿hay contribución complementaria sobre comercialización, como SENAR para PF?",
+    "en": "When opting for payroll, is there a supplementary sales-based contribution, such as SENAR for PF?"
+  },
+  "A contabilidade ainda precisa confirmar": {
+    "es": "Contabilidad aún debe confirmarlo",
+    "en": "The accountant still needs to confirm"
+  },
+  "Sim · acrescentar a parcela sobre comercialização": {
+    "es": "Sí · añadir la parte sobre comercialización",
+    "en": "Yes · add the sales-based contribution"
+  },
+  "Não há parcela ou receita tributável adicional nesta simulação": {
+    "es": "No hay contribución ni ingreso sujeto adicional en esta simulación",
+    "en": "No supplementary contribution or taxable revenue in this simulation"
+  },
+  "Na PF, a opção pela folha não afasta automaticamente o SENAR sobre comercialização. Na PJ, confira a base do SENAR e demais terceiros conforme o enquadramento.": {
+    "es": "En PF, optar por nómina no elimina automáticamente el SENAR sobre comercialización. En PJ, revise la base de SENAR y otros terceros según el régimen.",
+    "en": "For PF, choosing payroll does not automatically eliminate sales-based SENAR. For PJ, check the SENAR and other third-party contribution bases for the applicable classification."
   }
 };

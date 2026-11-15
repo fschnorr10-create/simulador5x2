@@ -24,6 +24,7 @@ export interface EmploymentSettings {
   durationMonths: number;
   previousShortMonths: number;
   experienceDays: number;
+  experienceContinues?: boolean;
   priorSameRole: boolean;
   partTime: boolean;
   preferredStrategy?: 'hiring' | 'hybrid';
@@ -75,6 +76,7 @@ export function validateEmploymentSettings(input: unknown): string[] {
   for (const [key, [min, max]] of Object.entries(limits)) if (typeof p[key] !== 'number' || !Number.isFinite(p[key]) || Number(p[key]) < min || Number(p[key]) > max) errors.push('Revise os valores e limites das premissas de custo.');
   for (const key of ['priorSameRole', 'partTime', 'intermittentConfirmed', 'overtimeEnabled', 'overtimeAuthorized', 'taxConfirmed']) if (typeof p[key] !== 'boolean') errors.push('Revise as confirmações das premissas.');
   if (p.preferredStrategy !== undefined && !['hiring', 'hybrid'].includes(String(p.preferredStrategy))) errors.push('Estratégia de cobertura inválida.');
+  if (p.experienceContinues !== undefined && typeof p.experienceContinues !== 'boolean') errors.push('Revise as confirmações das premissas.');
   if (!Number.isInteger(p.experienceDays)) errors.push('O prazo de experiência deve ser informado em dias inteiros.');
   if (p.contractHeadcount !== undefined && (!Number.isInteger(p.contractHeadcount) || Number(p.contractHeadcount) < 1 || Number(p.contractHeadcount) > 100)) errors.push('Informe uma quantidade válida de pessoas e horas.');
   if (p.contractHours !== undefined && (typeof p.contractHours !== 'number' || !Number.isFinite(p.contractHours) || p.contractHours <= 0 || p.contractHours > 40)) errors.push('Informe uma quantidade válida de pessoas e horas.');
@@ -86,7 +88,7 @@ export function validateEmploymentSettings(input: unknown): string[] {
 export function contractIssues(p: EmploymentSettings, sector: string): string[] {
   const issues: string[] = [];
   const periodDays = p.period && !validatePeriod(p.period).length ? daysBetween(parseDate(p.period.start)!, parseDate(p.period.end)!) + 1 : p.durationMonths * 30;
-  if (p.contract === 'experience' && periodDays > p.experienceDays) issues.push('O prazo de experiência não cobre todo o período informado. A continuidade exige conversão e novo planejamento.');
+  if (p.contract === 'experience' && periodDays > p.experienceDays && !p.experienceContinues) issues.push('O prazo de experiência não cobre todo o período informado. A continuidade exige conversão e novo planejamento.');
   if (p.contract === 'experience' && p.priorSameRole) issues.push('Experiência bloqueada: o empregado já trabalhou na mesma função para este empregador. Eventual exceção coletiva exige análise jurídica específica.');
   if (p.contract === 'harvest' && (sector !== 'rural' || p.need !== 'harvest')) issues.push('Safra exige atividade rural e necessidade vinculada à variação estacional.');
   const shortTooLong = p.period && !validatePeriod(p.period).length ? periodDays > daysBetween(parseDate(p.period.start)!, addMonths(parseDate(p.period.start)!, 2)) || (p.previousShortMonths > 0 && p.durationMonths + p.previousShortMonths > 2) : p.durationMonths + p.previousShortMonths > 2;

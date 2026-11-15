@@ -26,7 +26,8 @@ export function planOvertime(scenario: Scenario, result: Calculation): OvertimeP
   const coverage = result.coverage.slice();
   const workers = result.workers.map(worker => ({ ...worker, shifts: worker.shifts.map(shift => ({ ...shift })) }));
   const assignments: OvertimeAssignment[] = [];
-  const reasons: string[] = [];
+  const reasons: string[] = [...(result.scheduleIssues ?? [])];
+  if ((result.cycleWeeks ?? 1) > 1) reasons.push('Ciclo compensatório: horas extras precisam de apuração do ciclo completo; o valor por volume é apenas referência.');
   if (!p.overtimeEnabled) reasons.push('Horas extras desativadas neste cenário.');
   if (!p.overtimeAuthorized) reasons.push('Confirme o acordo de prorrogação e as autorizações aplicáveis antes de simular horas extras.');
   if (scenario.insalubrious && scenario.collective !== 'sim') reasons.push('Atividade insalubre: sem autorização coletiva confirmada, a simulação de prorrogação fica bloqueada para revisão.');
@@ -109,7 +110,7 @@ export function planHiring(scenario: Scenario, result: Calculation, coverage = r
 }
 
 export function employmentContextIssues(scenario: Scenario, result: Calculation): string[] {
-  const issues: string[] = [];
+  const issues: string[] = [...(result.scheduleIssues ?? [])];
   if (scenario.scale === '12x36' || scenario.scale === 'turnos') issues.push('Regime especial: valide a migração e os limites próprios antes de indicar uma alternativa.');
   if (scenario.insalubrious && scenario.collective !== 'sim' && result.dailyCap > 480) issues.push('Atividade insalubre: valide a jornada da transição antes da indicação econômica.');
   return issues;

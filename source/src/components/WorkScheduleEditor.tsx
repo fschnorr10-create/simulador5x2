@@ -1,0 +1,44 @@
+import { useState } from 'react';
+import type { Scenario } from '../types';
+import { assessWorkSchedule, dailyWork, defaultWorkSchedule } from '../workSchedule';
+import type { DailyWorkHours, WorkSchedule } from '../workSchedule';
+import { shortDays, dayNames } from '../defaults';
+import { clockTime, duration } from '../time';
+import { addDays, dateString, parseDate } from '../periodDates';
+import { useI18n } from '../i18n';
+
+export function WorkScheduleEditor({ value, onChange, stage, setStage }: { value: Scenario; onChange: (value: Scenario) => void; stage: 42 | 40; setStage?: (stage: 42 | 40) => void }) {
+  const { t } = useI18n();
+  const plan = value.workSchedules?.[stage];
+  const [editing, setEditing] = useState<number | null>(null);
+  const [editDate, setEditDate] = useState('');
+  const update = (next: WorkSchedule) => onChange({ ...value, workSchedules: { ...value.workSchedules, [stage]: next } });
+  const review = assessWorkSchedule(value, stage);
+  function updateGeneral(patch: Partial<DailyWorkHours>) {
+    if (!plan) return;
+    const general = { ...plan.general, ...patch };
+    update({ ...plan, general, weeks: plan.weeks.map(week => week.map(day => day.kind === 'work' ? {...day,...general} : day)) });
+  }
+  function editDay(dayIndex: number, patch: Partial<DailyWorkHours> & {kind?: 'work'|'dsr'}) {
+    if (!plan) return;
+    update({ ...plan, mode: 'custom', weeks: plan.weeks.map((week, index) => index === plan.shownWeek ? week.map((day,d) => d === dayIndex ? {...day,...patch} : day) : week) });
+  }
+  const timeInput = (label: string, key: keyof DailyWorkHours, hours: DailyWorkHours, save: (patch: Partial<DailyWorkHours>) => void) => <label>{t(label)}<input type="time" value={hours[key]} onChange={event => save({[key]:event.target.value})} /></label>;
+  return <section className="form-section work-schedule-editor"><h3>{t('03 Jornada e descansos da equipe')}</h3><p className="field-help">{t('Defina a jornada de um grupo de empregados com o mesmo horário. A demanda de funcionamento permanece separada.')}</p><div className="comparison-stage"><button aria-pressed={stage === 42} onClick={() => {setStage?.(42);setEditing(null);setEditDate('');}}>42h</button><button aria-pressed={stage === 40} onClick={() => {setStage?.(40);setEditing(null);setEditDate('');}}>40h</button></div><label>{t('Como deseja montar a jornada?')}<select value={plan?.mode ?? 'automatic'} onChange={event => { setEditing(null); if (event.target.value === 'automatic') { const schedules={...value.workSchedules};delete schedules[stage];onChange({...value,workSchedules:schedules}); } else update({...(event.target.value === 'custom' && plan ? plan : defaultWorkSchedule(value,stage)),mode:event.target.value as WorkSchedule['mode']}); }}><option value="automatic">{t('Automática · o sistema organiza a equipe')}</option><option value="weekdays">{t('Segunda a sexta · DSR no sábado e domingo')}</option><option value="custom">{t('Personalizada · escolher horários e DSR')}</option></select></label>
+    {!plan && <p className="field-help">{t('Na opção automática, o intervalo é descontado e as horas trabalhadas aparecem em cada dia da escala. Escolha uma das outras opções para definir os horários e os DSR.')}</p>}
+    {plan && <>
+      <fieldset className="weekly-general"><legend>{t('Jornada geral dos dias de trabalho')}</legend><div className="field-grid">{timeInput('Entrada','start',plan.general,updateGeneral)}{timeInput('Saída','end',plan.general,updateGeneral)}{timeInput('Início do almoço','mealStart',plan.general,updateGeneral)}{timeInput('Fim do almoço','mealEnd',plan.general,updateGeneral)}</div><p className="daily-hours-total"><strong>{duration(Math.max(0,dailyWork(plan.general).work)/60)}</strong> {t('de trabalho por dia')} · {duration(dailyWork(plan.general).pause/60)} {t('de intervalo')}</p><button className="text-button add-24" onClick={() => updateGeneral({end:clockTime(dailyWork(plan.general).end+24)})}>{t('Acrescentar 24 minutos por dia')}</button></fieldset>
+      <label>{t('Distribuição dos DSR')}<select value={plan.cycleWeeks} onChange={event => {update({...plan,mode:'custom',cycleWeeks:Number(event.target.value) as 1|4,shownWeek:0});setEditing(null);}}><option value={1}>{t('Repetir esta semana')}</option><option value={4}>{t('Organizar compensações em quatro semanas')}</option></select></label>
+      <label>{t('Início do ciclo · segunda-feira')}<input type="date" value={editDate || plan.cycleStart} onChange={event => { const next=event.target.value;setEditDate(next); const parsed=parseDate(next);if(parsed?.getUTCDay()===1){update({...plan,cycleStart:next});setEditDate('');} }} /></label>{editDate && parseDate(editDate)?.getUTCDay() !== 1 && <p className="collective-alert">{t('Selecione uma segunda-feira para iniciar o ciclo.')}</p>}
+      {plan.cycleWeeks === 4 && <div className="comparison-stage cycle-tabs">{[0,1,2,3].map(week=><button key={week} aria-pressed={plan.shownWeek===week} onClick={()=>{update({...plan,shownWeek:week});setEditing(null);}}>{t('Semana')} {week+1}</button>)}</div>}
+      <div className="planned-week">{plan.weeks[plan.shownWeek].map((day,index)=>{const hours=dailyWork(day);return <article key={index}><div><strong>{t(shortDays[index])}</strong>{plan.cycleWeeks===4 && <small>{dateString(addDays(parseDate(plan.cycleStart)!,plan.shownWeek*7+index)).slice(5).split('-').reverse().join('/')}</small>}</div><label><span className="visually-hidden">{t('Tipo do dia')} · {t(dayNames[index])}</span><select value={day.kind} onChange={event=>editDay(index,{kind:event.target.value as 'work'|'dsr'})}><option value="work">{t('Trabalho')}</option><option value="dsr">DSR</option></select></label><div>{day.kind==='dsr'?<strong>{t('Descanso remunerado')}</strong>:<><span>{day.start}–{day.end}</span><small>{t('Almoço')}: {day.mealStart}–{day.mealEnd}</small><b>{duration(Math.max(0,hours.work)/60)} {t('trabalhadas')}</b></>}</div><button className="text-button" disabled={day.kind==='dsr'} onClick={()=>setEditing(editing===index?null:index)}>{t('Editar')}</button></article>;})}</div>
+      {editing!==null && plan.weeks[plan.shownWeek][editing].kind==='work' && <fieldset className="weekly-general"><legend>{t('Horário diferente')} · {t(dayNames[editing])}</legend><div className="field-grid">{timeInput('Entrada','start',plan.weeks[plan.shownWeek][editing],patch=>editDay(editing,patch))}{timeInput('Saída','end',plan.weeks[plan.shownWeek][editing],patch=>editDay(editing,patch))}{timeInput('Início do almoço','mealStart',plan.weeks[plan.shownWeek][editing],patch=>editDay(editing,patch))}{timeInput('Fim do almoço','mealEnd',plan.weeks[plan.shownWeek][editing],patch=>editDay(editing,patch))}</div></fieldset>}
+      <p className="daily-hours-total">{t('Trabalho na semana selecionada')}: <strong>{duration((review.weeklyMinutes[plan.shownWeek]??0)/60)}</strong> · {t('DSR no ciclo')}: <strong>{review.restDays}</strong> · {t('Referência de descansos')}: {plan.cycleWeeks*2}</p>
+      <p className="field-help"><strong>{t('Domingo de descanso: pelo menos um por mês neste planejamento.')}</strong> {t('A categoria ou norma coletiva pode exigir frequência maior.')}</p>
+      <label>{t('Há ACT/CCT aplicável a este plano?')}<select value={value.collective} onChange={event=>onChange({...value,collective:event.target.value as Scenario['collective']})}><option value="nao-sei">{t('Ainda não conferi')}</option><option value="nao">{t('Não há instrumento coletivo')}</option><option value="sim">{t('Sim · conferir conteúdo e vigência')}</option></select></label>{value.collective==='sim'&&<label>{t('Documento de ACT/CCT · número, vigência e cláusula')}<input maxLength={250} value={value.collectiveRef} onChange={event=>onChange({...value,collectiveRef:event.target.value})}/></label>}
+      {review.requiresCollective && <div className="collective-alert" role="note"><strong>{t('ACT OU CCT NECESSÁRIO')}</strong><p>{t('A compensação ou a distribuição personalizada de DSR precisa estar prevista em instrumento coletivo aplicável. Um acordo individual ou apenas marcar esta opção não substitui o ACT/CCT.')}</p></div>}
+      {review.issues.length>0&&<div className="collective-alert" role="status"><strong>{t('Plano para revisão · não validado')}</strong><ul>{review.issues.map(issue=><li key={issue}>{t(issue)}</li>)}</ul></div>}
+      <details className="schedule-legal-notes"><summary>{t('Regras dos 24 minutos, DSR e domingo mensal')}</summary>{review.notices.map(note=><p className="field-help" key={note}>{t(note)}</p>)}<p className="field-help">{t('Os DSR podem ocorrer em outros dias. Guarde o ACT/CCT e o controle dos descansos concedidos e compensatórios. A liminar não autoriza eliminar repousos ou considerar qualquer jornada automaticamente regular.')}</p></details>
+    </>}
+  </section>;
+}

@@ -1,12 +1,13 @@
+import { validateWorkSchedules, validateOperatingTemplate, buildWorkSchedule, assessWorkSchedule } from './workSchedule.ts';
+import { DAY, WEEK, toMinutes } from './time.ts';
+export { DAY, WEEK, toMinutes, clockTime, duration } from './time.ts';
 import { employmentSettings, payrollCost, validateEmploymentSettings } from './payroll.ts';
 import type { Calculation, Scenario, Shift, Worker } from './types.ts';
 import { MAX_WEEK_DAYS } from './week.ts';
 
-export const DAY = 1440;
-export const WEEK = 7 * DAY;
 export const legalReviewDate = '2026-11-15';
 export const legalSources = {
-  decision: 'https://portal.stf.jus.br/processos/downloadPeca.asp?ext=.pdf&id=15392248508',
+  decision: 'https://portal.stf.jus.br/processos/downloadPeca.asp?ext=.pdf&id=15392248509',
   stf: 'https://noticias.stf.jus.br/postsnoticias/stf-mantem-regra-de-transicao-para-implementacao-da-jornada-5x2',
   docket: 'https://portal.stf.jus.br/processos/abaAndamentos.asp?incidente=7740896',
   amendment: 'https://legis.senado.leg.br/norma/44184944',
@@ -14,22 +15,6 @@ export const legalSources = {
   rural: 'https://www2.camara.leg.br/legin/fed/lei/1970-1979/lei-5889-8-junho-1973-357971-normaatualizada-pl.html',
   cnc: 'https://portaldocomercio.org.br/calculadora-5x2/',
 };
-
-export function toMinutes(time: string): number {
-  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(time)) throw new Error('Horário inválido. Use HH:MM.');
-  const [hours, minutes] = time.split(':').map(Number);
-  return hours * 60 + minutes;
-}
-
-export function clockTime(minutes: number): string {
-  const value = ((minutes % DAY) + DAY) % DAY;
-  return `${Math.floor(value / 60).toString().padStart(2, '0')}:${(value % 60).toString().padStart(2, '0')}`;
-}
-
-export function duration(hours: number): string {
-  const minutes = Math.round(hours * 60);
-  return `${Math.floor(minutes / 60)}h${minutes % 60 ? (minutes % 60).toString().padStart(2, '0') : ''}`;
-}
 
 /** Validate imported files as untrusted input, including cross-midnight overlap. */
 export function validateScenario(input: unknown): string[] {
@@ -46,6 +31,8 @@ export function validateScenario(input: unknown): string[] {
     const value = data[key];
     if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max || (integer && !Number.isInteger(value))) errors.push(labels[key]);
   }
+  if (data.workSchedules !== undefined) errors.push(...validateWorkSchedules(data.workSchedules));
+  if (data.operatingTemplate !== undefined) errors.push(...validateOperatingTemplate(data.operatingTemplate));
   if (data.planning !== undefined) errors.push(...validateEmploymentSettings(data.planning));
   if (data.version !== 1) errors.push('Versão de cenário não suportada.');
   for (const [key, options] of Object.entries({ sector: ['rural', 'comercio', 'servicos', 'industria', 'educacao', 'beneficente'], scale: ['6x1', '5x2', '12x36', 'turnos'], collective: ['nao', 'sim', 'nao-sei'], interval: [30, 60, 90, 120] })) {
@@ -201,28 +188,33 @@ export function calculate(scenario: Scenario, stage: 42 | 40): Calculation {
   const target = Math.min(scenario.currentHours, stage);
   const dailyCap = Math.min(stage === 42 ? 504 : 480, Math.floor(target * 60 / 5));
   const demand = buildDemand(scenario);
-  const { workers, coverage } = makeSchedule(scenario, demand, dailyCap);
+  const custom = buildWorkSchedule(scenario, stage);
+  const assessment = assessWorkSchedule(scenario, stage);
+  const { workers, coverage } = custom ?? makeSchedule(scenario, demand, dailyCap);
+  if (!custom && workers.some(worker=>worker.shifts.some(shift=>shift.start < WEEK && shift.end > 6 * DAY))) assessment.issues.push('A escala automática semanal repetida tem empregados sem domingo de descanso. Monte um ciclo de revezamento para garantir ao menos um domingo por mês e conferir a regra da categoria.');
   const demandedHours = sum(demand) / 60;
   const coveredHours = demand.reduce((total, needed, index) => total + Math.min(needed, coverage[index]), 0) / 60;
   const gap = Math.max(0, demandedHours - coveredHours);
+  const cycleWeeks = scenario.workSchedules?.[stage]?.cycleWeeks ?? 1;
+  const costReferenceGap = custom && cycleWeeks > 1 ? custom.cycleCoverage.reduce((total,available,index)=>total+Math.max(0,demand[index % WEEK]-available),0)/60/cycleWeeks : gap;
   const availableHours = scenario.employees * target;
   const divisor = target * 5;
   const p = employmentSettings(scenario);
   const baseSalary = scenario.planning ? Math.max(scenario.salary, p.salaryFloor) : scenario.salary;
   const loadedSalary = payrollCost(baseSalary, 1, p).total;
-  const fullCount = Math.ceil((gap - 1e-8) / target);
+  const fullCount = Math.ceil((costReferenceGap - 1e-8) / target);
   const partialCap = Math.min(30, target);
-  const partialCount = Math.max(0, Math.ceil((gap - 1e-8) / partialCap));
-  const overtimeMonthlyHours = gap * scenario.monthlyWeeks;
+  const partialCount = Math.max(0, Math.ceil((costReferenceGap - 1e-8) / partialCap));
+  const overtimeMonthlyHours = costReferenceGap * scenario.monthlyWeeks;
   return {
-    stage, target, dailyCap, demand, coverage, workers, demandedHours, coveredHours, gap,
+    stage, target, dailyCap, demand, coverage, workers, cycleWeeks, costReferenceGap, scheduleKind: custom ? 'custom' : 'automatic', scheduleIssues: assessment.issues, scheduleNotices: assessment.notices, demandedHours, coveredHours, gap,
     capacityGap: Math.max(0, demandedHours - availableHours),
     lostHours: scenario.employees * (scenario.currentHours - target), availableHours,
     usedHours: workers.reduce((total, worker) => total + worker.minutes, 0) / 60,
     coveragePercent: demandedHours ? coveredHours / demandedHours * 100 : 100,
     divisor, hourlyIncrease: (scenario.currentHours / target - 1) * 100,
-    fullCount: Math.max(0, fullCount), partialCount, partialHours: partialCount ? gap / partialCount : 0,
-    fullCost: Math.max(0, fullCount) * loadedSalary, partialCost: gap / target * loadedSalary,
+    fullCount: Math.max(0, fullCount), partialCount, partialHours: partialCount ? costReferenceGap / partialCount : 0,
+    fullCost: Math.max(0, fullCount) * loadedSalary, partialCost: costReferenceGap / target * loadedSalary,
     overtimeMonthlyHours,
     overtimeCost: payrollCost(overtimeMonthlyHours * (baseSalary / divisor) * (1 + scenario.extraRate / 100) * (1 + scenario.dsrRate / 100), 0, p, 'monthly', false).total,
   };

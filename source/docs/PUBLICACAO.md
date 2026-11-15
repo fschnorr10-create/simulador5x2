@@ -93,3 +93,30 @@ Comparação geral de seis modalidades, com variações parciais (nove variantes
 - CSV conferido: 20 alternativas, dez colunas, confirmação fiscal e empates consistentes com o mínimo elegível.
 - Captura pública: `outputs/Simulador_comparativo_modalidades_1_3.jpg`.
 - Método: `docs/COMPARACAO_MODALIDADES.md`.
+
+
+## Versão 1.4.0 — experiência simples e contratos separados — 15/11/2026
+
+Aba 5×2 reorganizada conforme referência CNC, com encargos globais e valores mensais por volume de horas; regra transitória Dino preservada. Contratos rurais em aba específica, com PF/PJ, seleção de seis modalidades, explicações, datas e custos da operação, encerramento e total. Comparação avançada preservada recolhida. Método e limites: `docs/SIMPLIFICACAO_E_RESCISAO.md`.
+
+- Simulador: `d1bc19a453b215b614d0c6df86b986a0cf27ff76`.
+- Site integrado: `bbff6d6d4972072f0d81b426769a75179077484e`.
+- HTML SHA-256: `a90529bc152c739bdd0287c8b05152a9804a345ca72673f82c06d9447c077d04`.
+- 69 testes aprovados; build TypeScript/Vite aprovado.
+- Workflows sucesso, HTTP200 e HTML idêntico nos dois endereços.
+- Navegador público: três cartões e ausência de tabela de contratos na aba principal; custos da safra só indicados na necessidade correspondente e após confirmação fiscal; quantidade de novas admissões preservada entre abas; inglês/espanhol, modo claro e celular390px sem overflow da página.
+- CSV avançado: 20 alternativas, 17 colunas, datas e verbas; CSV principal: só equipe atual mostrada na escala, nove colunas.
+- Capturas: `outputs/Simulador_simplificado_1_4.jpg` e `outputs/Contratos_separados_1_4.jpg`.
+
+
+## Versão 1.4.1 — legendas e cobertura — 15/11/2026
+
+Percentuais visíveis, quatro estados com símbolos e legendas, intervalos exatos ao clicar, totais diários, opção24horas e seletor de escopo (equipe atual/HE/contratações). Ver `docs/COBERTURA_VISUAL.md`.
+
+- Simulador: `8be168792980e021f0fd0fece678d87ad62e1462`.
+- Site integrado: `5f2fe2cd538900c88875d957e2d2b4ad7b398a7f`.
+- HTML SHA-256: `3df60656914433a971447cc8c430f3470306287c5501aeb67105996d1d4eb678`.
+- 75 testes aprovados e build aprovado.
+- HTTP200 e HTML idêntico nos dois endereços.
+- Conferidos: percentuais, intervalo08h–08h36 com4pessoas faltantes no exemplo, cobertura100% com admissões posicionadas, 24colunas horárias, idiomas, tema claro e celular390px sem overflow da página.
+- Captura pública: `outputs/Cobertura_legendas_1_4_1.jpg`.
