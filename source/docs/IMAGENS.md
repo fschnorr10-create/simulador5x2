@@ -11,3 +11,7 @@ Prompt utilizado:
 ## Logomarca
 
 Arquivo: `src/assets/logo-schnorr-hd.webp`, 1165 × 551. Origem: logomarca oficial transparente do acervo Schnorr, `logomarca-schnorr-sem-fundo.png`. Preservado o desenho original, com codificação WebP de alta qualidade e contraste de exibição ajustado por CSS no modo claro. Nenhuma logomarca foi gerada por IA.
+
+## Banners das finalidades
+
+Novo arquivo `src/assets/finalidades-banner.webp`, com fotografias ilustrativas para contratação rural, base legal e análise de cálculos. Ferramenta: imagegen integrada. O prompt completo e a aplicação de cada imagem constam em `docs/BANNERS_FINALIDADES.md`.

@@ -1771,5 +1771,141 @@ export default {
   "Troca automática a cada 10 segundos": {
     "es": "Cambio automático cada 10 segundos",
     "en": "Automatic change every 10 seconds"
+  },
+  "PARA SUA DECISÃO": {
+    "es": "PARA SU DECISIÓN",
+    "en": "FOR YOUR DECISION"
+  },
+  "Analista conferindo o planejamento de equipes e os cálculos": {
+    "es": "Analista revisando la planificación de equipos y los cálculos",
+    "en": "Analyst reviewing workforce planning and calculations"
+  },
+  "Gestor rural e assessora revisando o planejamento de contratação no campo": {
+    "es": "Gestor rural y asesora revisando la planificación de contratación en el campo",
+    "en": "Farm manager and adviser reviewing rural hiring plans"
+  },
+  "Profissionais do direito examinando documentos e fundamentos jurídicos": {
+    "es": "Profesionales del derecho examinando documentos y fundamentos jurídicos",
+    "en": "Legal professionals examining documents and legal grounds"
+  },
+  "Informe quem contrata, o motivo da necessidade e a duração estimada. O orientador apresenta uma hipótese para revisão.": {
+    "es": "Indique quién contrata, el motivo de la necesidad y la duración estimada. El orientador presenta una hipótesis para revisión.",
+    "en": "Enter who is hiring, the reason for the need and the estimated duration. The guide presents an option for review."
+  },
+  "Encontrar a modalidade adequada": {
+    "es": "Encontrar la modalidad adecuada",
+    "en": "Find the appropriate contract type"
+  },
+  "O ciclo da atividade orienta a contratação.": {
+    "es": "El ciclo de la actividad orienta la contratación.",
+    "en": "The activity cycle guides hiring."
+  },
+  "Conferir as opções de contratação": {
+    "es": "Consultar las opciones de contratación",
+    "en": "Review hiring options"
+  },
+  "Prazo e jornada são escolhas diferentes.": {
+    "es": "Duración y jornada son decisiones diferentes.",
+    "en": "Contract duration and working hours are separate choices."
+  },
+  "Compare as opções antes de contratar.": {
+    "es": "Compare las opciones antes de contratar.",
+    "en": "Compare the options before hiring."
+  },
+  "Avalie prazo indeterminado, safra, pequeno prazo rural e tempo parcial conforme a necessidade da operação.": {
+    "es": "Evalúe duración indefinida, cosecha, corta duración rural y tiempo parcial según la necesidad de la operación.",
+    "en": "Consider indefinite employment, harvest contracts, short-term rural contracts and part-time work according to operational needs."
+  },
+  "O contrato rural por pequeno prazo tem requisitos próprios. Confira o perfil do empregador, o período acumulado e a formalização.": {
+    "es": "El contrato rural de corta duración tiene requisitos propios. Verifique el perfil del empleador, el período acumulado y la formalización.",
+    "en": "Short-term rural contracts have specific requirements. Check the employer’s status, cumulative period and formal registration."
+  },
+  "Abrir o orientador rural": {
+    "es": "Abrir el orientador rural",
+    "en": "Open the rural hiring guide"
+  },
+  "Entenda as regras antes de decidir.": {
+    "es": "Entienda las reglas antes de decidir.",
+    "en": "Understand the rules before deciding."
+  },
+  "Consulte o cronograma, os limites e as fontes oficiais reunidas nesta seção. A referência jurídica desta versão é de 15/11/2026.": {
+    "es": "Consulte el calendario, los límites y las fuentes oficiales reunidas en esta sección. La referencia jurídica de esta versión es del 15/11/2026.",
+    "en": "Review the timeline, limits and official sources collected in this section. This version’s legal reference date is 15 Nov 2026."
+  },
+  "Consultar a base legal": {
+    "es": "Consultar la base legal",
+    "en": "Review the legal basis"
+  },
+  "42h na transição. 40h na etapa seguinte.": {
+    "es": "42h en la transición. 40h en la siguiente etapa.",
+    "en": "42h during transition. 40h in the next stage."
+  },
+  "O cronograma da transição": {
+    "es": "El calendario de transición",
+    "en": "The transition timeline"
+  },
+  "Planeje a mudança com atenção às datas, aos dois repousos e à preservação salarial.": {
+    "es": "Planifique el cambio prestando atención a las fechas, los dos descansos y la preservación salarial.",
+    "en": "Plan the change with attention to dates, two rest days and salary preservation."
+  },
+  "A regra transitória depende das condições da cautelar e da existência de ACT/CCT. Confira os fundamentos antes de aplicar.": {
+    "es": "La regla transitoria depende de las condiciones de la cautelar y de la existencia de ACT/CCT. Consulte los fundamentos antes de aplicarla.",
+    "en": "The transitional rule depends on the interim ruling’s conditions and the existence of an ACT/CCT. Check the legal grounds before applying it."
+  },
+  "Ver cronograma e condições": {
+    "es": "Ver calendario y condiciones",
+    "en": "View timeline and conditions"
+  },
+  "Revise instrumentos coletivos, horas extras, descansos e condições de SST. Exceções exigem análise própria.": {
+    "es": "Revise acuerdos colectivos, horas extras, descansos y condiciones de SST. Las excepciones requieren un análisis propio.",
+    "en": "Review collective agreements, overtime, rest periods and occupational health and safety conditions. Exceptions require separate assessment."
+  },
+  "Abra os documentos oficiais e confira o enquadramento da sua categoria com o advogado responsável.": {
+    "es": "Abra los documentos oficiales y verifique el encuadramiento de su categoría con el abogado responsable.",
+    "en": "Open the official documents and check your category’s classification with the responsible lawyer."
+  },
+  "Abrir fontes e limites": {
+    "es": "Abrir fuentes y límites",
+    "en": "Open sources and limits"
+  },
+  "Entenda de onde vêm a demanda, a lacuna de cobertura e as estimativas de custo.": {
+    "es": "Entienda de dónde provienen la demanda, la brecha de cobertura y las estimaciones de coste.",
+    "en": "Understand how demand, coverage gaps and cost estimates are determined."
+  },
+  "Entender os cálculos": {
+    "es": "Entender los cálculos",
+    "en": "Understand the calculations"
+  },
+  "Capacidade não é disponibilidade simultânea.": {
+    "es": "La capacidad no equivale a disponibilidad simultánea.",
+    "en": "Capacity is not simultaneous availability."
+  },
+  "A escala considera os horários necessários e desconta as pausas. Ter horas contratadas suficientes não garante pessoas disponíveis em cada faixa.": {
+    "es": "El horario considera las franjas necesarias y descuenta las pausas. Tener suficientes horas contratadas no garantiza personas disponibles en cada franja.",
+    "en": "The schedule accounts for required times and deducts breaks. Sufficient contracted hours do not guarantee staff availability in every time band."
+  },
+  "Confira a busca de horários, os limites do modelo e a diferença entre capacidade e cobertura.": {
+    "es": "Consulte la búsqueda de horarios, los límites del modelo y la diferencia entre capacidad y cobertura.",
+    "en": "Review the scheduling search, model limits and the difference between capacity and coverage."
+  },
+  "Conhecer o método da escala": {
+    "es": "Conocer el método del horario",
+    "en": "Explore the scheduling method"
+  },
+  "Compare com premissas transparentes.": {
+    "es": "Compare con supuestos transparentes.",
+    "en": "Compare using transparent assumptions."
+  },
+  "Compare reorganização, contratação parcial, contratação integral e a referência de custo de horas extras.": {
+    "es": "Compare reorganización, contratación parcial, contratación completa y la referencia de coste de horas extras.",
+    "en": "Compare reorganization, part-time hiring, full-time hiring and the overtime cost reference."
+  },
+  "As estimativas não substituem a folha nem garantem a cobertura. Confira os custos não incluídos e revise a escala complementar.": {
+    "es": "Las estimaciones no sustituyen la nómina ni garantizan la cobertura. Consulte los costes no incluidos y revise el horario complementario.",
+    "en": "Estimates do not replace payroll or guarantee coverage. Check excluded costs and review the supplementary schedule."
+  },
+  "Revisar fórmulas e limitações": {
+    "es": "Revisar fórmulas y limitaciones",
+    "en": "Review formulas and limitations"
   }
 };

@@ -85,3 +85,10 @@ Validação: `npm test` (22 testes) e `npm run build`. A publicação continua u
 ### Banner rotativo no topo
 
 `VisualGuide` aparece imediatamente após o cabeçalho. Quatro slides sincronizam setor, fotografia, explicação e etapa de uso, com passagem automática a cada 10 segundos. Há pausa/reprodução, anterior/próximo e seleção direta pelos indicadores. A navegação manual pausa a apresentação para leitura; reproduzir retoma o ciclo. O temporizador é limpo na desmontagem e suspenso em abas ocultas e durante interação com o ponteiro. Pessoas com preferência por movimento reduzido recebem o banner pausado e sem animação. Controles e conteúdo acompanham PT/ES/EN, mantendo ambos os temas e os dados do simulador.
+
+
+### Banners por finalidade
+
+O menu de seções aparece no topo. Cada finalidade possui um conjunto próprio de slides: simulação (introdução e quatro setores), contratação rural (modalidades e necessidade), base legal (regras, transição e limites), metodologia (premissas, cobertura e custos). O conteúdo fica em `src/bannerContent.ts`; `VisualGuide` controla somente apresentação, temporizador e navegação. Trocar de aba reinicia seu banner sem alterar o cenário. A introdução genérica repetida foi substituída por banners contextuais; o cronograma permanece em uma faixa compacta. As imagens são ilustrativas; consulte `docs/IMAGENS.md`.
+
+Validação desta atualização: 23 testes, incluindo cobertura das traduções de todos os banners, e build TypeScript/Vite.

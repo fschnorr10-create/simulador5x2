@@ -39,3 +39,17 @@ test('language changes preserve imported scenario data and calculations', () => 
   assert.equal(after.gap, before.gap);
   assert.equal(after.partialCost, before.partialCost);
 });
+
+import { banners } from '../src/bannerContent.ts';
+
+test('every purpose banner has complete Spanish and English copy', () => {
+  for (const { label, slides } of Object.values(banners)) {
+    assert.ok(Object.hasOwn(messages, label), `Missing banner label: ${label}`);
+    for (const slide of slides) {
+      for (const field of ['title', 'subtitle', 'description', 'tipTitle', 'tip', 'action', 'imageAlt'] as const) {
+        assert.ok(Object.hasOwn(messages, slide[field]), `Missing translation: ${slide[field]}`);
+      }
+      assert.ok(slide.imageIndex >= 0 && slide.imageIndex < (slide.image === 'sector' ? 4 : 3));
+    }
+  }
+});
