@@ -284,7 +284,7 @@ input.visually-hidden { width: 1px; height: 1px; min-height: 0; padding: 0; bord
 .sector-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--border); }
 .sector-card { background: var(--surface); min-width: 0; }
 .sector-photo { aspect-ratio: 1.5; position: relative; overflow: hidden; background: var(--surface-soft); }
-.sector-photo img { position: absolute; width: 400%; max-width: none; height: auto; top: 50%; transform: translateY(-50%); }
+.sector-photo img { position: absolute; width: 400%; max-width: none; height: auto; top: 20%; transform: translateY(-20%); }
 .sector-copy { padding: 18px 20px 21px; }
 .sector-copy h3 { font-size: 16px; line-height: 1.35; margin-bottom: 9px; color: var(--gold); }
 .sector-copy p, .usage-steps p { font-size: 11px; color: var(--muted); line-height: 1.75; }
