@@ -1,3 +1,4 @@
+import { employmentSettings, payrollCost, validateEmploymentSettings } from './payroll.ts';
 import type { Calculation, Scenario, Shift, Worker } from './types.ts';
 import { MAX_WEEK_DAYS } from './week.ts';
 
@@ -36,17 +37,18 @@ export function validateScenario(input: unknown): string[] {
   const data = input as Record<string, unknown>;
   const errors: string[] = [];
   const numeric: Array<[string, number, number, boolean]> = [
-    ['employees', 1, 100, true], ['currentHours', 1, 44, false], ['salary', 1, 1000000, false],
+    ['employees', 0, 100, true], ['currentHours', 1, 44, false], ['salary', 1, 1000000, false],
     ['charges', 0, 300, false], ['extraRate', 50, 300, false], ['dsrRate', 0, 100, false],
     ['monthlyWeeks', 4, 5, false],
   ];
-  const labels: Record<string, string> = { employees: 'Empregados (1 a 100, inteiro)', currentHours: 'Jornada atual (1 a 44h)', salary: 'Salário (R$ 1 a R$ 1 milhão)', charges: 'Encargos (0 a 300%)', extraRate: 'Adicional de HE (50 a 300%)', dsrRate: 'Reflexo DSR (0 a 100%)', monthlyWeeks: 'Fator mensal (4 a 5)' };
+  const labels: Record<string, string> = { employees: 'Empregados (0 a 100, inteiro)', currentHours: 'Jornada atual (1 a 44h)', salary: 'Salário (R$ 1 a R$ 1 milhão)', charges: 'Encargos (0 a 300%)', extraRate: 'Adicional de HE (50 a 300%)', dsrRate: 'Reflexo DSR (0 a 100%)', monthlyWeeks: 'Fator mensal (4 a 5)' };
   for (const [key, min, max, integer] of numeric) {
     const value = data[key];
     if (typeof value !== 'number' || !Number.isFinite(value) || value < min || value > max || (integer && !Number.isInteger(value))) errors.push(labels[key]);
   }
+  if (data.planning !== undefined) errors.push(...validateEmploymentSettings(data.planning));
   if (data.version !== 1) errors.push('Versão de cenário não suportada.');
-  for (const [key, options] of Object.entries({ sector: ['rural', 'comercio', 'servicos'], scale: ['6x1', '5x2', '12x36', 'turnos'], collective: ['nao', 'sim', 'nao-sei'], interval: [30, 60, 90, 120] })) {
+  for (const [key, options] of Object.entries({ sector: ['rural', 'comercio', 'servicos', 'industria', 'educacao', 'beneficente'], scale: ['6x1', '5x2', '12x36', 'turnos'], collective: ['nao', 'sim', 'nao-sei'], interval: [30, 60, 90, 120] })) {
     if (!(options as unknown[]).includes(data[key])) errors.push(`Opção inválida: ${key}.`);
   }
   for (const key of ['name', 'state', 'city', 'collectiveRef']) {
@@ -137,10 +139,11 @@ function workRanges(shift: Shift): Array<[number, number]> {
   return [[shift.start, shift.breakStart], [shift.breakStart + shift.breakMinutes, shift.end]];
 }
 
-function makeSchedule(scenario: Scenario, demand: Float64Array, dailyCap: number): { workers: Worker[]; coverage: Float64Array } {
+export function makeSchedule(scenario: Scenario, demand: Float64Array, dailyCap: number, stopWhenCovered = false, flexibleShifts = false): { workers: Worker[]; coverage: Float64Array } {
   const coverage = new Float64Array(WEEK);
   const workers: Worker[] = [];
-  const options = scenario.days.map((_, day) => candidates(scenario, day, dailyCap));
+  const caps = flexibleShifts ? [...new Set([dailyCap, 360, 240, 120, 60].filter(cap => cap <= dailyCap))] : [dailyCap];
+  const options = scenario.days.map((_, day) => caps.flatMap(cap => candidates(scenario, day, cap)));
   function bestAllocation(): Shift[] {
     // Prefix sums score candidate shifts without rescanning every work minute.
     const prefix = new Float64Array(WEEK + 2 * DAY + 1);
@@ -176,7 +179,9 @@ function makeSchedule(scenario: Scenario, demand: Float64Array, dailyCap: number
     return covered;
   }
   for (let worker = 0; worker < scenario.employees; worker++) {
-    const shifts = bestAllocation(); apply(shifts, 1);
+    const shifts = bestAllocation();
+    if (stopWhenCovered && !shifts.length) break;
+    apply(shifts, 1);
     workers.push({ number: worker + 1, shifts, minutes: shifts.reduce((total, shift) => total + shift.workMinutes, 0) });
   }
   // Revisit early choices after seeing the full team to improve break and day-off staggering.
@@ -202,7 +207,9 @@ export function calculate(scenario: Scenario, stage: 42 | 40): Calculation {
   const gap = Math.max(0, demandedHours - coveredHours);
   const availableHours = scenario.employees * target;
   const divisor = target * 5;
-  const loadedSalary = scenario.salary * (1 + scenario.charges / 100);
+  const p = employmentSettings(scenario);
+  const baseSalary = scenario.planning ? Math.max(scenario.salary, p.salaryFloor) : scenario.salary;
+  const loadedSalary = payrollCost(baseSalary, 1, p).total;
   const fullCount = Math.ceil((gap - 1e-8) / target);
   const partialCap = Math.min(30, target);
   const partialCount = Math.max(0, Math.ceil((gap - 1e-8) / partialCap));
@@ -217,7 +224,7 @@ export function calculate(scenario: Scenario, stage: 42 | 40): Calculation {
     fullCount: Math.max(0, fullCount), partialCount, partialHours: partialCount ? gap / partialCount : 0,
     fullCost: Math.max(0, fullCount) * loadedSalary, partialCost: gap / target * loadedSalary,
     overtimeMonthlyHours,
-    overtimeCost: overtimeMonthlyHours * (scenario.salary / divisor) * (1 + scenario.extraRate / 100) * (1 + scenario.dsrRate / 100) * (1 + scenario.charges / 100),
+    overtimeCost: payrollCost(overtimeMonthlyHours * (baseSalary / divisor) * (1 + scenario.extraRate / 100) * (1 + scenario.dsrRate / 100), 0, p, 'monthly', false).total,
   };
 }
 

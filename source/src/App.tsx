@@ -1,3 +1,4 @@
+import { analyzeEmployment } from './staffing';
 import { LanguageSelector, useI18n } from './i18n';
 import schnorrLogo from './assets/logo-schnorr-hd.webp';
 import { useDeferredValue, useMemo, useRef, useState } from 'react';
@@ -7,7 +8,7 @@ import { defaultScenario } from './defaults';
 import { calculate, duration, legalSources, validateScenario } from './engine';
 import { VisualGuide } from './components/VisualGuide';
 import { ScenarioForm } from './components/ScenarioForm';
-import { Results, decimal, money } from './components/Results';
+import { Results, money } from './components/Results';
 import { LegalKnowledge, Methodology, RuralGuide, SourceLink } from './components/Knowledge';
 
 import type { Page } from './bannerContent';
@@ -27,7 +28,6 @@ function saveFile(content: string, name: string, type: string) {
 export default function App() {
   const { t, locale } = useI18n();
   const formatMoney = (value: number) => money(value, locale);
-  const formatDecimal = (value: number) => decimal(value, locale);
   const [scenario, setScenario] = useState<Scenario>(() => defaultScenario());
   const deferred = useDeferredValue(scenario);
   const [stage, setStage] = useState<42 | 40>(42);
@@ -56,17 +56,25 @@ export default function App() {
   function exportCsv() {
     if (!computed || errors.length) return;
     const result = computed.find(item => item.stage === stage)!;
-    const rows = [[t("Empregado"), t("Dia"), 'Entrada', t("Saída"), t("Pausa início"), t("Pausa minutos"), t("Trabalho minutos")]];
-    result.workers.forEach(worker => worker.shifts.forEach(shift => {
-      const clock = (value: number) => `${Math.floor(value % 1440 / 60).toString().padStart(2, '0')}:${(value % 60).toString().padStart(2, '0')}`;
-      rows.push([`E${worker.number}`, String(shift.day + 1), clock(shift.start), `${clock(shift.end)}${Math.floor(shift.end / 1440) > shift.day ? ' +1' : ''}`, shift.breakMinutes ? clock(shift.breakStart) : '', String(shift.breakMinutes), String(shift.workMinutes)]);
-    }));
-    saveFile('\uFEFF' + rows.map((row, index) => (index === 0 ? row.map(t) : row).map(cell => `"${cell.replaceAll('"', '""')}"`).join(';')).join('\r\n'), `escala-sugerida-${stage}h.csv`, 'text/csv;charset=utf-8');
+    const employment = analyzeEmployment(deferred, result);
+    const rows = [[t('Grupo'), t('Empregado'), t('Dia'), t('Entrada'), t('Saída'), t('Pausa início'), t('Pausa minutos'), t('Trabalho minutos'), t('HE minutos')]];
+    const clock = (value: number) => `${Math.floor(value % 1440 / 60).toString().padStart(2, '0')}:${(value % 60).toString().padStart(2, '0')}`;
+    for (const group of [{ name: 'Quadro atual', prefix: 'E', workers: employment.overtime.workers }, { name: 'Novos contratos', prefix: 'N', workers: employment.complementary.workers }]) {
+      group.workers.forEach(worker => worker.shifts.forEach(shift => {
+        const extra = group.prefix === 'E' ? employment.overtime.assignments.find(item => item.employee === worker.number && item.day === shift.day)?.extraMinutes ?? 0 : 0;
+        rows.push([t(group.name), `${group.prefix}${worker.number}`, String(shift.day + 1), clock(shift.start), `${clock(shift.end)}${Math.floor(shift.end / 1440) > shift.day ? ' +1' : ''}`, shift.breakMinutes ? clock(shift.breakStart) : '', String(shift.breakMinutes), String(shift.workMinutes), String(extra)]);
+      }));
+    }
+    saveFile('\uFEFF' + rows.map(row => row.map(cell => `"${cell.replaceAll('"', '""')}"`).join(';')).join('\r\n'), `plano-cobertura-${stage}h.csv`, 'text/csv;charset=utf-8');
     setMessage("Escala exportada em CSV. Os horários ainda precisam de revisão.");
   }
   async function copySummary() {
     if (!computed || errors.length) return;
-    const summary = `${t('SIMULAÇÃO')} · ${scenario.name}\n${scenario.employees} ${t('Empregados')} · ${scenario.currentHours}h ${t('Jornada atual')} · ${t('Salário médio')} ${formatMoney(scenario.salary)}\n` + computed.map(result => `${result.target}h: ${duration(result.gap)}${t('/sem')} ${t('descobertas')}; ${t('Cobertura')} ${formatDecimal(result.coveragePercent)}%; ${t('Parcial')} ${formatMoney(result.partialCost)}${t('/mês')}; ${t('Integral')} ${formatMoney(result.fullCost)}${t('/mês')}; ${t('Horas extras')} ${formatMoney(result.overtimeCost)}${t('/mês')}.`).join('\n') + `\n${t('Valores ilustrativos. Revisão legal em 15/11/2026. Cautelar sujeita a referendo.')}\n${legalSources.decision}`;
+    const summary = `${t('SIMULAÇÃO')} · ${scenario.name}\n${scenario.employees} ${t('Empregados')} · ${scenario.currentHours}h ${t('Jornada atual')} · ${t('Salário médio')} ${formatMoney(scenario.salary)}\n` + computed.map(result => {
+      const plan = analyzeEmployment(deferred, result);
+      return `${result.target}h: ${t(plan.recommendation)}\n${t('Custo mensal atual do grupo')}: ${formatMoney(plan.currentMonthly)}; ${t('Contratar na modalidade escolhida')}: ${plan.hiring.count} / ${formatMoney(plan.hiring.cost)}${t('/mês')}; ${t('Empregados alocados em HE')}: ${plan.overtime.people}; ${t('HE planejadas por semana')}: ${duration(plan.overtime.extraHours)}; ${t('HE e contratação complementar')}: ${formatMoney(plan.hybridCost)}${t('/mês')}; ${t('Cobertura restante')}: ${duration(plan.complementary.remaining)}${t('/sem')}.`;
+    }).join('\n') + `\n${t('Valores ilustrativos. Revisão legal em 15/11/2026. Cautelar sujeita a referendo.')}\n${legalSources.decision}`;
+
     try { await navigator.clipboard.writeText(summary); setMessage("Resumo copiado."); }
     catch { saveFile(summary, 'resumo-simulacao.txt', 'text/plain;charset=utf-8'); setMessage("O navegador não liberou a área de transferência. Resumo salvo como texto."); }
   }
@@ -82,7 +90,7 @@ export default function App() {
       {bannerVisible && <div className="legal-banner"><Scale size={21} /><p><strong>{t("Atualizado com a cautelar do ministro Flávio Dino.")}</strong> {t(" Referência jurídica conferida em 15/11/2026. A decisão ainda está sujeita ao referendo do Plenário.")}</p><button className="text-button" onClick={() => navigate('base-legal')}>{t("Ver fundamentos ")}<ArrowRight size={15} /></button><button className="icon-button" aria-label={t("Fechar aviso jurídico")} onClick={() => setBannerVisible(false)}><X size={16} /></button></div>}
 
       <div id="area-conteudo" className="content-anchor" />
-      {page === 'simulador' && <>
+      {(page === 'simulador' || page === 'contratacao') && <>
         <div className="workspace-heading" id="simulador"><div><span className="eyebrow">{t("PLANEJAR É O PRIMEIRO PASSO")}</span><h2>{t("Seu cenário, em poucos minutos.")}</h2><p>{t("Comece pelo exemplo e ajuste os números à realidade da sua equipe.")}</p></div><div className="preset-switch"><span>{t("EXEMPLOS")}</span><button onClick={() => { setScenario(defaultScenario('rural')); setMessage('Exemplo rural carregado. Dados ilustrativos.'); }} className={scenario.sector === 'rural' ? 'selected' : ''}>{t("Operação rural")}</button><button onClick={() => { setScenario(defaultScenario('cnc')); setMessage('Entradas iniciais da CNC carregadas. O motor de escala é próprio.'); }}>{t("Referência CNC")}</button></div></div>
         <div className="workspace-actions"><span><span className="status-dot" /> {t(" Sessão local · dados ilustrativos até você editar")}</span><div><button onClick={() => { saveFile(JSON.stringify(scenario, null, 2), 'cenario-jornada.json', 'application/json'); setMessage('Cenário salvo em JSON.'); }}><ArrowDownToLine size={15} />{t("Salvar cenário")}</button><button onClick={() => fileInput.current?.click()}><Upload size={15} />{t("Importar")}</button><button onClick={() => { setScenario(defaultScenario()); setMessage('Exemplo inicial restaurado.'); }}><RotateCcw size={15} />{t("Restaurar exemplo")}</button></div></div>
         <input ref={fileInput} className="visually-hidden" type="file" accept=".json,application/json" aria-label={t("Importar cenário JSON")} onChange={e => { void importFile(e.target.files?.[0]); e.target.value = ''; }} />
@@ -102,7 +110,7 @@ export default function App() {
       {page === 'metodologia' && <Methodology />}
       <div className="professional-note"><Scale size={19} /><p>{t("Esta simulação não substitui parecer jurídico individualizado. Antes de implementar qualquer medida, revisar com o advogado responsável e validar a CCT vigente da categoria. A sugestão de escala depende também das condições reais de trabalho e de SST.")}</p></div>
     </main>
-    <footer><img className="footer-logo" src={schnorrLogo} alt="Schnorr & Advogados Associados" width="1165" height="551" /><p>{t("Simulador 5 × 2 · Planejamento trabalhista")}<br />{t("Versão 1.1 · Referência jurídica: 15/11/2026")}</p><button className="text-button" onClick={() => navigate('metodologia')}>{t("Método e limitações ")}<ArrowRight size={15} /></button></footer>
+    <footer><img className="footer-logo" src={schnorrLogo} alt="Schnorr & Advogados Associados" width="1165" height="551" /><p>{t("Simulador 5 × 2 · Planejamento trabalhista")}<br />{t("Versão 1.2 · Referência jurídica: 15/11/2026")}</p><button className="text-button" onClick={() => navigate('metodologia')}>{t("Método e limitações ")}<ArrowRight size={15} /></button></footer>
     {message && <div className="toast" role="status"><Check size={18} /><span>{t(message)}</span><button className="icon-button" aria-label={t("Fechar mensagem")} onClick={() => setMessage('')}><X size={16} /></button></div>}
   </div>;
 }

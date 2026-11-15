@@ -1,9 +1,11 @@
-export type Sector = 'rural' | 'comercio' | 'servicos';
+import type { EmploymentSettings } from './payroll.ts';
+export type Sector = 'rural' | 'comercio' | 'servicos' | 'industria' | 'educacao' | 'beneficente';
 export type Collective = 'nao' | 'sim' | 'nao-sei';
 export interface Band { id: string; open: string; close: string; people: number }
 export interface Day { name: string; bands: Band[] }
 export interface Scenario {
   version: 1;
+  planning?: EmploymentSettings;
   name: string;
   sector: Sector;
   state: string;

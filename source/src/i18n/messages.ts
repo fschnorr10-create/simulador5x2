@@ -1907,5 +1907,641 @@ export default {
   "Revisar fórmulas e limitações": {
     "es": "Revisar fórmulas y limitaciones",
     "en": "Review formulas and limitations"
+  },
+  "Contrato de experiência": {
+    "es": "Contrato de prueba",
+    "en": "Probationary contract"
+  },
+  "Contrato intermitente": {
+    "es": "Contrato intermitente",
+    "en": "Intermittent contract"
+  },
+  "Contribuição sobre a folha": {
+    "es": "Contribución sobre la nómina",
+    "en": "Payroll-based contributions"
+  },
+  "Simples Nacional · fora do Anexo IV": {
+    "es": "Simples Nacional · fuera del Anexo IV",
+    "en": "Simples Nacional · outside Annex IV"
+  },
+  "Simples Nacional · Anexo IV": {
+    "es": "Simples Nacional · Anexo IV",
+    "en": "Simples Nacional · Annex IV"
+  },
+  "Rural · contribuição substitutiva sobre receita": {
+    "es": "Rural · contribución sustitutiva sobre ingresos",
+    "en": "Rural · revenue-based substitute contribution"
+  },
+  "Entidade beneficente · verificar imunidade": {
+    "es": "Entidad benéfica · verificar inmunidad",
+    "en": "Charitable entity · verify tax immunity"
+  },
+  "Percentual global personalizado": {
+    "es": "Porcentaje global personalizado",
+    "en": "Custom overall percentage"
+  },
+  "Configuração de contratação inválida.": {
+    "es": "Configuración de contratación no válida.",
+    "en": "Invalid hiring configuration."
+  },
+  "Revise a modalidade e o enquadramento da contratação.": {
+    "es": "Revise la modalidad y el encuadramiento de la contratación.",
+    "en": "Review the contract type and employer classification."
+  },
+  "Revise os valores e limites das premissas de custo.": {
+    "es": "Revise los valores y límites de los supuestos de coste.",
+    "en": "Review cost assumptions and limits."
+  },
+  "Revise as confirmações das premissas.": {
+    "es": "Revise las confirmaciones de los supuestos.",
+    "en": "Review assumption confirmations."
+  },
+  "O prazo de experiência deve ser informado em dias inteiros.": {
+    "es": "El período de prueba debe indicarse en días enteros.",
+    "en": "The probation period must be entered in whole days."
+  },
+  "Experiência bloqueada: o empregado já trabalhou na mesma função para este empregador. Eventual exceção coletiva exige análise jurídica específica.": {
+    "es": "Prueba bloqueada: el empleado ya ejerció la misma función para este empleador. Una eventual excepción colectiva requiere un análisis jurídico específico.",
+    "en": "Probation blocked: the employee has already performed the same role for this employer. Any collective exception requires specific legal review."
+  },
+  "Safra exige atividade rural e necessidade vinculada à variação estacional.": {
+    "es": "La cosecha exige actividad rural y necesidad vinculada a variación estacional.",
+    "en": "A harvest contract requires rural activity and a need linked to seasonal variation."
+  },
+  "Pequeno prazo exige produtor rural pessoa física, atividade temporária e limite acumulado de dois meses em um ano.": {
+    "es": "La corta duración exige productor rural persona física, actividad temporal y un límite acumulado de dos meses en un año.",
+    "en": "Short-term rural contracts require an individual rural producer, temporary work and a cumulative two-month limit in one year."
+  },
+  "Intermitente exige alternância real de atividade e inatividade, contrato escrito e confirmação das condições de convocação.": {
+    "es": "El contrato intermitente exige alternancia real de actividad e inactividad, contrato escrito y confirmación de las condiciones de convocatoria.",
+    "en": "Intermittent work requires genuine alternating periods of activity and inactivity, a written contract and confirmation of call-up conditions."
+  },
+  "Remuneração": {
+    "es": "Remuneración",
+    "en": "Remuneration"
+  },
+  "Encargos globais personalizados": {
+    "es": "Cargas globales personalizadas",
+    "en": "Custom overall payroll charges"
+  },
+  "Benefícios e custos por pessoa": {
+    "es": "Beneficios y costes por persona",
+    "en": "Benefits and costs per person"
+  },
+  "DSR sobre convocações · estimativa 1/6": {
+    "es": "DSR de convocatorias · estimación 1/6",
+    "en": "Call-up paid weekly rest · 1/6 estimate"
+  },
+  "13º proporcional / provisão": {
+    "es": "13.º proporcional / provisión",
+    "en": "Proportional 13th salary / provision"
+  },
+  "Férias proporcionais indenizadas · reserva": {
+    "es": "Vacaciones proporcionales indemnizadas · reserva",
+    "en": "Accrued vacation paid on termination · reserve"
+  },
+  "Férias proporcionais pagas por período": {
+    "es": "Vacaciones proporcionales pagadas por período",
+    "en": "Proportional vacation paid per period"
+  },
+  "Terço de férias": {
+    "es": "Tercio de vacaciones",
+    "en": "One-third vacation supplement"
+  },
+  "CPP patronal": {
+    "es": "CPP patronal",
+    "en": "Employer CPP"
+  },
+  "RAT × FAP": {
+    "es": "RAT × FAP",
+    "en": "RAT × FAP"
+  },
+  "Terceiros / FPAS": {
+    "es": "Terceros / FPAS",
+    "en": "Third parties / FPAS"
+  },
+  "PIS sobre folha, quando devido": {
+    "es": "PIS sobre nómina, cuando corresponda",
+    "en": "Payroll PIS, where applicable"
+  },
+  "Reserva de indenização de safra · art. 14": {
+    "es": "Reserva de indemnización de cosecha · art. 14",
+    "en": "Harvest indemnity reserve · article 14"
+  },
+  "Reserva rescisória informada": {
+    "es": "Reserva de terminación indicada",
+    "en": "User-entered termination reserve"
+  },
+  "Horas extras desativadas neste cenário.": {
+    "es": "Horas extras desactivadas en este escenario.",
+    "en": "Overtime is disabled for this scenario."
+  },
+  "Confirme o acordo de prorrogação e as autorizações aplicáveis antes de simular horas extras.": {
+    "es": "Confirme el acuerdo de prórroga y las autorizaciones aplicables antes de simular horas extras.",
+    "en": "Confirm the extended-hours agreement and applicable authorizations before simulating overtime."
+  },
+  "Atividade insalubre: sem autorização coletiva confirmada, a simulação de prorrogação fica bloqueada para revisão.": {
+    "es": "Actividad insalubre: sin autorización colectiva confirmada, la simulación de prórroga queda bloqueada para revisión.",
+    "en": "Unhealthy working conditions: without confirmed collective authorization, extended-hours simulation is blocked for review."
+  },
+  "O regime especial exige análise específica; horas extras não são dimensionadas automaticamente.": {
+    "es": "El régimen especial exige un análisis específico; las horas extras no se dimensionan automáticamente.",
+    "en": "This special arrangement requires specific assessment; overtime is not sized automatically."
+  },
+  "A convocação informada é insuficiente para montar uma jornada.": {
+    "es": "La convocatoria indicada es insuficiente para organizar una jornada.",
+    "en": "The entered call-up hours are insufficient to build a shift."
+  },
+  "Confirme o enquadramento e as alíquotas para concluir a comparação econômica.": {
+    "es": "Confirme el encuadramiento y las alícuotas para concluir la comparación económica.",
+    "en": "Confirm the tax classification and rates to complete the cost comparison."
+  },
+  "A equipe cobre a demanda informada.": {
+    "es": "El equipo cubre la demanda indicada.",
+    "en": "The team covers the entered demand."
+  },
+  "A cobertura integral ainda não foi encontrada. Revise a demanda, a modalidade e os horários.": {
+    "es": "Aún no se encontró cobertura integral. Revise la demanda, la modalidad y los horarios.",
+    "en": "Full coverage has not yet been found. Review demand, contract type and working times."
+  },
+  "Reorganizar horas ordinárias e complementar a equipe tem o menor custo estimado.": {
+    "es": "Reorganizar horas ordinarias y completar el equipo tiene el menor coste estimado.",
+    "en": "Reorganizing regular hours and supplementing the team has the lowest estimated cost."
+  },
+  "Combinar horas extras e contratação tem o menor custo estimado.": {
+    "es": "Combinar horas extras y contratación tiene el menor coste estimado.",
+    "en": "Combining overtime and hiring has the lowest estimated cost."
+  },
+  "Horas extras têm o menor custo estimado para esta cobertura.": {
+    "es": "Las horas extras tienen el menor coste estimado para esta cobertura.",
+    "en": "Overtime has the lowest estimated cost for this coverage."
+  },
+  "Contratar tem o menor custo estimado para esta cobertura.": {
+    "es": "Contratar tiene el menor coste estimado para esta cobertura.",
+    "en": "Hiring has the lowest estimated cost for this coverage."
+  },
+  "Contratação e referência salarial": {
+    "es": "Contratación y referencia salarial",
+    "en": "Hiring and salary reference"
+  },
+  "As pessoas já existentes no grupo são mensalistas. A modalidade abaixo define os novos contratos para cobrir a demanda. Simule funções diferentes separadamente.": {
+    "es": "Las personas ya existentes en el grupo son asalariados mensuales. La modalidad siguiente define los nuevos contratos para cubrir la demanda. Simule funciones diferentes por separado.",
+    "en": "Existing staff in this group are monthly paid employees. The contract type below applies to new hires covering demand. Simulate different roles separately."
+  },
+  "Salário mínimo nacional · 2026": {
+    "es": "Salario mínimo nacional · 2026",
+    "en": "National minimum wage · 2026"
+  },
+  "Usar salário mínimo": {
+    "es": "Usar salario mínimo",
+    "en": "Use minimum wage"
+  },
+  "Fonte oficial": {
+    "es": "Fuente oficial",
+    "en": "Official source"
+  },
+  "Piso mensal aplicável ao grupo · R$": {
+    "es": "Mínimo mensual aplicable al grupo · R$",
+    "en": "Applicable monthly wage floor for the group · R$"
+  },
+  "O custo usa o maior valor entre salário informado e piso aplicável. Confira piso da CCT e jornadas proporcionais. O mínimo de 2027 não é presumido.": {
+    "es": "El coste usa el mayor valor entre el salario indicado y el mínimo aplicable. Verifique el mínimo de la CCT y las jornadas proporcionales. No se presume el mínimo de 2027.",
+    "en": "Costs use the higher of the entered salary and the applicable wage floor. Check collective wage floors and proportional working hours. No 2027 minimum wage is assumed."
+  },
+  "Modalidade dos novos contratos": {
+    "es": "Modalidad de los nuevos contratos",
+    "en": "New hire contract type"
+  },
+  "Duração estimada · meses": {
+    "es": "Duración estimada · meses",
+    "en": "Estimated duration · months"
+  },
+  "Pequeno prazo já utilizado no ano · meses": {
+    "es": "Corta duración ya utilizada en el año · meses",
+    "en": "Short-term period already used in the year · months"
+  },
+  "Experiência · dias, máximo de 90": {
+    "es": "Prueba · días, máximo de 90",
+    "en": "Probation · days, maximum 90"
+  },
+  "Já trabalhou na mesma função para este empregador": {
+    "es": "Ya ejerció la misma función para este empleador",
+    "en": "Previously performed the same role for this employer"
+  },
+  "Não se admite nova experiência para testar a mesma função já exercida no mesmo empregador. O sistema bloqueia essa hipótese; eventual exceção por norma coletiva deve ser examinada pelo advogado. O prazo total não pode exceder 90 dias.": {
+    "es": "No se admite una nueva prueba para evaluar la misma función ya ejercida con el mismo empleador. El sistema bloquea esa hipótesis; una eventual excepción colectiva debe ser examinada por el abogado. La duración total no puede superar 90 días.",
+    "en": "A new probation period is not allowed to test the same role already performed for the same employer. The system blocks this case; any collective-agreement exception requires a lawyer’s review. The total period must not exceed 90 days."
+  },
+  "Convocação máxima por novo empregado · horas/mês": {
+    "es": "Convocatoria máxima por nuevo empleado · horas/mes",
+    "en": "Maximum call-up per new employee · hours/month"
+  },
+  "Confirmo alternância real, contrato escrito e regras de convocação": {
+    "es": "Confirmo alternancia real, contrato escrito y reglas de convocatoria",
+    "en": "I confirm genuine alternation, a written contract and call-up rules"
+  },
+  "O intermitente recebe horas convocadas, DSR estimado, 13º e férias proporcionais com 1/3. Recusa de convocação e indisponibilidade não são afastadas pelo simulador. Não use para disfarçar demanda contínua.": {
+    "es": "El intermitente recibe las horas convocadas, DSR estimado, 13.º y vacaciones proporcionales con 1/3. El simulador no elimina el derecho de rechazo de convocatoria ni la indisponibilidad. No lo use para encubrir una demanda continua.",
+    "en": "Intermittent staff receive called-up hours, estimated paid weekly rest, proportional 13th salary and vacation with a one-third supplement. The simulator does not remove call-up refusal rights or unavailability. Do not use this to disguise continuous demand."
+  },
+  "Safra: o orçamento inclui reserva da indenização de 1/12 do salário por mês de serviço, prevista no art. 14 da Lei 5.889/1973. No término normal, não se presume aviso prévio ou multa de 40% do FGTS.": {
+    "es": "Cosecha: el presupuesto incluye una reserva de indemnización de 1/12 del salario por mes de servicio, prevista en el art. 14 de la Ley 5.889/1973. En la terminación normal no se presume preaviso ni multa del 40% del FGTS.",
+    "en": "Harvest: the budget includes an indemnity reserve of 1/12 of salary per month of service under article 14 of Act 5.889/1973. Normal expiry does not assume notice pay or the 40% FGTS penalty."
+  },
+  "Nova jornada parcial · até 30h, sem horas extras": {
+    "es": "Nueva jornada parcial · hasta 30h, sin horas extras",
+    "en": "New part-time arrangement · up to 30h, without overtime"
+  },
+  "Encargos do empregador": {
+    "es": "Cargas del empleador",
+    "en": "Employer payroll charges"
+  },
+  "Enquadramento tributário": {
+    "es": "Encuadramiento tributario",
+    "en": "Tax classification"
+  },
+  "Percentual global de encargos · %": {
+    "es": "Porcentaje global de cargas · %",
+    "en": "Overall payroll charges · %"
+  },
+  "CPP patronal · %": {
+    "es": "CPP patronal · %",
+    "en": "Employer CPP · %"
+  },
+  "RAT · %": {
+    "es": "RAT · %",
+    "en": "RAT · %"
+  },
+  "Terceiros / FPAS · % confirmado": {
+    "es": "Terceros / FPAS · % confirmado",
+    "en": "Third parties / FPAS · confirmed %"
+  },
+  "FGTS: 8%. CPP, RAT × FAP e terceiros variam pelo enquadramento. Beneficente não significa imunidade automática. O Simples fora do Anexo IV recolhe a CPP no DAS.": {
+    "es": "FGTS: 8%. CPP, RAT × FAP y terceros varían según el encuadramiento. Ser entidad benéfica no supone inmunidad automática. El Simples fuera del Anexo IV recauda la CPP en el DAS.",
+    "en": "FGTS: 8%. CPP, RAT × FAP and third-party levies vary by classification. Charitable status does not automatically confer tax immunity. Simples outside Annex IV collects CPP through DAS."
+  },
+  "Receita mensal tributável · R$": {
+    "es": "Ingresos mensuales gravables · R$",
+    "en": "Taxable monthly revenue · R$"
+  },
+  "Alíquota efetiva sobre receita · %": {
+    "es": "Alícuota efectiva sobre ingresos · %",
+    "en": "Effective revenue-based tax rate · %"
+  },
+  "Informe a alíquota vigente confirmada pela contabilidade. Na receita rural, houve alteração em abril de 2026; o sistema não presume percentuais antigos. O tributo sobre receita aparece separado e não é multiplicado por empregado.": {
+    "es": "Indique la alícuota vigente confirmada por contabilidad. La tributación de ingresos rurales cambió en abril de 2026; el sistema no presume porcentajes anteriores. El tributo sobre ingresos se muestra por separado y no se multiplica por empleado.",
+    "en": "Enter the current rate confirmed by your accountant. Rural revenue taxation changed in April 2026; the system does not assume older rates. Revenue-based tax is shown separately and is not multiplied per employee."
+  },
+  "Benefícios sem natureza salarial por pessoa · R$/mês": {
+    "es": "Beneficios sin naturaleza salarial por persona · R$/mes",
+    "en": "Non-wage benefits per person · R$/month"
+  },
+  "Outros custos do grupo · R$/mês": {
+    "es": "Otros costes del grupo · R$/mes",
+    "en": "Other group costs · R$/month"
+  },
+  "PIS sobre folha, quando devido · %": {
+    "es": "PIS sobre nómina, cuando corresponda · %",
+    "en": "Payroll PIS, where applicable · %"
+  },
+  "Reserva rescisória adicional · % da remuneração": {
+    "es": "Reserva adicional de terminación · % de remuneración",
+    "en": "Additional termination reserve · % of remuneration"
+  },
+  "A reserva rescisória é uma premissa, não uma multa automática. Aviso, indenizações por término antecipado, adicionais e benefícios específicos devem ser informados ou revisados separadamente.": {
+    "es": "La reserva de terminación es un supuesto, no una multa automática. Preaviso, indemnizaciones por terminación anticipada, recargos y beneficios específicos deben indicarse o revisarse por separado.",
+    "en": "The termination reserve is an assumption, not an automatic penalty. Notice, early termination compensation, premiums and specific benefits must be entered or reviewed separately."
+  },
+  "Confirmei enquadramento, imunidade quando aplicável, alíquotas e piso": {
+    "es": "Confirmé encuadramiento, inmunidad cuando corresponda, alícuotas y salario mínimo aplicable",
+    "en": "I confirmed classification, applicable immunity, rates and wage floor"
+  },
+  "Horas extras para cobrir a demanda": {
+    "es": "Horas extras para cubrir la demanda",
+    "en": "Overtime to cover demand"
+  },
+  "Comparar contratação com horas extras": {
+    "es": "Comparar contratación con horas extras",
+    "en": "Compare hiring and overtime"
+  },
+  "Teto de horas extras por pessoa/dia · até 2h": {
+    "es": "Tope de horas extras por persona/día · hasta 2h",
+    "en": "Overtime cap per person/day · up to 2h"
+  },
+  "Confirmei o acordo de prorrogação e autorizações aplicáveis": {
+    "es": "Confirmé el acuerdo de prórroga y las autorizaciones aplicables",
+    "en": "I confirmed the extended-hours agreement and applicable authorizations"
+  },
+  "O modelo respeita até 2h extras por dia, limite conservador de 10h de trabalho, 11h entre jornadas e o repouso semanal. Na transição de 8h24, limita a extensão a 1h36 neste modelo. Não ocupa folgas nem intervalos.": {
+    "es": "El modelo respeta hasta 2h extras al día, un límite conservador de 10h de trabajo, 11h entre jornadas y el descanso semanal. En la transición de 8h24 limita la extensión a 1h36. No ocupa descansos ni pausas.",
+    "en": "The model respects up to 2h overtime per day, a conservative 10h working day, 11h between shifts and weekly rest. During the 8h24 transition it limits extensions to 1h36. It does not use days off or breaks."
+  },
+  "CONTRATAR OU FAZER HORAS EXTRAS?": {
+    "es": "¿CONTRATAR O HACER HORAS EXTRAS?",
+    "en": "HIRE OR USE OVERTIME?"
+  },
+  "A conclusão compara alternativas que cobrem a mesma demanda neste modelo. Menor custo não equivale a autorização jurídica nem prova de escala ótima.": {
+    "es": "La conclusión compara alternativas que cubren la misma demanda en este modelo. El menor coste no equivale a autorización jurídica ni demuestra un horario óptimo.",
+    "en": "The conclusion compares alternatives covering the same demand in this model. Lowest cost does not imply legal authorization or prove an optimal schedule."
+  },
+  "Pessoas que a empresa já possui": {
+    "es": "Personas que la empresa ya tiene",
+    "en": "People already employed by the company"
+  },
+  "Custo mensal atual do grupo": {
+    "es": "Coste mensual actual del grupo",
+    "en": "Current monthly group cost"
+  },
+  "Empregados alocados em HE": {
+    "es": "Empleados asignados a horas extras",
+    "en": "Employees assigned overtime"
+  },
+  "HE planejadas por semana": {
+    "es": "Horas extras planificadas por semana",
+    "en": "Planned overtime per week"
+  },
+  "A referência de custo foi elevada ao piso informado.": {
+    "es": "La referencia de coste se elevó al salario mínimo aplicable indicado.",
+    "en": "The cost reference was raised to the entered wage floor."
+  },
+  "Valores provisórios: confirme o perfil tributário, o piso e as alíquotas no formulário.": {
+    "es": "Valores provisionales: confirme el perfil tributario, el salario mínimo aplicable y las alícuotas en el formulario.",
+    "en": "Provisional figures: confirm the tax profile, wage floor and rates in the form."
+  },
+  "A contribuição sobre receita rural está incompleta. Informe receita e alíquota vigente antes de usar o custo total.": {
+    "es": "La contribución sobre ingresos rurales está incompleta. Indique ingresos y alícuota vigente antes de usar el coste total.",
+    "en": "The rural revenue contribution is incomplete. Enter revenue and the current rate before using the total cost."
+  },
+  "Novas pessoas": {
+    "es": "Personas nuevas",
+    "en": "New staff"
+  },
+  "Adicional por mês": {
+    "es": "Adicional por mes",
+    "en": "Additional monthly cost"
+  },
+  "Total do grupo por mês": {
+    "es": "Total del grupo por mes",
+    "en": "Total monthly group cost"
+  },
+  "Cobertura restante": {
+    "es": "Cobertura pendiente",
+    "en": "Remaining coverage gap"
+  },
+  "Contratar na modalidade escolhida": {
+    "es": "Contratar en la modalidad elegida",
+    "en": "Hire under the selected contract type"
+  },
+  "Somente horas extras": {
+    "es": "Solo horas extras",
+    "en": "Overtime only"
+  },
+  "HE e contratação complementar": {
+    "es": "Horas extras y contratación complementaria",
+    "en": "Overtime plus supplementary hiring"
+  },
+  "Diferença mensal entre alternativas com cobertura integral": {
+    "es": "Diferencia mensual entre alternativas con cobertura integral",
+    "en": "Monthly difference between fully covered alternatives"
+  },
+  "Contratos a termo de até 12 meses incluem reserva de férias proporcionais indenizadas no encerramento e 13º. Safra inclui a indenização do art. 14. Intermitente e pequeno prazo têm pagamentos proporcionais por período. Prazos maiores e rescisão antecipada exigem revisão própria.": {
+    "es": "Los contratos a término de hasta 12 meses incluyen reserva de vacaciones proporcionales indemnizadas al finalizar y 13.º salario. La cosecha incluye la indemnización del art. 14. Intermitentes y contratos rurales cortos tienen pagos proporcionales por período. Los plazos mayores y la terminación anticipada requieren revisión específica.",
+    "en": "Fixed-term contracts up to 12 months include reserves for proportional vacation paid at expiry and 13th salary. Harvest contracts include article 14 indemnity. Intermittent and short-term rural contracts have proportional payments per period. Longer terms and early termination require separate review."
+  },
+  "Novas pessoas são posicionadas em uma escala complementar. O motor tenta até 100 novas admissões; lacunas remanescentes exigem outra organização. O perfil selecionado vale para os novos contratos; o quadro atual é tratado como mensalista.": {
+    "es": "Las nuevas personas se asignan a un horario complementario. El motor intenta hasta 100 nuevas contrataciones; las brechas restantes requieren otra organización. El perfil elegido aplica a los nuevos contratos; el equipo actual se trata como asalariado mensual.",
+    "en": "New staff are placed in a supplementary schedule. The engine tries up to 100 new hires; remaining gaps require another arrangement. The selected type applies to new contracts; existing staff are treated as monthly paid employees."
+  },
+  "Demanda e horas extras por dia": {
+    "es": "Demanda y horas extras por día",
+    "en": "Daily demand and overtime"
+  },
+  "Pico é a quantidade simultânea necessária. Horas-pessoa somam a demanda do dia. O mínimo para HE é apenas um limite inferior por volume; a disponibilidade real depende dos horários e descansos.": {
+    "es": "El pico es la cantidad simultánea necesaria. Las horas-persona suman la demanda del día. El mínimo para horas extras es solo un límite inferior por volumen; la disponibilidad real depende de horarios y descansos.",
+    "en": "Peak is the simultaneous staffing requirement. Person-hours sum the day’s demand. The overtime minimum is only a lower bound by volume; actual availability depends on working times and rest."
+  },
+  "Pico de pessoas": {
+    "es": "Pico de personas",
+    "en": "Peak staff"
+  },
+  "Lacuna sem HE": {
+    "es": "Brecha sin horas extras",
+    "en": "Gap without overtime"
+  },
+  "Mínimo de pessoas para HE por volume": {
+    "es": "Mínimo de personas para horas extras por volumen",
+    "en": "Minimum overtime staff by volume"
+  },
+  "Pessoas em HE": {
+    "es": "Personas en horas extras",
+    "en": "Staff on overtime"
+  },
+  "HE máximas por pessoa": {
+    "es": "Máximo de horas extras por persona",
+    "en": "Maximum overtime per person"
+  },
+  "HE totais no dia": {
+    "es": "Total de horas extras del día",
+    "en": "Total daily overtime"
+  },
+  "Lacuna após HE": {
+    "es": "Brecha tras horas extras",
+    "en": "Gap after overtime"
+  },
+  "Limite modelado por pessoa/dia": {
+    "es": "Límite del modelo por persona/día",
+    "en": "Modelled limit per person/day"
+  },
+  "Horas ordinárias recuperadas antes de cobrar HE": {
+    "es": "Horas ordinarias recuperadas antes de cobrar horas extras",
+    "en": "Regular hours recovered before charging overtime"
+  },
+  "Ver distribuição de HE por empregado e dia": {
+    "es": "Ver distribución de horas extras por empleado y día",
+    "en": "View overtime by employee and day"
+  },
+  "Antecipação de entrada": {
+    "es": "Entrada anticipada",
+    "en": "Earlier start"
+  },
+  "Extensão de saída": {
+    "es": "Salida extendida",
+    "en": "Later finish"
+  },
+  "Horas ordinárias adicionais": {
+    "es": "Horas ordinarias adicionales",
+    "en": "Additional regular hours"
+  },
+  "HE são extensões de dias já trabalhados. O modelo preserva as pausas existentes e não ocupa a segunda folga. Lacunas no intervalo podem exigir contratação, mesmo quando há horas extras disponíveis em outros horários.": {
+    "es": "Las horas extras son extensiones de días ya trabajados. El modelo preserva las pausas existentes y no ocupa el segundo descanso. Las brechas en las pausas pueden exigir contratación aunque haya horas extras disponibles en otros horarios.",
+    "en": "Overtime extends existing working days. The model preserves existing breaks and does not use the second day off. Break-time gaps may require hiring even when overtime is available at other times."
+  },
+  "CUSTO DO EMPREGADOR · UM MÊS": {
+    "es": "COSTE DEL EMPLEADOR · UN MES",
+    "en": "EMPLOYER COST · ONE MONTH"
+  },
+  "Remuneração, encargos e provisões discriminados": {
+    "es": "Remuneración, cargas y provisiones desglosadas",
+    "en": "Itemized pay, charges and provisions"
+  },
+  "Base mensal por pessoa": {
+    "es": "Base mensual por persona",
+    "en": "Monthly base per person"
+  },
+  "Tributo sobre receita informado · separado da folha": {
+    "es": "Tributo sobre ingresos indicado · separado de la nómina",
+    "en": "Entered revenue-based tax · separate from payroll"
+  },
+  "Outros custos do grupo": {
+    "es": "Otros costes del grupo",
+    "en": "Other group costs"
+  },
+  "Custo econômico mensal com provisões": {
+    "es": "Coste económico mensual con provisiones",
+    "en": "Monthly economic cost including provisions"
+  },
+  "Desembolso corrente estimado, sem provisões": {
+    "es": "Desembolso corriente estimado, sin provisiones",
+    "en": "Estimated current cash outlay, excluding provisions"
+  },
+  "Provisões e reserva mensal": {
+    "es": "Provisiones y reserva mensual",
+    "en": "Monthly provisions and reserves"
+  },
+  "Mensalistas: as 12 remunerações anuais já incluem o mês de férias. Para evitar dupla contagem, a equivalência mensal acrescenta 13º e somente o terço de férias, com incidências. Cobertura de férias não está incluída automaticamente. No intermitente, férias proporcionais com 1/3 e 13º são pagos por convocação, com encargos.": {
+    "es": "Asalariados mensuales: las 12 remuneraciones anuales ya incluyen el mes de vacaciones. Para evitar duplicidades, la equivalencia mensual añade el 13.º y solo el tercio de vacaciones, con sus incidencias. La cobertura de vacaciones no se incluye automáticamente. Para intermitentes, vacaciones proporcionales con 1/3 y 13.º se pagan por convocatoria, con cargas.",
+    "en": "Monthly employees: the 12 annual salaries already include the vacation month. To avoid double counting, the monthly equivalent adds 13th salary and only the one-third vacation supplement, with applicable levies. Vacation cover is not automatically included. Intermittent staff receive proportional vacation plus one third and 13th salary per call-up, with payroll charges."
+  },
+  "INSS do empregado e IRRF são retenções do salário, não encargos adicionais do empregador. O orçamento não é uma guia de recolhimento. Adicionais de função, benefícios salariais e rescisões precisam ser informados e conferidos. DSR do intermitente é uma estimativa de 1/6, sujeita ao calendário.": {
+    "es": "El INSS del empleado y el IRRF son retenciones salariales, no cargas adicionales del empleador. El presupuesto no es una guía de recaudación. Recargos del puesto, beneficios salariales y terminaciones deben indicarse y verificarse. El DSR intermitente se estima en 1/6, sujeto al calendario.",
+    "en": "Employee INSS and IRRF are salary withholdings, not additional employer charges. The budget is not a tax payment form. Role premiums, wage-based benefits and termination costs must be entered and checked. Intermittent paid weekly rest is estimated at 1/6, subject to the calendar."
+  },
+  "Salário mínimo · fonte oficial": {
+    "es": "Salario mínimo · fuente oficial",
+    "en": "Minimum wage · official source"
+  },
+  "CLT · jornada e contratos": {
+    "es": "CLT · jornada y contratos",
+    "en": "CLT · working hours and contracts"
+  },
+  "Receita · enquadramento e CPP": {
+    "es": "Receita · encuadramiento y CPP",
+    "en": "Receita · classification and CPP"
+  },
+  "Experiência · ressalva coletiva": {
+    "es": "Prueba · excepción colectiva",
+    "en": "Probation · collective-agreement exception"
+  },
+  "Receita · contribuição rural vigente": {
+    "es": "Receita · contribución rural vigente",
+    "en": "Receita · current rural contribution"
+  },
+  "Demanda por dia: informe pessoas simultâneas em cada horário. O número de empregados existentes é informado em Sua equipe hoje.": {
+    "es": "Demanda por día: indique personas simultáneas en cada horario. El número de empleados existentes se indica en Su equipo actual.",
+    "en": "Daily demand: enter simultaneous staff for each time band. Existing employee count is entered under Your team today."
+  },
+  "Demanda por dia": {
+    "es": "Demanda por día",
+    "en": "Daily demand"
+  },
+  "Contratação integrada ao planejamento": {
+    "es": "Contratación integrada en la planificación",
+    "en": "Hiring integrated into planning"
+  },
+  "Use o formulário acima para informar demanda por dia, empregados, modalidade, salário e encargos. As mesmas escolhas alimentam a comparação entre contratar e fazer horas extras.": {
+    "es": "Use el formulario anterior para indicar demanda por día, empleados, modalidad, salario y cargas. Las mismas elecciones alimentan la comparación entre contratar y hacer horas extras.",
+    "en": "Use the form above to enter daily demand, employees, contract type, salary and charges. The same choices drive the comparison between hiring and overtime."
+  },
+  "Experiência para a mesma função já exercida neste empregador fica bloqueada no simulador. Eventual exceção por norma coletiva exige revisão jurídica específica.": {
+    "es": "La prueba para la misma función ya ejercida con este empleador queda bloqueada en el simulador. Una eventual excepción colectiva requiere revisión jurídica específica.",
+    "en": "Probation for the same role previously performed for this employer is blocked in the simulator. Any collective-agreement exception requires specific legal review."
+  },
+  "Referência econômica por volume de horas": {
+    "es": "Referencia económica por volumen de horas",
+    "en": "Economic reference by total hours"
+  },
+  "Esta referência compara volume de horas e não dimensiona a cobertura. O orçamento e a recomendação por escala estão na comparação detalhada acima.": {
+    "es": "Esta referencia compara volumen de horas y no dimensiona la cobertura. El presupuesto y la recomendación por horario están en la comparación detallada anterior.",
+    "en": "This reference compares total hours and does not size coverage. The budget and schedule-based recommendation are in the detailed comparison above."
+  },
+  "Alternativa": {
+    "es": "Alternativa",
+    "en": "Alternative"
+  },
+  "Horas-pessoa": {
+    "es": "Horas-persona",
+    "en": "Person-hours"
+  },
+  "pessoas do quadro atual": {
+    "es": "personas del equipo actual",
+    "en": "existing staff"
+  },
+  "A demanda usa o dia civil. Em jornadas noturnas, as HE são atribuídas ao dia de início da jornada, mesmo quando terminam após meia-noite.": {
+    "es": "La demanda utiliza el día civil. En jornadas nocturnas, las horas extras se atribuyen al día de inicio, aunque terminen después de medianoche.",
+    "en": "Demand uses calendar days. For overnight shifts, overtime is assigned to the shift start day, even when it ends after midnight."
+  },
+  "Comparação mensalizada, não liquidação de um contrato: duração em meses e dias valida a modalidade; saldo rescisório exige calendário e avos exatos.": {
+    "es": "Comparación mensualizada, no liquidación de un contrato: la duración en meses y días valida la modalidad; la liquidación requiere calendario y fracciones proporcionales exactas.",
+    "en": "A monthly-equivalent comparison, not a contract settlement: duration in months and days validates the contract type; termination settlement requires exact calendar dates and accrual periods."
+  },
+  "Meses são uma estimativa. Confirme as datas e os períodos acumulados por calendário antes de validar o pequeno prazo.": {
+    "es": "Los meses son una estimación. Confirme fechas y períodos acumulados por calendario antes de validar la corta duración.",
+    "en": "Months are an estimate. Confirm calendar dates and cumulative periods before validating a short-term contract."
+  },
+  "Grupo": {
+    "es": "Grupo",
+    "en": "Group"
+  },
+  "Quadro atual": {
+    "es": "Equipo actual",
+    "en": "Existing staff"
+  },
+  "Novos contratos": {
+    "es": "Nuevos contratos",
+    "en": "New contracts"
+  },
+  "HE minutos": {
+    "es": "Minutos de horas extras",
+    "en": "Overtime minutes"
+  },
+  "Estimativa condicionada à alternância real, contrato escrito e convocação": {
+    "es": "Estimación condicionada a alternancia real, contrato escrito y convocatoria",
+    "en": "Estimate conditional on genuine alternation, a written contract and call-ups"
+  },
+  "Encargos e comparação por cobertura": {
+    "es": "Cargas y comparación por cobertura",
+    "en": "Payroll charges and coverage-based comparison"
+  },
+  "A comparação detalhada discrimina a folha, as provisões e o perfil tributário. Novas admissões são posicionadas em uma escala complementar; horas extras estendem jornadas existentes e preservam descansos. Só alternativas com cobertura equivalente recebem comparação econômica conclusiva.": {
+    "es": "La comparación detallada desglosa nómina, provisiones y perfil tributario. Las nuevas contrataciones se sitúan en un horario complementario; las horas extras amplían jornadas existentes preservando descansos. Solo se comparan de forma concluyente alternativas con cobertura equivalente.",
+    "en": "The detailed comparison itemizes payroll, provisions and the tax profile. New hires are placed in a supplementary schedule; overtime extends existing shifts while preserving rest. Only alternatives with equivalent coverage receive a conclusive cost comparison."
+  },
+  "FGTS": {
+    "es": "FGTS",
+    "en": "FGTS"
+  },
+  "FAP": {
+    "es": "FAP",
+    "en": "FAP"
+  },
+  "Ver encargos dos novos contratos escolhidos": {
+    "es": "Ver cargas de los nuevos contratos elegidos",
+    "en": "View payroll charges for the selected new contracts"
+  },
+  "Avaliação inicial de aptidão": {
+    "es": "Evaluación inicial de aptitud",
+    "en": "Initial suitability assessment"
+  },
+  "Até 90 dias; a mesma função já exercida exige o bloqueio e a ressalva coletiva indicados no formulário.": {
+    "es": "Hasta 90 días; la misma función ya ejercida exige el bloqueo y la excepción colectiva indicados en el formulario.",
+    "en": "Up to 90 days; a previously performed role is subject to the block and collective-agreement caveat stated in the form."
+  },
+  "Empregados (0 a 100, inteiro)": {
+    "es": "Empleados (0 a 100, entero)",
+    "en": "Employees (0 to 100, whole number)"
+  },
+  "Versão 1.2 · Referência jurídica: 15/11/2026": {
+    "es": "Versión 1.2 · Referencia jurídica: 15/11/2026",
+    "en": "Version 1.2 · Legal reference: 15 Nov 2026"
   }
 };

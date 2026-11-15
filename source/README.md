@@ -92,3 +92,9 @@ Validação: `npm test` (22 testes) e `npm run build`. A publicação continua u
 O menu de seções aparece no topo. Cada finalidade possui um conjunto próprio de slides: simulação (introdução e quatro setores), contratação rural (modalidades e necessidade), base legal (regras, transição e limites), metodologia (premissas, cobertura e custos). O conteúdo fica em `src/bannerContent.ts`; `VisualGuide` controla somente apresentação, temporizador e navegação. Trocar de aba reinicia seu banner sem alterar o cenário. A introdução genérica repetida foi substituída por banners contextuais; o cronograma permanece em uma faixa compacta. As imagens são ilustrativas; consulte `docs/IMAGENS.md`.
 
 Validação desta atualização: 23 testes, incluindo cobertura das traduções de todos os banners, e build TypeScript/Vite.
+
+### Demanda, folha e decisão entre contratar e fazer HE
+
+As abas de simulação e contratação compartilham empregados, demanda diária, piso, modalidade e perfil tributário. O novo relatório discrimina o custo mensal do grupo e dos novos contratos, dimensiona HE por empregado/dia, monta contratação complementar e compara alternativas de cobertura equivalente. Há indeterminado, safra, experiência, intermitente, pequeno prazo e jornada parcial, com restrições específicas. O exemplo rural usa o mínimo de 2026 (R$ 1.621). A referência CNC conserva seus valores iniciais.
+
+Consulte `docs/CUSTOS_CONTRATACAO.md` para arquitetura, fórmulas, premissas, limites e fontes oficiais. `planning` é opcional no JSON v1; arquivos anteriores continuam suportados. O CSV exporta o plano combinado, incluindo minutos de HE. A apresentação mantém três idiomas e temas claro/escuro.

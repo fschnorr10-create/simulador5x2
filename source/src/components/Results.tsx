@@ -1,3 +1,4 @@
+import { EmploymentResults } from './EmploymentResults';
 import { useI18n } from '../i18n';
 import { useState } from 'react';
 import { ArrowUpRight, ChartNoAxesCombined, Clock3, Info, CalendarDays, CircleHelp } from 'lucide-react';
@@ -31,6 +32,9 @@ export function Results({ scenario, results, stage, setStage }: { scenario: Scen
     </div>
     <p className="footnote">{t("¹ Na ausência de ACT/CCT celebrado até 15/12/2026, a cautelar admite 8h24 sem adicional pelos 24min, na etapa intermediária. Se houver instrumento, conferir suas cláusulas. Jornadas menores são preservadas. ² Premissa de mensalista comum; divisores especiais exigem revisão.")}</p>
 
+    <EmploymentResults scenario={scenario} result={current} />
+
+    <details className="economic-reference"><summary>{t('Referência econômica por volume de horas')}</summary>
     <section className="result-card">
       <div className="card-title"><div><span className="eyebrow">{t("PLANEJAMENTO FINANCEIRO")}</span><h3>{t("Quanto custa cada caminho?")}</h3></div><span className="muted">{t("Adicional mensal estimado")}</span></div>
       <div className="cost-table-wrap"><table className="cost-table"><thead><tr><th>{t("Caminho")}</th>{results.map(result => <th key={result.stage}>{result.target}h <span>{t("/ semana")}</span></th>)}</tr></thead><tbody>
@@ -40,8 +44,10 @@ export function Results({ scenario, results, stage, setStage }: { scenario: Scen
         <tr><td><strong>{t("Horas extras")}</strong><small>{t("Referência de custo · viabilidade não validada")}</small></td>{results.map(result => <td key={result.stage}><strong>{formatMoney(result.overtimeCost)}</strong><small>{duration(result.overtimeMonthlyHours)}{t("/mês estimadas")}</small></td>)}</tr>
       </tbody></table></div>
       <div className="cost-bars" aria-label={t("Comparação visual de custos da etapa selecionada")}>{[[t("Parcial"), current.partialCost], ['Integral', current.fullCost], [t("Horas extras"), current.overtimeCost]].map(([label, cost]) => <div className="cost-bar-row" key={String(label)}><span>{t(String(label))}</span><div className="cost-track"><div style={{ width: `${Number(cost) / (Math.max(current.partialCost, current.fullCost, current.overtimeCost) || 1) * 100}%` }} /></div><strong>{formatMoney(Number(cost))}</strong></div>)}</div>
-      <div className="inline-note"><Info size={16} /><p>{t("Custos não garantem cobertura nos horários descobertos. Novos contratos devem respeitar piso, benefícios e regras aplicáveis. HE depende de limites, repousos e autorização; não substitui a segunda folga. Encargos de ")}{formatDecimal(scenario.charges)}{t("%, HE de ")}{formatDecimal(scenario.extraRate)}{t("%, DSR de ")}{formatDecimal(scenario.dsrRate)}{t("% e fator mensal ")}{formatDecimal(scenario.monthlyWeeks)}.</p></div>
+      <div className="inline-note"><Info size={16} /><p>{t('Esta referência compara volume de horas e não dimensiona a cobertura. O orçamento e a recomendação por escala estão na comparação detalhada acima.')}</p></div>
     </section>
+
+    </details>
 
     <section className="result-card">
       <div className="card-title"><div><span className="eyebrow">{t("ETAPA ")}{stage === 42 ? '01' : '02'} · {current.target} {t(" HORAS")}</span><h3><Clock3 size={20} /> {t(" Cobertura, hora a hora")}</h3></div><span className="coverage-number">{formatDecimal(current.coveragePercent)}<small>{t("% coberta")}</small></span></div>

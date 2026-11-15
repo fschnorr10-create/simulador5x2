@@ -94,7 +94,7 @@ test('empty demand is finite and does not claim costs or active shifts', () => {
 });
 
 test('cost formulas and indivisible headcount are consistent', () => {
-  const scenario = weekdayScenario(); const result = calculate(scenario, 42);
+  const scenario = weekdayScenario(); delete scenario.planning; scenario.monthlyWeeks = 5; const result = calculate(scenario, 42);
   assert.equal(result.fullCount, 1); assert.equal(result.fullCost, 3080);
   assert.ok(Math.abs(result.partialCost - 8 / 42 * 3080) < 1e-8);
   assert.equal(result.partialCount, 1); assert.equal(result.partialHours, 8);

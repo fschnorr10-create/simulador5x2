@@ -1,3 +1,4 @@
+import { defaultEmploymentSettings, MINIMUM_WAGE_2026 } from './payroll.ts';
 import type { Scenario } from './types.ts';
 
 export const dayNames = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
@@ -7,10 +8,10 @@ export const states = ['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','M
 export function defaultScenario(preset: 'rural' | 'cnc' = 'rural'): Scenario {
   const rural = preset === 'rural';
   return {
-    version: 1, name: rural ? 'Minha operação rural' : 'Minha empresa',
+    version: 1, planning: defaultEmploymentSettings(), name: rural ? 'Minha operação rural' : 'Minha empresa',
     sector: rural ? 'rural' : 'comercio', state: 'PE', city: '', scale: '6x1',
-    employees: rural ? 12 : 5, currentHours: 44, salary: rural ? 1800 : 2200,
-    charges: 40, extraRate: 50, dsrRate: 20, monthlyWeeks: 5,
+    employees: rural ? 12 : 5, currentHours: 44, salary: rural ? MINIMUM_WAGE_2026 : 2200,
+    charges: 40, extraRate: 50, dsrRate: 20, monthlyWeeks: rural ? 52 / 12 : 5,
     interval: 60, collective: 'nao-sei', collectiveRef: '',
     insalubrious: false, publicContract: false,
     days: dayNames.map((name, day) => ({ name, bands: [{

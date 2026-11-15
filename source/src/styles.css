@@ -326,3 +326,29 @@ input.visually-hidden { width: 1px; height: 1px; min-height: 0; padding: 0; bord
 @media (max-width: 900px) { .carousel-slide { min-height: 0; } .purpose-nav { overflow-x: auto; flex-wrap: nowrap; } .purpose-nav button { flex-shrink: 0; } }
 @media (max-width: 650px) { .purpose-nav { gap: 7px; } .purpose-nav button { padding: 10px 12px; font-size: 11px; } .carousel-copy h1 { font-size: 31px; } .transition-strip { gap: 15px; } .transition-strip > div { gap: 7px; } .transition-strip strong { font-size: 22px; } .transition-strip span { font-size: 10px; } }
 @media print { .transition-strip { display: none; } }
+
+.employment-fields h3 { font-size: 16px; line-height: 1.4; margin-bottom: 14px; }
+.minimum-wage { padding: 13px; border: 1px solid var(--border); background: var(--gold-soft); border-radius: 5px; margin: 12px 0 15px; display: flex; flex-wrap: wrap; gap: 9px 15px; font-size: 11px; line-height: 1.7; }
+.minimum-wage strong { width: 100%; color: var(--gold); }
+.minimum-wage .text-button, .minimum-wage a { font-size: 10px; }
+.daily-demand-help { color: var(--gold); font-weight: 600; }
+.employment-summary h3 { line-height: 1.5; margin: 10px 0; font-size: 20px; }
+.employment-kpis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.employment-kpis > div { background: var(--surface-soft); border: 1px solid var(--border); border-radius: 6px; padding: 14px; }
+.employment-kpis span { display: block; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.employment-kpis strong { font-size: 22px; display: block; margin-top: 8px; overflow-wrap: anywhere; }
+.employment-results .cost-table { min-width: 650px; }
+.employment-results .daily-analysis { min-width: 970px; }
+.employment-results .cost-table th, .employment-results .cost-table td { font-size: 11px; line-height: 1.6; }
+.employment-results .notice { margin: 12px 0; font-size: 12px; }
+.employment-detail { margin-top: 18px; }
+.employment-detail summary, .economic-reference > summary { color: var(--gold); cursor: pointer; font-size: 12px; font-weight: 600; line-height: 1.6; padding: 12px 0; }
+.economic-reference { margin: 15px 0; }
+.economic-saving { color: var(--gold); font-size: 13px; margin: 17px 0; line-height: 1.7; }
+.payroll-table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 12px; }
+.payroll-table td, .payroll-table th { border-bottom: 1px solid var(--border); padding: 10px 4px; text-align: left; }
+.payroll-table td:last-child, .payroll-table th:last-child { text-align: right; white-space: nowrap; }
+.payroll-total { background: var(--gold-soft); color: var(--gold); }
+.employment-results .footnote { margin-top: 14px; }
+@media (max-width: 650px) { .employment-kpis { gap: 8px; } .employment-kpis > div { padding: 11px; } .employment-kpis strong { font-size: 18px; } .employment-summary h3 { font-size: 17px; } .payroll-table { font-size: 10px; } }
+@media print { .employment-detail { display: block; } .employment-results .cost-table, .employment-results .daily-analysis { min-width: 0; } .employment-results .cost-table td, .employment-results .cost-table th { font-size: 7px; } .employment-kpis { grid-template-columns: repeat(4, 1fr); } }
