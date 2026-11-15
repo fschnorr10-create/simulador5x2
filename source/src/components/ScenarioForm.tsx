@@ -18,7 +18,7 @@ export function ScenarioForm({ value, onChange }: Props) {
   function copyWeekdays() {
     set('days', value.days.map((day, index) => index > 0 && index < 5 && day.bands.length ? { ...day, bands: value.days[0].bands.map((band, i) => ({ ...band, id: `day-${index}-${i}` })) } : day));
   }
-  return <aside className="form-panel">
+  return <aside className="form-panel" id="dados-simulacao">
     <div className="panel-heading"><span className="eyebrow">{t("DADOS DA SIMULAÇÃO")}</span><span className="live-dot">{t("Em tempo real")}</span></div>
     <section className="form-section">
       <h3><Building2 size={18} /><span>01</span> {t(" Sua operação")}</h3>

@@ -2543,5 +2543,249 @@ export default {
   "Versão 1.2 · Referência jurídica: 15/11/2026": {
     "es": "Versión 1.2 · Referencia jurídica: 15/11/2026",
     "en": "Version 1.2 · Legal reference: 15 Nov 2026"
+  },
+  "Estratégia de cobertura inválida.": {
+    "es": "Estrategia de cobertura no válida.",
+    "en": "Invalid coverage strategy."
+  },
+  "O prazo de experiência não cobre todo o período informado. A continuidade exige conversão e novo planejamento.": {
+    "es": "El período de prueba no cubre todo el plazo indicado. La continuidad exige conversión y nueva planificación.",
+    "en": "The probation period does not cover the full entered period. Continued employment requires conversion and a new plan."
+  },
+  "Não há prorrogação ou horas ordinárias recuperadas para combinar nesta alternativa.": {
+    "es": "No hay prórroga ni horas ordinarias recuperadas para combinar en esta alternativa.",
+    "en": "There are no extended or recovered regular hours to combine in this alternative."
+  },
+  "A alternativa deixa demanda descoberta no modelo de escala.": {
+    "es": "La alternativa deja demanda sin cubrir en el modelo de horario.",
+    "en": "This alternative leaves demand uncovered in the scheduling model."
+  },
+  "A alternativa não atende aos requisitos e à cobertura para aplicação.": {
+    "es": "La alternativa no cumple los requisitos y la cobertura para su aplicación.",
+    "en": "This alternative does not meet the requirements and coverage needed for application."
+  },
+  "Confirme as premissas de contratação antes de aplicar uma alternativa.": {
+    "es": "Confirme los supuestos de contratación antes de aplicar una alternativa.",
+    "en": "Confirm hiring assumptions before applying an alternative."
+  },
+  "Manter o quadro atual": {
+    "es": "Mantener el equipo actual",
+    "en": "Keep the existing team"
+  },
+  "Reorganizar horas ordinárias": {
+    "es": "Reorganizar horas ordinarias",
+    "en": "Reorganize regular hours"
+  },
+  "Jornada parcial": {
+    "es": "Jornada parcial",
+    "en": "Part-time hours"
+  },
+  "HE do quadro atual": {
+    "es": "Horas extras del equipo actual",
+    "en": "Overtime by existing staff"
+  },
+  "Não foi possível aplicar a alternativa.": {
+    "es": "No se pudo aplicar la alternativa.",
+    "en": "Unable to apply the alternative."
+  },
+  "Estratégia": {
+    "es": "Estrategia",
+    "en": "Strategy"
+  },
+  "Situação": {
+    "es": "Situación",
+    "en": "Status"
+  },
+  "Restrições": {
+    "es": "Restricciones",
+    "en": "Restrictions"
+  },
+  "Sem horas extras": {
+    "es": "Sin horas extras",
+    "en": "Without overtime"
+  },
+  "Com horas extras": {
+    "es": "Con horas extras",
+    "en": "With overtime"
+  },
+  "Condições atendidas no modelo": {
+    "es": "Condiciones cumplidas en el modelo",
+    "en": "Model conditions met"
+  },
+  "Fora da indicação": {
+    "es": "Fuera de la recomendación",
+    "en": "Excluded from recommendation"
+  },
+  "novas pessoas": {
+    "es": "personas nuevas",
+    "en": "new staff"
+  },
+  "Menor custo elegível": {
+    "es": "Menor coste admisible",
+    "en": "Lowest eligible cost"
+  },
+  "TODAS AS MODALIDADES · MESMA DEMANDA": {
+    "es": "TODAS LAS MODALIDADES · MISMA DEMANDA",
+    "en": "ALL CONTRACT TYPES · SAME DEMAND"
+  },
+  "Compare os contratos lado a lado.": {
+    "es": "Compare los contratos lado a lado.",
+    "en": "Compare contract types side by side."
+  },
+  "Custos mensais com encargos, pessoas necessárias e cobertura, com ou sem HE dos empregados atuais.": {
+    "es": "Costes mensuales con cargas, personas necesarias y cobertura, con o sin horas extras del equipo actual.",
+    "en": "Monthly costs including charges, staffing needs and coverage, with or without overtime by existing employees."
+  },
+  "Etapa da comparação": {
+    "es": "Etapa de la comparación",
+    "en": "Comparison stage"
+  },
+  "Menor custo mensal estimado": {
+    "es": "Menor coste mensual estimado",
+    "en": "Lowest estimated monthly cost"
+  },
+  "Nenhuma alternativa atende integralmente às condições e à demanda neste modelo.": {
+    "es": "Ninguna alternativa cumple íntegramente las condiciones y la demanda en este modelo.",
+    "en": "No alternative fully meets the conditions and demand in this model."
+  },
+  "de HE por semana": {
+    "es": "de horas extras por semana",
+    "en": "overtime per week"
+  },
+  "Há alternativas empatadas no menor custo. Todas estão destacadas.": {
+    "es": "Hay alternativas empatadas en el menor coste. Todas están destacadas.",
+    "en": "Several alternatives tie for the lowest cost. All are highlighted."
+  },
+  "Economia mensal frente à próxima alternativa elegível": {
+    "es": "Ahorro mensual frente a la siguiente alternativa admisible",
+    "en": "Monthly saving against the next eligible alternative"
+  },
+  "Usar opção indicada": {
+    "es": "Usar la opción recomendada",
+    "en": "Use recommended option"
+  },
+  "Editar demanda e premissas": {
+    "es": "Editar demanda y supuestos",
+    "en": "Edit demand and assumptions"
+  },
+  "Exportar comparação CSV": {
+    "es": "Exportar comparación CSV",
+    "en": "Export comparison CSV"
+  },
+  "Modalidades impedidas aparecem com custos hipotéticos, sem indicação ou aplicação. Os motivos podem ser abertos em Condições. A comparação preserva necessidade, prazo, empregador e autorizações informados.": {
+    "es": "Las modalidades impedidas muestran costes hipotéticos, sin recomendación ni aplicación. Los motivos pueden abrirse en Condiciones. La comparación preserva la necesidad, el plazo, el empleador y las autorizaciones indicados.",
+    "en": "Blocked contract types show hypothetical costs and cannot be recommended or applied. Open Conditions to see the reasons. The comparison preserves the entered need, period, employer and authorizations."
+  },
+  "Modalidade e jornada": {
+    "es": "Modalidad y jornada",
+    "en": "Contract type and working hours"
+  },
+  "Adicional mensal sem HE": {
+    "es": "Coste mensual adicional sin horas extras",
+    "en": "Additional monthly cost without overtime"
+  },
+  "Adicional mensal com HE": {
+    "es": "Coste mensual adicional con horas extras",
+    "en": "Additional monthly cost with overtime"
+  },
+  "Condições": {
+    "es": "Condiciones",
+    "en": "Conditions"
+  },
+  "Usar no detalhamento": {
+    "es": "Usar en el detalle",
+    "en": "Use in detailed view"
+  },
+  "Modalidade impedida": {
+    "es": "Modalidad impedida",
+    "en": "Contract type blocked"
+  },
+  "Cobertura ou autorização pendente": {
+    "es": "Cobertura o autorización pendiente",
+    "en": "Coverage or authorization pending"
+  },
+  "Cobertura integral nas duas estratégias": {
+    "es": "Cobertura integral en ambas estrategias",
+    "en": "Full coverage in both strategies"
+  },
+  "Sem HE": {
+    "es": "Sin horas extras",
+    "en": "Without OT"
+  },
+  "Com HE": {
+    "es": "Con horas extras",
+    "en": "With OT"
+  },
+  "Sem novas admissões": {
+    "es": "Sin nuevas contrataciones",
+    "en": "No new hires"
+  },
+  "Usar esta opção": {
+    "es": "Usar esta opción",
+    "en": "Use this option"
+  },
+  "Só concorrem ao menor custo as alternativas elegíveis com cobertura integral e premissas fiscais confirmadas. Na coluna com HE, os novos contratos cobrem a lacuna remanescente; as HE são do quadro atual. Jornada parcial dos novos contratos não recebe HE.": {
+    "es": "Solo compiten por el menor coste las alternativas admisibles con cobertura integral y supuestos fiscales confirmados. En la columna con horas extras, los nuevos contratos cubren la brecha restante; las horas extras corresponden al equipo actual. Los nuevos contratos a jornada parcial no reciben horas extras.",
+    "en": "Only eligible alternatives with full coverage and confirmed tax assumptions compete for lowest cost. In the overtime column, new contracts cover the remaining gap; overtime is performed by existing staff. New part-time contracts do not receive overtime."
+  },
+  "A indicação é mensal e depende das premissas: não prova custo ótimo global nem substitui análise jurídica. Rescisão, continuidade após experiência e disponibilidade de intermitentes exigem revisão. Deslize a tabela no celular.": {
+    "es": "La recomendación es mensual y depende de los supuestos: no demuestra un coste óptimo global ni sustituye el análisis jurídico. La terminación, la continuidad tras la prueba y la disponibilidad de intermitentes requieren revisión. Deslice la tabla en el móvil.",
+    "en": "The recommendation is monthly and depends on assumptions: it does not prove a global cost optimum or replace legal review. Termination, continued employment after probation and intermittent staff availability require review. Swipe the table on mobile."
+  },
+  "Condições de todas as modalidades comparadas": {
+    "es": "Condiciones de todas las modalidades comparadas",
+    "en": "Conditions for all compared contract types"
+  },
+  "Ver comparação de todas as modalidades": {
+    "es": "Ver comparación de todas las modalidades",
+    "en": "View comparison of all contract types"
+  },
+  "MODALIDADE EM DETALHE · CONTRATAR OU FAZER HE": {
+    "es": "MODALIDAD EN DETALLE · CONTRATAR U HORAS EXTRAS",
+    "en": "SELECTED CONTRACT TYPE · HIRING OR OVERTIME"
+  },
+  "Sem indicação conclusiva entre as modalidades.": {
+    "es": "Sin recomendación concluyente entre las modalidades.",
+    "en": "No conclusive recommendation across contract types."
+  },
+  "Regime especial: valide a migração e os limites próprios antes de indicar uma alternativa.": {
+    "es": "Régimen especial: valide la migración y los límites propios antes de recomendar una alternativa.",
+    "en": "Special arrangement: validate the transition and specific limits before recommending an alternative."
+  },
+  "Atividade insalubre: valide a jornada da transição antes da indicação econômica.": {
+    "es": "Actividad insalubre: valide la jornada de transición antes de la recomendación económica.",
+    "en": "Unhealthy working conditions: validate transitional working hours before a cost recommendation."
+  },
+  "Confirmação fiscal": {
+    "es": "Confirmación fiscal",
+    "en": "Tax confirmation"
+  },
+  "Indicação": {
+    "es": "Recomendación",
+    "en": "Recommendation"
+  },
+  "Confirmada": {
+    "es": "Confirmada",
+    "en": "Confirmed"
+  },
+  "Pendente": {
+    "es": "Pendiente",
+    "en": "Pending"
+  },
+  "Aguardando confirmação": {
+    "es": "Esperando confirmación",
+    "en": "Awaiting confirmation"
+  },
+  "Base comum": {
+    "es": "Base común",
+    "en": "Common basis"
+  },
+  "Reorganização de horas ordinárias": {
+    "es": "Reorganización de horas ordinarias",
+    "en": "Regular-hours reorganization"
+  },
+  "Versão 1.3 · Referência jurídica: 15/11/2026": {
+    "es": "Versión 1.3 · Referencia jurídica: 15/11/2026",
+    "en": "Version 1.3 · Legal reference: 15 Nov 2026"
   }
 };

@@ -62,3 +62,7 @@ JSON conserva os campos. CSV inclui quadro atual, novos contratos complementares
 ## Executar e validar
 
 `npm run dev`, `npm test`, `npm run build`. O build continua sendo um HTML único para GitHub Pages. Testes incluem fórmulas, parcelas tributáveis, restrições contratuais, imunidade condicionada, limites de HE/descanso, lacunas de intervalo, dimensionamento, dados legados e traduções.
+
+## Comparação geral adicionada na versão 1.3
+
+Além do relatório da modalidade selecionada, há uma comparação simultânea entre todas as modalidades e variações parciais. O menor custo só é indicado entre alternativas elegíveis com cobertura integral, preservando as mesmas entradas. Consulte `COMPARACAO_MODALIDADES.md` para condições, empates, exportação e aplicação da escolha.

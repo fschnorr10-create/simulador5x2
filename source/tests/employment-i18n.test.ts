@@ -7,7 +7,7 @@ import { defaultEmploymentSettings, payrollCost, contractNames, taxNames } from 
 
 test('employment UI labels, validation copy and payroll lines are translated', () => {
   const check = (value: string) => assert.ok(Object.hasOwn(messages, value.trim()), `Missing translation: ${value}`);
-  for (const file of ['src/components/EmploymentFields.tsx', 'src/components/EmploymentResults.tsx']) {
+  for (const file of ['src/components/EmploymentFields.tsx', 'src/components/EmploymentResults.tsx', 'src/components/ContractComparison.tsx']) {
     const source = ts.createSourceFile(file, readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
     function visit(node: ts.Node) {
       if (ts.isCallExpression(node) && ts.isIdentifier(node.expression)) {

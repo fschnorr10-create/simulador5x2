@@ -352,3 +352,45 @@ input.visually-hidden { width: 1px; height: 1px; min-height: 0; padding: 0; bord
 .employment-results .footnote { margin-top: 14px; }
 @media (max-width: 650px) { .employment-kpis { gap: 8px; } .employment-kpis > div { padding: 11px; } .employment-kpis strong { font-size: 18px; } .employment-summary h3 { font-size: 17px; } .payroll-table { font-size: 10px; } }
 @media print { .employment-detail { display: block; } .employment-results .cost-table, .employment-results .daily-analysis { min-width: 0; } .employment-results .cost-table td, .employment-results .cost-table th { font-size: 7px; } .employment-kpis { grid-template-columns: repeat(4, 1fr); } }
+
+.all-contracts { margin: 24px 0 30px; scroll-margin-top: 20px; }
+.comparison-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 25px; margin-bottom: 20px; }
+.comparison-heading h2 { font-size: 31px; margin: 9px 0 8px; }
+.comparison-heading p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.comparison-stage { display: flex; flex-shrink: 0; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 6px; }
+.comparison-stage button { padding: 10px 15px; border-radius: 3px; font-size: 13px; }
+.comparison-stage button[aria-pressed=true] { background: var(--gold-soft); color: var(--gold); font-weight: 700; }
+.global-recommendation { background: var(--gold-soft); border: 1px solid var(--gold); border-radius: 7px; display: flex; align-items: flex-start; gap: 15px; padding: 21px; margin-bottom: 15px; }
+.global-recommendation > svg { flex-shrink: 0; color: var(--gold); }
+.global-recommendation > div { flex: 1; }
+.global-recommendation strong { font-size: 17px; line-height: 1.6; }
+.global-recommendation p { font-size: 12px; line-height: 1.8; margin-top: 6px; }
+.global-recommendation > button { flex-shrink: 0; }
+.comparison-actions { display: flex; flex-wrap: wrap; gap: 25px; justify-content: space-between; margin: 13px 0; }
+.all-contracts-table { min-width: 1040px; margin-top: 16px; }
+.all-contracts-table th:first-child { width: 22%; }
+.all-contracts-table td, .all-contracts-table th { padding: 15px 11px; font-size: 12px; vertical-align: top; line-height: 1.7; }
+.all-contracts-table tbody th { text-align: left; font-weight: 600; }
+.all-contracts-table small { display: block; color: var(--muted); font-size: 10px; font-weight: 400; margin-top: 5px; }
+.all-contracts-table strong { font-size: 14px; white-space: nowrap; }
+.all-contracts-table details { max-width: 230px; }
+.all-contracts-table summary { color: var(--gold); cursor: pointer; font-size: 11px; line-height: 1.6; white-space: normal; }
+.all-contracts-table ul { white-space: normal; padding-left: 15px; font-size: 10px; line-height: 1.65; }
+.all-contracts-table li { margin-top: 8px; }
+.comparison-ineligible { background: var(--surface-soft); }
+.comparison-ineligible strong { color: var(--muted); }
+.comparison-best-cell { background: var(--gold-soft); color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); }
+.comparison-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 9px; font-weight: 700; margin-top: 8px; white-space: nowrap; }
+.comparison-restriction { color: var(--gold) !important; }
+.comparison-row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.comparison-row-actions button { font-size: 10px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 4px; white-space: nowrap; }
+.comparison-row-actions button:enabled:hover { border-color: var(--gold); background: var(--gold-soft); }
+.comparison-conditions { margin: 17px 0; padding: 13px; border: 1px solid var(--border); border-radius: 5px; }
+.comparison-conditions summary { font-size: 12px; font-weight: 600; color: var(--gold); cursor: pointer; line-height: 1.6; }
+.comparison-conditions[open] summary { margin-bottom: 18px; }
+#dados-simulacao { scroll-margin-top: 20px; }
+@media (max-width: 900px) { .global-recommendation { flex-wrap: wrap; } .global-recommendation > div { min-width: 65%; } .global-recommendation > button { margin-left: 39px; } }
+@media (max-width: 650px) { .comparison-heading { gap: 10px; } .comparison-heading h2 { font-size: 25px; } .comparison-stage button { padding: 8px 10px; } .global-recommendation { padding: 15px; gap: 10px; } .global-recommendation strong { font-size: 15px; } .global-recommendation > button { margin-left: 0; width: 100%; } .comparison-actions { gap: 12px; } }
+@media print { .comparison-actions, .comparison-row-actions, .comparison-stage, .global-recommendation > button, .comparison-conditions { display: none; } .all-contracts { break-inside: auto; } .all-contracts-table { min-width: 0; } .all-contracts-table td, .all-contracts-table th { padding: 7px 5px; font-size: 8px; } .all-contracts-table strong { font-size: 10px; } }
+
+.comparison-basis { margin: 0 0 16px; padding: 10px 13px; background: var(--surface-soft); border-radius: 4px; font-size: 11px; color: var(--muted); line-height: 1.8; }

@@ -98,3 +98,7 @@ Validação desta atualização: 23 testes, incluindo cobertura das traduções 
 As abas de simulação e contratação compartilham empregados, demanda diária, piso, modalidade e perfil tributário. O novo relatório discrimina o custo mensal do grupo e dos novos contratos, dimensiona HE por empregado/dia, monta contratação complementar e compara alternativas de cobertura equivalente. Há indeterminado, safra, experiência, intermitente, pequeno prazo e jornada parcial, com restrições específicas. O exemplo rural usa o mínimo de 2026 (R$ 1.621). A referência CNC conserva seus valores iniciais.
 
 Consulte `docs/CUSTOS_CONTRATACAO.md` para arquitetura, fórmulas, premissas, limites e fontes oficiais. `planning` é opcional no JSON v1; arquivos anteriores continuam suportados. O CSV exporta o plano combinado, incluindo minutos de HE. A apresentação mantém três idiomas e temas claro/escuro.
+
+### Comparação geral — versão 1.3
+
+A tabela `ContractComparison` compara nove variantes de contratação, cada uma sem HE e combinada às HE do quadro atual, além da alternativa sem novas admissões. Indica o menor custo mensal elegível com cobertura integral, destaca empates, mostra os motivos das exclusões e permite aplicar a escolha ao detalhamento/CSV. A comparação preserva todas as premissas; os custos de modalidades impedidas são apenas hipotéticos. Consulte `docs/COMPARACAO_MODALIDADES.md`. Validação: 53 testes e build aprovado.

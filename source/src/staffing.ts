@@ -84,16 +84,19 @@ export function planOvertime(scenario: Scenario, result: Calculation): OvertimeP
 }
 
 /** Adds real proposed shifts until residual demand is covered, no improvement is possible, or 100 new workers are reached. */
-export function planHiring(scenario: Scenario, result: Calculation, coverage = result.coverage): HiringPlan {
+export type HiringScheduleCache = Map<number, ReturnType<typeof makeSchedule>>;
+
+export function planHiring(scenario: Scenario, result: Calculation, coverage = result.coverage, options: { illustrateIneligible?: boolean; cache?: HiringScheduleCache } = {}): HiringPlan {
   const p = employmentSettings(scenario);
   const blocked = contractIssues(p, scenario.sector);
   const demand = residualDemand(result.demand, coverage);
   const startingGap = hoursOf(demand);
   const target = p.contract === 'intermittent' ? Math.min(result.target, p.intermittentHours / scenario.monthlyWeeks) : (p.contract === 'partial' || p.partTime) ? Math.min(30, result.target) : result.target;
-  if (blocked.length || !startingGap) return { count: 0, weeklyHours: target, cost: 0, remaining: startingGap, workers: [], blocked: startingGap ? blocked : [] };
+  if ((blocked.length && !options.illustrateIneligible) || !startingGap) return { count: 0, weeklyHours: target, cost: 0, remaining: startingGap, workers: [], blocked: startingGap ? blocked : [] };
   const daily = Math.floor(target * 60 / 5);
   if (daily < 1) return { count: 0, weeklyHours: target, cost: 0, remaining: startingGap, workers: [], blocked: ['A convocação informada é insuficiente para montar uma jornada.'] };
-  const scheduled = makeSchedule({ ...scenario, employees: 100 }, demand, daily, true, true);
+  const scheduled = options.cache?.get(daily) ?? makeSchedule({ ...scenario, employees: 100 }, demand, daily, true, true);
+  options.cache?.set(daily, scheduled);
   const workers = scheduled.workers.filter(worker => worker.minutes > 0);
   const added = scheduled.coverage;
   const remaining = demand.reduce((sum, value, i) => sum + Math.max(0, value - added[i]), 0) / 60;
@@ -103,6 +106,13 @@ export function planHiring(scenario: Scenario, result: Calculation, coverage = r
   const payMode = p.contract === 'intermittent' ? 'intermittent' : p.contract === 'short' ? 'proportional' : p.contract === 'experience' || (p.contract === 'harvest' && p.durationMonths <= 12) ? 'term' : 'monthly';
   const payroll = payrollCost(remuneration, workers.length, p, payMode, true, true);
   return { count: workers.length, weeklyHours: target, cost: payroll.total, remaining, workers, blocked, payroll };
+}
+
+export function employmentContextIssues(scenario: Scenario, result: Calculation): string[] {
+  const issues: string[] = [];
+  if (scenario.scale === '12x36' || scenario.scale === 'turnos') issues.push('Regime especial: valide a migração e os limites próprios antes de indicar uma alternativa.');
+  if (scenario.insalubrious && scenario.collective !== 'sim' && result.dailyCap > 480) issues.push('Atividade insalubre: valide a jornada da transição antes da indicação econômica.');
+  return issues;
 }
 
 export function analyzeEmployment(scenario: Scenario, result: Calculation) {
@@ -117,7 +127,8 @@ export function analyzeEmployment(scenario: Scenario, result: Calculation) {
   const hybridCost = overtime.cost + complementary.cost;
   const hiringComplete = hiring.remaining < 1 / 60 && !hiring.blocked.length;
   const hybridComplete = complementary.remaining < 1 / 60 && !complementary.blocked.length && !overtime.reasons.length;
-  const recommendation = (!p.taxConfirmed || (p.taxProfile === 'ruralRevenue' && (!p.monthlyRevenue || !p.revenueRate))) ? 'Confirme o enquadramento e as alíquotas para concluir a comparação econômica.' : result.gap < 1 / 60 ? 'A equipe cobre a demanda informada.' : !hiringComplete && !hybridComplete ? 'A cobertura integral ainda não foi encontrada. Revise a demanda, a modalidade e os horários.' : hybridComplete && (!hiringComplete || hybridCost < hiring.cost - .01) ? (overtime.extraHours < 1 / 60 ? 'Reorganizar horas ordinárias e complementar a equipe tem o menor custo estimado.' : complementary.count ? 'Combinar horas extras e contratação tem o menor custo estimado.' : 'Horas extras têm o menor custo estimado para esta cobertura.') : 'Contratar tem o menor custo estimado para esta cobertura.';
-  return { p, salary, base, revenue, currentMonthly, overtime, hiring, complementary, hybridCost, hiringComplete, hybridComplete, recommendation,
+  const contextIssues = employmentContextIssues(scenario, result);
+  const recommendation = contextIssues[0] ?? ((!p.taxConfirmed || (p.taxProfile === 'ruralRevenue' && (!p.monthlyRevenue || !p.revenueRate))) ? 'Confirme o enquadramento e as alíquotas para concluir a comparação econômica.' : result.gap < 1 / 60 ? 'A equipe cobre a demanda informada.' : !hiringComplete && !hybridComplete ? 'A cobertura integral ainda não foi encontrada. Revise a demanda, a modalidade e os horários.' : hybridComplete && (!hiringComplete || hybridCost < hiring.cost - .01) ? (overtime.extraHours < 1 / 60 ? 'Reorganizar horas ordinárias e complementar a equipe tem o menor custo estimado.' : complementary.count ? 'Combinar horas extras e contratação tem o menor custo estimado.' : 'Horas extras têm o menor custo estimado para esta cobertura.') : 'Contratar tem o menor custo estimado para esta cobertura.');
+  return { p, salary, base, revenue, currentMonthly, overtime, hiring, complementary, hybridCost, hiringComplete, hybridComplete, recommendation, contextIssues,
     savings: hiringComplete && hybridComplete ? Math.abs(hiring.cost - hybridCost) : 0 };
 }

@@ -26,7 +26,7 @@ export function EmploymentResults({ scenario, result }: { scenario: Scenario; re
   });
   return <div className="employment-results">
     <section className="result-card employment-summary" aria-labelledby="economic-recommendation">
-      <span className="eyebrow">{t('CONTRATAR OU FAZER HORAS EXTRAS?')}</span><h3 id="economic-recommendation">{t(analysis.recommendation)}</h3>
+      <span className="eyebrow">{t('MODALIDADE EM DETALHE · CONTRATAR OU FAZER HE')}</span><h3 id="economic-recommendation">{t(analysis.recommendation)}</h3>
       <p className="field-help">{t('A conclusão compara alternativas que cobrem a mesma demanda neste modelo. Menor custo não equivale a autorização jurídica nem prova de escala ótima.')}</p>
       <div className="employment-kpis"><div><span>{t('Pessoas que a empresa já possui')}</span><strong>{scenario.employees}</strong></div><div><span>{t('Custo mensal atual do grupo')}</span><strong>{currency(currentMonthly)}</strong></div><div><span>{t('Empregados alocados em HE')}</span><strong>{overtime.people}</strong></div><div><span>{t('HE planejadas por semana')}</span><strong>{duration(overtime.extraHours)}</strong></div></div>
       {analysis.salary > scenario.salary && <p className="notice">{t('A referência de custo foi elevada ao piso informado.')}</p>}
