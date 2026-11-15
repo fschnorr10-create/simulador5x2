@@ -6,7 +6,7 @@ import { contractNames, costSources, employmentSettings, MINIMUM_WAGE_2026, taxN
 export function EmploymentFields({ value, onChange }: { value: Scenario; onChange: (value: Scenario) => void }) {
   const { t, locale } = useI18n();
   const p = employmentSettings(value);
-  const update = <K extends keyof EmploymentSettings>(key: K, next: EmploymentSettings[K]) => onChange({ ...value, planning: { ...p, [key]: next } });
+  const update = <K extends keyof EmploymentSettings>(key: K, next: EmploymentSettings[K]) => onChange({ ...value, planning: { ...p, [key]: next, ...(key === 'durationMonths' ? { period: undefined } : {}) } });
   const numeric = (key: keyof EmploymentSettings, label: string, min: number, max: number, step = .1) => <label>{t(label)}<input type="number" min={min} max={max} step={step} value={Number(p[key])} onChange={event => update(key, event.target.valueAsNumber || 0)} /></label>;
   return <>
     <section className="form-section employment-fields">

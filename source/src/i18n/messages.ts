@@ -2787,5 +2787,569 @@ export default {
   "Versão 1.3 · Referência jurídica: 15/11/2026": {
     "es": "Versión 1.3 · Referencia jurídica: 15/11/2026",
     "en": "Version 1.3 · Legal reference: 15 Nov 2026"
+  },
+  "Operação dos novos contratos": {
+    "es": "Operación de los nuevos contratos",
+    "en": "New contract operating costs"
+  },
+  "Verbas de encerramento": {
+    "es": "Conceptos de liquidación",
+    "en": "Termination payments"
+  },
+  "Direitos acumulados sem desligamento": {
+    "es": "Derechos acumulados sin desvinculación",
+    "en": "Accrued entitlements without termination"
+  },
+  "Total do período": {
+    "es": "Total del período",
+    "en": "Period total"
+  },
+  "Detalhamento das verbas": {
+    "es": "Detalle de los conceptos",
+    "en": "Payment breakdown"
+  },
+  "Já incluído; não somar": {
+    "es": "Ya incluido; no sumar",
+    "en": "Already included; do not add"
+  },
+  "Direitos acumulados": {
+    "es": "Derechos acumulados",
+    "en": "Accrued entitlements"
+  },
+  "Custo total e verbas de encerramento": {
+    "es": "Costo total y liquidación",
+    "en": "Total cost and termination payments"
+  },
+  "Quadro atual e custos comuns do período": {
+    "es": "Plantilla actual y costos comunes del período",
+    "en": "Existing workforce and common period costs"
+  },
+  "HE do quadro atual no período": {
+    "es": "Horas extras de la plantilla actual en el período",
+    "en": "Existing workforce overtime during the period"
+  },
+  "Dias de aviso indenizado": {
+    "es": "Días de preaviso indemnizado",
+    "en": "Days of pay in lieu of notice"
+  },
+  "Projeção do vínculo": {
+    "es": "Proyección de la relación laboral",
+    "en": "Projected employment end"
+  },
+  "Compare o custo de todo o período, incluindo encargos, rescisão e horas extras, entre alternativas que cobrem a mesma demanda.": {
+    "es": "Compare el costo de todo el período, incluidas cargas, liquidación y horas extras, entre alternativas que cubren la misma demanda.",
+    "en": "Compare full-period costs, including employer charges, termination and overtime, across alternatives covering the same demand."
+  },
+  "Base da indicação": {
+    "es": "Base de la recomendación",
+    "en": "Recommendation basis"
+  },
+  "Total do período + rescisão": {
+    "es": "Total del período + liquidación",
+    "en": "Period total + termination"
+  },
+  "Equivalência mensal": {
+    "es": "Equivalencia mensual",
+    "en": "Monthly equivalent"
+  },
+  "Menor custo total estimado no período": {
+    "es": "Menor costo total estimado del período",
+    "en": "Lowest estimated total period cost"
+  },
+  "Economia no período frente à próxima alternativa elegível": {
+    "es": "Ahorro del período frente a la siguiente alternativa válida",
+    "en": "Period savings against the next eligible option"
+  },
+  "Total do período sem HE": {
+    "es": "Total del período sin horas extras",
+    "en": "Period total without overtime"
+  },
+  "Total do período com HE": {
+    "es": "Total del período con horas extras",
+    "en": "Period total with overtime"
+  },
+  "O total soma custos comuns, operação dos novos contratos, HE, encerramento e direitos acumulados. Não soma de novo o saldo salarial, férias e 13º já pagos nem a reserva rescisória genérica dos novos contratos. Valores brutos estimados; INSS e IR do empregado são retenções, não custos adicionais. Abra o detalhamento de cada alternativa. Deslize a tabela no celular.": {
+    "es": "El total suma costos comunes, operación de nuevos contratos, horas extras, liquidación y derechos acumulados. No duplica salarios pendientes, vacaciones ni 13.º ya pagados, ni la reserva genérica de liquidación de nuevos contratos. Importes brutos estimados; INSS e IR del empleado son retenciones, no costos adicionales. Abra el detalle de cada alternativa. Deslice la tabla en el móvil.",
+    "en": "The total adds common costs, new contract operations, overtime, termination and accrued entitlements. It does not double-count salary balances, previously paid vacation or 13th salary, or generic termination reserves for new contracts. Estimated gross amounts; employee INSS and income tax are withholdings, not additional costs. Open each alternative's breakdown. Swipe the table on mobile."
+  },
+  "Período completo e encerramento dos novos contratos": {
+    "es": "Período completo y finalización de nuevos contratos",
+    "en": "Full period and termination of new contracts"
+  },
+  "Início da demanda / admissão": {
+    "es": "Inicio de la demanda / contratación",
+    "en": "Demand start / hiring date"
+  },
+  "Último dia da demanda": {
+    "es": "Último día de la demanda",
+    "en": "Last day of demand"
+  },
+  "Condições de encerramento · opcional": {
+    "es": "Condiciones de finalización · opcional",
+    "en": "Termination conditions · optional"
+  },
+  "Término previsto · safra e pequeno prazo": {
+    "es": "Fin previsto · cosecha y plazo rural corto",
+    "en": "Planned end · harvest and short rural contracts"
+  },
+  "Ao final da demanda": {
+    "es": "Al finalizar la demanda",
+    "en": "At the end of demand"
+  },
+  "Empresa encerra: término normal ou dispensa antecipada": {
+    "es": "La empresa finaliza: vencimiento normal o despido anticipado",
+    "en": "Employer ends employment: normal expiry or early dismissal"
+  },
+  "Empregado pede desligamento": {
+    "es": "El empleado solicita la baja",
+    "en": "Employee resigns"
+  },
+  "Vínculo continua: mostrar direitos acumulados": {
+    "es": "La relación continúa: mostrar derechos acumulados",
+    "en": "Employment continues: show accrued entitlements"
+  },
+  "Contratos a prazo têm cláusula recíproca de rescisão antecipada · art. 481": {
+    "es": "Los contratos a plazo tienen cláusula recíproca de rescisión anticipada · art. 481",
+    "en": "Fixed-term contracts include a reciprocal early-termination clause · art. 481"
+  },
+  "A experiência termina na admissão + dias de experiência. Se a demanda acabar antes, a empresa simula rescisão antecipada; se acabar depois, a modalidade fica impedida. Confirme o evento de término da safra.": {
+    "es": "El período de prueba termina en la fecha de contratación + días de prueba. Si la demanda acaba antes, se simula rescisión anticipada; si acaba después, la modalidad no es válida. Confirme el evento que finaliza la cosecha.",
+    "en": "Probation ends at hiring date + probation days. If demand ends earlier, early termination is simulated; if later, this contract is ineligible. Confirm the event ending the harvest."
+  },
+  "Aviso devido é simulado como indenizado. O quadro atual permanece empregado. Salário e alíquotas são mantidos constantes; a cobertura semanal e as HE são projetadas para o período. Períodos de 12 meses ou mais exigem planejamento de férias e substituições antes da indicação.": {
+    "es": "El preaviso debido se simula como indemnizado. La plantilla actual continúa empleada. Salario y tasas permanecen constantes; cobertura semanal y horas extras se proyectan al período. Períodos de 12 meses o más exigen planificación de vacaciones y sustituciones antes de recomendar.",
+    "en": "Any notice owed is modeled as pay in lieu. Existing staff remain employed. Pay and tax rates stay constant; weekly coverage and overtime are projected across the period. Periods of 12 months or longer require vacation and replacement planning before a recommendation."
+  },
+  "Para uma necessidade permanente, sem data prevista para acabar. A dispensa pela empresa pode gerar aviso prévio e multa do FGTS.": {
+    "es": "Para una necesidad permanente, sin fecha prevista de finalización. El despido por la empresa puede generar preaviso e indemnización del FGTS.",
+    "en": "For an ongoing need without a planned end. Employer dismissal may require notice pay and an FGTS penalty."
+  },
+  "Para atividade rural ligada à safra. O término acompanha o ciclo da atividade; não é um prazo escolhido apenas para reduzir custos.": {
+    "es": "Para actividad rural ligada a la cosecha. El fin sigue el ciclo de la actividad; no es un plazo elegido solo para reducir costos.",
+    "en": "For rural work linked to a harvest. Its end follows the activity cycle; the term cannot be chosen solely to reduce costs."
+  },
+  "Para avaliar uma nova relação de trabalho, por até 90 dias. Não cabe repetir experiência na mesma função já exercida para o empregador.": {
+    "es": "Para evaluar una nueva relación laboral, hasta 90 días. No corresponde repetir la prueba en la misma función ya ejercida para el empleador.",
+    "en": "To assess a new employment relationship for up to 90 days. Probation cannot be repeated for the same role already performed for the employer."
+  },
+  "Para trabalho com alternância real entre atividade e inatividade. As convocações podem ser recusadas; férias e 13º proporcionais são pagos por período.": {
+    "es": "Para trabajo con alternancia real entre actividad e inactividad. Las convocatorias pueden rechazarse; vacaciones y 13.º proporcionales se pagan por período.",
+    "en": "For work with genuine alternation between activity and inactivity. Call-ups may be refused; proportional vacation and 13th salary are paid per work period."
+  },
+  "É uma jornada reduzida. Neste simulador, até 30h por semana sem horas extras; pode atender necessidades permanentes.": {
+    "es": "Es una jornada reducida. En este simulador, hasta 30h semanales sin horas extras; puede atender necesidades permanentes.",
+    "en": "A reduced workweek. This simulator models up to 30h weekly without overtime; it can meet ongoing needs."
+  },
+  "Exclusivo do produtor rural pessoa física, para atividade temporária, limitado a dois meses dentro de um ano.": {
+    "es": "Exclusivo del productor rural persona física, para actividad temporal, limitado a dos meses dentro de un año.",
+    "en": "Exclusive to individual rural producers for temporary work, limited to two months within one year."
+  },
+  "A jornada necessária supera 30h por semana nesta modalidade.": {
+    "es": "La jornada necesaria supera 30h semanales en esta modalidad.",
+    "en": "Required hours exceed 30h weekly for this option."
+  },
+  "A demanda supera as horas de convocação informadas por empregado.": {
+    "es": "La demanda supera las horas de convocatoria informadas por empleado.",
+    "en": "Demand exceeds the stated call-up hours per employee."
+  },
+  "Simulação de contratos rurais": {
+    "es": "Simulación de contratos rurales",
+    "en": "Rural contract simulation"
+  },
+  "Escolha os contratos que deseja comparar. O resultado mostra o custo das novas admissões durante o período e no encerramento.": {
+    "es": "Elija los contratos que desea comparar. El resultado muestra el costo de nuevas contrataciones durante el período y al finalizar.",
+    "en": "Choose which contracts to compare. Results show new hiring costs during the period and at termination."
+  },
+  "1. Quem contrata e qual é a necessidade?": {
+    "es": "1. ¿Quién contrata y cuál es la necesidad?",
+    "en": "1. Who is hiring and what is needed?"
+  },
+  "Empresa rural · pessoa jurídica": {
+    "es": "Empresa rural · persona jurídica",
+    "en": "Rural company · legal entity"
+  },
+  "Novas pessoas a contratar": {
+    "es": "Nuevas personas a contratar",
+    "en": "New people to hire"
+  },
+  "Salário mensal de referência · R$": {
+    "es": "Salario mensual de referencia · R$",
+    "en": "Reference monthly salary · R$"
+  },
+  "Horas necessárias por pessoa/semana": {
+    "es": "Horas necesarias por persona/semana",
+    "en": "Required hours per person/week"
+  },
+  "Referência de 40h para comparar as novas admissões. Mensalistas integrais recebem o salário completo; parcial e intermitente usam a proporção da jornada. O custo não inclui a equipe que a empresa já possui.": {
+    "es": "Referencia de 40h para comparar nuevas contrataciones. Los empleados a tiempo completo reciben el salario completo; parcial e intermitente usan la proporción de horas. El costo no incluye la plantilla actual.",
+    "en": "A 40h reference is used to compare new hires. Full-time monthly employees receive the full salary; part-time and intermittent pay follows the hours ratio. Costs exclude existing staff."
+  },
+  "2. Quais contratos você quer comparar?": {
+    "es": "2. ¿Qué contratos desea comparar?",
+    "en": "2. Which contracts do you want to compare?"
+  },
+  "Como funciona?": {
+    "es": "¿Cómo funciona?",
+    "en": "How does it work?"
+  },
+  "Conferir encargos e condições dos contratos": {
+    "es": "Revisar cargas y condiciones de los contratos",
+    "en": "Review employer charges and contract conditions"
+  },
+  "3. Qual é o custo total?": {
+    "es": "3. ¿Cuál es el costo total?",
+    "en": "3. What is the total cost?"
+  },
+  "Informe uma quantidade válida de pessoas e horas.": {
+    "es": "Introduzca una cantidad válida de personas y horas.",
+    "en": "Enter valid headcount and working hours."
+  },
+  "Valores estimados. Confira os encargos e marque a confirmação para indicar a opção de menor custo.": {
+    "es": "Importes estimados. Revise las cargas y confirme para indicar la opción de menor costo.",
+    "en": "Estimated amounts. Review employer charges and confirm them to identify the lowest-cost option."
+  },
+  "Nenhum dos contratos selecionados atende às condições informadas.": {
+    "es": "Ningún contrato seleccionado cumple las condiciones indicadas.",
+    "en": "None of the selected contracts meets the stated conditions."
+  },
+  "Durante o período": {
+    "es": "Durante el período",
+    "en": "During the period"
+  },
+  "No encerramento": {
+    "es": "Al finalizar",
+    "en": "At termination"
+  },
+  "Verificar condições": {
+    "es": "Revisar condiciones",
+    "en": "Review conditions"
+  },
+  "Direitos acumulados, sem desligamento": {
+    "es": "Derechos acumulados, sin desvinculación",
+    "en": "Accrued entitlements, no termination"
+  },
+  "Ver detalhes": {
+    "es": "Ver detalles",
+    "en": "View details"
+  },
+  "Só entram na indicação contratos compatíveis com a mesma necessidade e jornada. Valores de opções impedidas são ilustrativos. O saldo salarial já está nos salários do período e não é somado novamente.": {
+    "es": "Solo se recomiendan contratos compatibles con la misma necesidad y jornada. Los importes de opciones no válidas son ilustrativos. El saldo salarial ya está incluido en los salarios del período y no se suma otra vez.",
+    "en": "Only contracts meeting the same need and hours can be recommended. Costs for ineligible options are illustrative. Final salary balances are already included in period wages and are not added again."
+  },
+  "Contratar em tempo parcial": {
+    "es": "Contratar a tiempo parcial",
+    "en": "Hire part-time"
+  },
+  "Contratar em tempo integral": {
+    "es": "Contratar a tiempo completo",
+    "en": "Hire full-time"
+  },
+  "Horas extras + contratação complementar": {
+    "es": "Horas extras + contratación complementaria",
+    "en": "Overtime + supplementary hires"
+  },
+  "Veja o impacto na sua empresa": {
+    "es": "Vea el impacto en su empresa",
+    "en": "See the impact on your business"
+  },
+  "A partir de 16/12/2026": {
+    "es": "A partir del 16/12/2026",
+    "en": "From 16 Dec 2026"
+  },
+  "A partir de 16/12/2027": {
+    "es": "A partir del 16/12/2027",
+    "en": "From 16 Dec 2027"
+  },
+  "Até 8h24 por dia na transição": {
+    "es": "Hasta 8h24 al día durante la transición",
+    "en": "Up to 8h24 daily during transition"
+  },
+  "Até 8h por dia": {
+    "es": "Hasta 8h al día",
+    "en": "Up to 8h daily"
+  },
+  "Regra da liminar: na falta de ACT/CCT celebrado até 15/12/2026, a transição admite 8h24 por dia sem adicional pelos 24 minutos. Havendo instrumento coletivo, confira suas cláusulas.": {
+    "es": "Regla cautelar: sin ACT/CCT celebrado hasta el 15/12/2026, la transición permite 8h24 diarias sin recargo por los 24 minutos. Si existe instrumento colectivo, revise sus cláusulas.",
+    "en": "Injunction rule: without an ACT/CCT concluded by 15 Dec 2026, the transition permits 8h24 daily without overtime premium for the 24 minutes. If a collective instrument exists, review its terms."
+  },
+  "Custo adicional por mês, com os encargos informados. A equipe atual mantém o salário.": {
+    "es": "Costo adicional mensual con las cargas indicadas. La plantilla actual mantiene su salario.",
+    "en": "Additional monthly cost including the stated charges. Existing staff keep their salary."
+  },
+  "A equipe atual cobre a demanda nesta sugestão.": {
+    "es": "La plantilla actual cubre la demanda en esta propuesta.",
+    "en": "Existing staff cover demand in this proposed schedule."
+  },
+  "Menor custo estimado": {
+    "es": "Menor costo estimado",
+    "en": "Lowest estimated cost"
+  },
+  "Ajuste os horários ou confira as autorizações para cobrir toda a demanda.": {
+    "es": "Ajuste horarios o revise autorizaciones para cubrir toda la demanda.",
+    "en": "Adjust schedules or review authorizations to cover all demand."
+  },
+  "adicionais por mês": {
+    "es": "adicionales por mes",
+    "en": "additional per month"
+  },
+  "O que falta conferir?": {
+    "es": "¿Qué falta revisar?",
+    "en": "What still needs checking?"
+  },
+  "Estimativa com percentual global de encargos, como na referência CNC. Não inclui rescisão nem substituição de férias. O menor custo exige cobertura integral nesta sugestão; confirme os encargos com a contabilidade.": {
+    "es": "Estimación con porcentaje global de cargas, como en la referencia CNC. No incluye liquidación ni sustitución durante vacaciones. El menor costo exige cobertura integral en esta propuesta; confirme las cargas con contabilidad.",
+    "en": "Estimate using a global employer-charge percentage, as in the CNC reference. Excludes termination and vacation replacement costs. Lowest cost requires complete coverage in this proposed schedule; confirm charges with your accountant."
+  },
+  "Ver cobertura por horário e sugestão de escala": {
+    "es": "Ver cobertura por horario y propuesta de turnos",
+    "en": "View hourly coverage and proposed schedule"
+  },
+  "Dados da empresa · opcional": {
+    "es": "Datos de la empresa · opcional",
+    "en": "Company details · optional"
+  },
+  "Encargos estimados sobre o salário · %": {
+    "es": "Cargas estimadas sobre el salario · %",
+    "en": "Estimated charges on salary · %"
+  },
+  "Comparar horas extras": {
+    "es": "Comparar horas extras",
+    "en": "Compare overtime"
+  },
+  "Até 2h extras por dia, com limite de 10h de trabalho e preservação de intervalos e folgas. Na jornada de 8h24, a extensão fica limitada a 1h36 neste modelo.": {
+    "es": "Hasta 2h extras al día, con límite de 10h trabajadas y preservación de pausas y descansos. Con jornada de 8h24, la extensión se limita a 1h36 en este modelo.",
+    "en": "Up to 2h overtime daily, with a 10h work limit and protected breaks and rest days. For an 8h24 day, this model caps extensions at 1h36."
+  },
+  "Ajustes e condições especiais": {
+    "es": "Ajustes y condiciones especiales",
+    "en": "Adjustments and special conditions"
+  },
+  "O contrato a prazo termina antes da demanda. A continuidade exige novo planejamento.": {
+    "es": "El contrato a plazo termina antes que la demanda. La continuidad exige nueva planificación.",
+    "en": "The fixed-term contract ends before demand does. Continuing requires new planning."
+  },
+  "Rescisão antecipada de safra exige revisão da causa e das indenizações antes da indicação.": {
+    "es": "La rescisión anticipada de cosecha exige revisar causa e indemnizaciones antes de recomendar.",
+    "en": "Early harvest termination requires review of its grounds and indemnities before a recommendation."
+  },
+  "O percentual global não permite separar encargos e verbas sem duplicidade. Use encargos discriminados para indicar o menor custo total.": {
+    "es": "El porcentaje global no permite separar cargas y conceptos sin duplicidad. Use cargas desglosadas para indicar el menor costo total.",
+    "en": "A global percentage cannot separate charges and payments without duplication. Use itemized charges to identify the lowest total cost."
+  },
+  "Informe os períodos anteriores por calendário com a assessoria antes de concluir o custo do pequeno prazo.": {
+    "es": "Revise los períodos anteriores por calendario con su asesoría antes de concluir el costo del plazo corto.",
+    "en": "Review prior periods by calendar with your adviser before concluding short-term rural costs."
+  },
+  "Período de 12 meses ou mais exige planejamento de férias e substituições. O custo é ilustrativo e fica fora da indicação.": {
+    "es": "Un período de 12 meses o más exige planificar vacaciones y sustituciones. El costo es ilustrativo y no participa en la recomendación.",
+    "en": "Periods of 12 months or longer require vacation and replacement planning. Costs are illustrative and excluded from recommendations."
+  },
+  "Salários do período": {
+    "es": "Salarios del período",
+    "en": "Period wages"
+  },
+  "13º proporcional pago durante o período": {
+    "es": "13.º proporcional pagado durante el período",
+    "en": "Proportional 13th salary paid during the period"
+  },
+  "Férias proporcionais e terço pagos durante o período": {
+    "es": "Vacaciones proporcionales y tercio pagados durante el período",
+    "en": "Proportional vacation and one-third supplement paid during the period"
+  },
+  "Aviso prévio indenizado": {
+    "es": "Preaviso indemnizado",
+    "en": "Pay in lieu of notice"
+  },
+  "Pequeno prazo com cláusula de rescisão recíproca exige cálculo específico da projeção do aviso.": {
+    "es": "El plazo corto con cláusula recíproca exige cálculo específico de la proyección del preaviso.",
+    "en": "Short rural contracts with a reciprocal termination clause require a specific notice projection calculation."
+  },
+  "13º de anos anteriores pago no período": {
+    "es": "13.º de años anteriores pagado en el período",
+    "en": "Prior-year 13th salary paid during the period"
+  },
+  "13º proporcional no encerramento": {
+    "es": "13.º proporcional en la liquidación",
+    "en": "Proportional 13th salary at termination"
+  },
+  "Férias adquiridas e proporcionais indenizadas": {
+    "es": "Vacaciones adquiridas y proporcionales indemnizadas",
+    "en": "Accrued and proportional vacation paid in lieu"
+  },
+  "Terço das férias indenizadas": {
+    "es": "Tercio de vacaciones indemnizadas",
+    "en": "One-third supplement on vacation paid in lieu"
+  },
+  "Encargos patronais sobre pagamentos do período": {
+    "es": "Cargas patronales sobre pagos del período",
+    "en": "Employer charges on period payments"
+  },
+  "FGTS dos pagamentos do período": {
+    "es": "FGTS de los pagos del período",
+    "en": "FGTS on period payments"
+  },
+  "Benefícios do período": {
+    "es": "Beneficios del período",
+    "en": "Period benefits"
+  },
+  "Encargos patronais sobre o 13º do encerramento": {
+    "es": "Cargas patronales sobre el 13.º de la liquidación",
+    "en": "Employer charges on termination 13th salary"
+  },
+  "FGTS sobre o 13º do encerramento": {
+    "es": "FGTS sobre el 13.º de la liquidación",
+    "en": "FGTS on termination 13th salary"
+  },
+  "FGTS sobre aviso indenizado": {
+    "es": "FGTS sobre preaviso indemnizado",
+    "en": "FGTS on pay in lieu of notice"
+  },
+  "Multa de 40% do FGTS": {
+    "es": "Indemnización del 40% del FGTS",
+    "en": "40% FGTS termination penalty"
+  },
+  "Indenização por término antecipado · art. 479": {
+    "es": "Indemnización por finalización anticipada · art. 479",
+    "en": "Early-termination indemnity · art. 479"
+  },
+  "Indenização de safra · art. 14": {
+    "es": "Indemnización de cosecha · art. 14",
+    "en": "Harvest indemnity · art. 14"
+  },
+  "Saída antecipada pelo empregado: eventual art. 480 depende de prejuízo comprovado e não é abatido automaticamente.": {
+    "es": "Salida anticipada del empleado: el eventual art. 480 depende de perjuicio probado y no se descuenta automáticamente.",
+    "en": "Early employee departure: any art. 480 damages require proven loss and are not deducted automatically."
+  },
+  "Saldo salarial final · já incluído nos salários": {
+    "es": "Saldo salarial final · ya incluido en salarios",
+    "en": "Final salary balance · already included in wages"
+  },
+  "Revise as datas e as condições de encerramento.": {
+    "es": "Revise fechas y condiciones de finalización.",
+    "en": "Review dates and termination conditions."
+  },
+  "Base de comparação inválida.": {
+    "es": "Base de comparación no válida.",
+    "en": "Invalid comparison basis."
+  },
+  "Simulador 5 × 2": {
+    "es": "Simulador 5 × 2",
+    "en": "5 × 2 simulator"
+  },
+  "Simulação de contratos": {
+    "es": "Simulación de contratos",
+    "en": "Contract simulation"
+  },
+  "Estimativa mensal com encargos globais. Consulte o comparativo na tela.": {
+    "es": "Estimación mensual con cargas globales. Consulte la comparación en pantalla.",
+    "en": "Monthly estimate with global charges. See the on-screen comparison."
+  },
+  "Comparação avançada: demanda, contratos e horas extras": {
+    "es": "Comparación avanzada: demanda, contratos y horas extras",
+    "en": "Advanced comparison: demand, contracts and overtime"
+  },
+  "Consultar regras de contratação rural": {
+    "es": "Consultar reglas de contratación rural",
+    "en": "View rural hiring rules"
+  },
+  "Versão 1.4 · Referência jurídica: 15/11/2026": {
+    "es": "Versión 1.4 · Referencia jurídica: 15/11/2026",
+    "en": "Version 1.4 · Legal reference: 15 Nov 2026"
+  },
+  "Ver horas extras por dia": {
+    "es": "Ver horas extras por día",
+    "en": "View daily overtime"
+  },
+  "Caminho selecionado para exportar": {
+    "es": "Alternativa seleccionada para exportar",
+    "en": "Selected option for export"
+  },
+  "Usar este caminho na exportação": {
+    "es": "Usar esta alternativa en la exportación",
+    "en": "Use this option for export"
+  },
+  "Contrato": {
+    "es": "Contrato",
+    "en": "Contract"
+  },
+  "Detalhes": {
+    "es": "Detalles",
+    "en": "Details"
+  },
+  "a menos na equipe por semana": {
+    "es": "menos en la plantilla por semana",
+    "en": "less across the workforce per week"
+  },
+  "ainda precisam de cobertura": {
+    "es": "aún requieren cobertura",
+    "en": "still need coverage"
+  },
+  "por pessoa/semana": {
+    "es": "por persona/semana",
+    "en": "per person/week"
+  },
+  "ainda descobertas por semana": {
+    "es": "aún sin cubrir por semana",
+    "en": "still uncovered per week"
+  },
+  "Pagar horas extras": {
+    "es": "Pagar horas extras",
+    "en": "Pay overtime"
+  },
+  "de HE por mês": {
+    "es": "de horas extras por mes",
+    "en": "overtime per month"
+  },
+  "Menor referência de custo por horas": {
+    "es": "Menor costo de referencia por horas",
+    "en": "Lowest hours-based cost estimate"
+  },
+  "O regime exige análise específica antes de indicar um caminho.": {
+    "es": "El régimen exige análisis específico antes de recomendar una alternativa.",
+    "en": "This arrangement requires specific review before recommending an option."
+  },
+  "Ver viabilidade das horas extras": {
+    "es": "Ver viabilidad de horas extras",
+    "en": "Check overtime feasibility"
+  },
+  "Referência por volume de horas, como na CNC: o custo parcial é proporcional às horas faltantes; o integral usa pessoas inteiras. Não garante que essas pessoas cubram todos os horários. A escala pode exigir mais contratações. HE só entra na indicação se couber nos limites e cobrir a demanda.": {
+    "es": "Referencia por volumen de horas, como en CNC: el costo parcial es proporcional a las horas faltantes; el completo usa personas enteras. No garantiza cobertura de todos los horarios. Los turnos pueden exigir más contrataciones. Las horas extras solo se recomiendan si respetan los límites y cubren la demanda.",
+    "en": "Hours-based reference, as in CNC: part-time cost is proportional to missing hours; full-time cost uses whole people. It does not guarantee coverage at every time. Scheduling may require more hires. Overtime is recommended only when it meets limits and covers demand."
+  },
+  "Referência por volume de horas": {
+    "es": "Referencia por volumen de horas",
+    "en": "Hours-based cost reference"
+  },
+  "Escala da equipe atual · CSV": {
+    "es": "Turnos de la plantilla actual · CSV",
+    "en": "Existing staff schedule · CSV"
+  },
+  "Tributos sobre receita e outros custos comuns": {
+    "es": "Tributos sobre ingresos y otros costos comunes",
+    "en": "Revenue taxes and other common costs"
+  },
+  "Informe receita e alíquota efetiva para comparar o custo total neste enquadramento.": {
+    "es": "Informe ingresos y tasa efectiva para comparar el costo total en este régimen.",
+    "en": "Enter revenue and the effective rate to compare total costs under this tax profile."
+  },
+  "Quantas pessoas precisam trabalhar ao mesmo tempo em cada dia?": {
+    "es": "¿Cuántas personas deben trabajar al mismo tiempo cada día?",
+    "en": "How many people need to work at the same time each day?"
+  },
+  "Como preencher os horários?": {
+    "es": "¿Cómo completar los horarios?",
+    "en": "How do I enter operating hours?"
+  },
+  "Salvar, importar ou restaurar cenário": {
+    "es": "Guardar, importar o restaurar escenario",
+    "en": "Save, import or restore a scenario"
+  },
+  "Duas simulações separadas": {
+    "es": "Dos simulaciones separadas",
+    "en": "Two separate simulations"
+  },
+  "A aba 5 × 2 compara referências mensais por volume de horas, como na CNC. A aba de contratos compara novas admissões no período completo, incluindo encargos e encerramento. O detalhamento avançado verifica a cobertura por escala e permite combinar contratação com horas extras.": {
+    "es": "La pestaña 5 × 2 compara referencias mensuales por volumen de horas, como CNC. La de contratos compara nuevas contrataciones durante todo el período, con cargas y liquidación. El detalle avanzado verifica cobertura de turnos y permite combinar contratación con horas extras.",
+    "en": "The 5 × 2 tab compares monthly hours-based estimates, as in CNC. The contract tab compares new hires over the full period, including charges and termination. Advanced details check scheduled coverage and allow combining hiring with overtime."
   }
 };

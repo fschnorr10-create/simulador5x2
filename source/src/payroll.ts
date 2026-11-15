@@ -1,3 +1,5 @@
+import type { PeriodSettings } from './periodDates.ts';
+import { parseDate, addMonths, daysBetween, validatePeriod } from './periodDates.ts';
 export const MINIMUM_WAGE_2026 = 1621;
 export const costSources = {
   minimum: 'https://www.gov.br/planalto/pt-br/acompanhe-o-planalto/noticias/2025/12/publicado-decreto-que-reajusta-salario-minimo-para-r-1-621-a-partir-de-1o-de-janeiro',
@@ -11,6 +13,11 @@ export const costSources = {
 export type ContractType = 'indefinite' | 'harvest' | 'experience' | 'intermittent' | 'partial' | 'short';
 export type TaxProfile = 'normal' | 'simples' | 'simplesIV' | 'ruralRevenue' | 'cebas' | 'custom';
 export interface EmploymentSettings {
+  period?: PeriodSettings;
+  comparisonBasis?: 'period' | 'monthly';
+  contractHeadcount?: number;
+  contractHours?: number;
+  comparedContracts?: ContractType[];
   contract: ContractType;
   employer: 'pf' | 'pj';
   need: 'continuous' | 'harvest' | 'temporary' | 'alternating';
@@ -69,14 +76,21 @@ export function validateEmploymentSettings(input: unknown): string[] {
   for (const key of ['priorSameRole', 'partTime', 'intermittentConfirmed', 'overtimeEnabled', 'overtimeAuthorized', 'taxConfirmed']) if (typeof p[key] !== 'boolean') errors.push('Revise as confirmações das premissas.');
   if (p.preferredStrategy !== undefined && !['hiring', 'hybrid'].includes(String(p.preferredStrategy))) errors.push('Estratégia de cobertura inválida.');
   if (!Number.isInteger(p.experienceDays)) errors.push('O prazo de experiência deve ser informado em dias inteiros.');
+  if (p.contractHeadcount !== undefined && (!Number.isInteger(p.contractHeadcount) || Number(p.contractHeadcount) < 1 || Number(p.contractHeadcount) > 100)) errors.push('Informe uma quantidade válida de pessoas e horas.');
+  if (p.contractHours !== undefined && (typeof p.contractHours !== 'number' || !Number.isFinite(p.contractHours) || p.contractHours <= 0 || p.contractHours > 40)) errors.push('Informe uma quantidade válida de pessoas e horas.');
+  if (p.comparedContracts !== undefined && (!Array.isArray(p.comparedContracts) || p.comparedContracts.length > 6 || new Set(p.comparedContracts).size !== p.comparedContracts.length || p.comparedContracts.some(value => !Object.keys(contractNames).includes(String(value))))) errors.push('Revise a modalidade e o enquadramento da contratação.');
+  if (p.period !== undefined) errors.push(...validatePeriod(p.period));
+  if (p.comparisonBasis !== undefined && !['period', 'monthly'].includes(String(p.comparisonBasis))) errors.push('Base de comparação inválida.');
   return [...new Set(errors)];
 }
 export function contractIssues(p: EmploymentSettings, sector: string): string[] {
   const issues: string[] = [];
-  if (p.contract === 'experience' && p.durationMonths * 30 > p.experienceDays) issues.push('O prazo de experiência não cobre todo o período informado. A continuidade exige conversão e novo planejamento.');
+  const periodDays = p.period && !validatePeriod(p.period).length ? daysBetween(parseDate(p.period.start)!, parseDate(p.period.end)!) + 1 : p.durationMonths * 30;
+  if (p.contract === 'experience' && periodDays > p.experienceDays) issues.push('O prazo de experiência não cobre todo o período informado. A continuidade exige conversão e novo planejamento.');
   if (p.contract === 'experience' && p.priorSameRole) issues.push('Experiência bloqueada: o empregado já trabalhou na mesma função para este empregador. Eventual exceção coletiva exige análise jurídica específica.');
   if (p.contract === 'harvest' && (sector !== 'rural' || p.need !== 'harvest')) issues.push('Safra exige atividade rural e necessidade vinculada à variação estacional.');
-  if (p.contract === 'short' && (sector !== 'rural' || p.employer !== 'pf' || p.need !== 'temporary' || p.durationMonths + p.previousShortMonths > 2)) issues.push('Pequeno prazo exige produtor rural pessoa física, atividade temporária e limite acumulado de dois meses em um ano.');
+  const shortTooLong = p.period && !validatePeriod(p.period).length ? periodDays > daysBetween(parseDate(p.period.start)!, addMonths(parseDate(p.period.start)!, 2)) || (p.previousShortMonths > 0 && p.durationMonths + p.previousShortMonths > 2) : p.durationMonths + p.previousShortMonths > 2;
+  if (p.contract === 'short' && (sector !== 'rural' || p.employer !== 'pf' || p.need !== 'temporary' || shortTooLong)) issues.push('Pequeno prazo exige produtor rural pessoa física, atividade temporária e limite acumulado de dois meses em um ano.');
   if (p.contract === 'intermittent' && (!p.intermittentConfirmed || p.need !== 'alternating')) issues.push('Intermitente exige alternância real de atividade e inatividade, contrato escrito e confirmação das condições de convocação.');
   return issues;
 }

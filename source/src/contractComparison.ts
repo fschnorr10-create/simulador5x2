@@ -1,3 +1,6 @@
+import { contractPeriodCost, planningPeriod } from './periodCost.ts';
+import type { PeriodCost } from './periodCost.ts';
+import { parseDate, salaryMonths } from './periodDates.ts';
 import type { Calculation, Scenario } from './types.ts';
 import type { ContractType, EmploymentSettings } from './payroll.ts';
 import { contractNames } from './payroll.ts';
@@ -28,6 +31,11 @@ export interface ComparisonOption {
   eligible: boolean;
   reasons: string[];
   hiring?: HiringPlan;
+  period?: PeriodCost;
+  periodAdded?: number;
+  periodTotal?: number;
+  basePeriod?: number;
+  overtimePeriod?: number;
 }
 export interface ComparisonRow {
   variant: ContractVariant;
@@ -42,7 +50,10 @@ export function compareAllContracts(scenario: Scenario, result: Calculation, ana
   const normalCache: HiringScheduleCache = new Map();
   const extraCache: HiringScheduleCache = new Map();
   const { p, overtime, currentMonthly } = analysis;
-  const taxReady = p.taxConfirmed && (p.taxProfile !== 'ruralRevenue' || (p.monthlyRevenue > 0 && p.revenueRate > 0));
+  const basis = p.comparisonBasis ?? 'period';
+  const period = planningPeriod(p);
+  const months = salaryMonths(parseDate(period.start)!, parseDate(period.end)!);
+  const taxReady = (basis !== 'period' || p.taxProfile !== 'custom') && p.taxConfirmed && (p.taxProfile !== 'ruralRevenue' || (p.monthlyRevenue > 0 && p.revenueRate > 0));
   const rows: ComparisonRow[] = contractVariants.map(variant => {
     const settings = { ...p, contract: variant.contract, partTime: variant.partTime };
     const alternative = { ...scenario, planning: settings };
@@ -66,12 +77,27 @@ export function compareAllContracts(scenario: Scenario, result: Calculation, ana
     totalCost: currentMonthly + overtime.cost, remaining: overtime.remaining, eligible: !overtimeReasons.length, reasons: overtimeReasons };
   const current: ComparisonOption = { id: 'current-only', kind: 'current', newPeople: 0, extraHours: 0, addedCost: 0, totalCost: currentMonthly,
     remaining: result.gap, eligible: hasFullCoverage(result.gap) && !analysis.contextIssues.length, reasons: [...analysis.contextIssues, ...(hasFullCoverage(result.gap) ? [] : ['A alternativa deixa demanda descoberta no modelo de escala.'])] };
+  const allOptions = [current, overtimeOnly, ...rows.flatMap(row => [row.hiring, row.hybrid])];
+  for (const option of allOptions) {
+    const settings = option.variant ? { ...p, contract: option.variant.contract, partTime: option.variant.partTime } : p;
+    const costs = contractPeriodCost(option.hiring?.payroll?.salary ?? 0, option.newPeople, settings);
+    option.period = costs;
+    option.basePeriod = currentMonthly * months;
+    option.overtimePeriod = (option.kind === 'hybrid' || option.kind === 'overtime' ? overtime.cost : 0) * months;
+    option.periodAdded = costs.total + option.overtimePeriod;
+    option.periodTotal = option.basePeriod + option.periodAdded;
+    if (basis === 'period' && option.newPeople > 0 && costs.reasons.length) {
+      option.reasons = [...new Set([...option.reasons, ...costs.reasons])];
+      option.eligible = false;
+    }
+  }
+  const rankCost = (option: ComparisonOption) => basis === 'period' ? option.periodTotal! : option.totalCost;
   const candidates = current.eligible ? [current] : [overtimeOnly, ...rows.flatMap(row => [row.hiring, row.hybrid])].filter(option => option.eligible);
-  candidates.sort((a, b) => moneyInCents(a.totalCost) - moneyInCents(b.totalCost) || a.extraHours - b.extraHours || a.newPeople - b.newPeople || a.id.localeCompare(b.id));
+  candidates.sort((a, b) => moneyInCents(rankCost(a)) - moneyInCents(rankCost(b)) || a.extraHours - b.extraHours || a.newPeople - b.newPeople || a.id.localeCompare(b.id));
   const best = taxReady ? candidates[0] : undefined;
-  const tied = best ? candidates.filter(option => moneyInCents(option.totalCost) === moneyInCents(best.totalCost)) : [];
-  const nextCost = best ? candidates.find(option => moneyInCents(option.totalCost) > moneyInCents(best.totalCost))?.totalCost : undefined;
-  return { rows, overtimeOnly, current, candidates, taxReady, best, tied, savingToNext: best && nextCost !== undefined ? nextCost - best.totalCost : 0 };
+  const tied = best ? candidates.filter(option => moneyInCents(rankCost(option)) === moneyInCents(rankCost(best))) : [];
+  const nextCost = best ? candidates.map(rankCost).find(cost => moneyInCents(cost) > moneyInCents(rankCost(best))) : undefined;
+  return { rows, overtimeOnly, current, candidates, taxReady, best, tied, basis, rankCost, savingToNext: best && nextCost !== undefined ? nextCost - rankCost(best) : 0 };
 }
 
 /** Applying a reviewed option changes contract/journey choices only; demand and tax inputs stay intact. */

@@ -9,7 +9,7 @@ import { shortDays } from '../defaults';
 export const money = (value: number, locale = 'pt-BR') => value.toLocaleString(locale, { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
 export const decimal = (value: number, locale = 'pt-BR') => value.toLocaleString(locale, { maximumFractionDigits: 1 });
 
-export function Results({ scenario, results, stage, setStage }: { scenario: Scenario; results: Calculation[]; stage: 42 | 40; setStage: (stage: 42 | 40) => void }) {
+export function Results({ scenario, results, stage, setStage, detailsOnly = false }: { scenario: Scenario; results: Calculation[]; stage: 42 | 40; setStage: (stage: 42 | 40) => void; detailsOnly?: boolean }) {
   const { t, locale } = useI18n();
   const formatMoney = (value: number) => money(value, locale);
   const formatDecimal = (value: number) => decimal(value, locale);
@@ -18,6 +18,7 @@ export function Results({ scenario, results, stage, setStage }: { scenario: Scen
   const activeHours = Array.from({ length: 24 }, (_, hour) => hour).filter(hour => results.some(result => Array.from({ length: 7 }, (_, day) => day).some(day => hourCoverage(result, day, hour).demand > 0)));
   const special = scenario.scale === '12x36' || scenario.scale === 'turnos';
   return <div className="results-panel">
+    {!detailsOnly && <>
     <div className="results-heading"><div><span className="eyebrow">{t("SEU DIAGNÓSTICO")}</span><h2>{t("O impacto na sua operação")}</h2></div><span className="simulation-tag">{t("Valores ilustrativos")}</span></div>
     <div className="diagnosis"><ChartNoAxesCombined size={25} /><div><strong>{current.gap > 0 ? t(`${duration(current.gap)} por semana ainda precisam de cobertura.`) : t("A demanda informada cabe na sugestão de escala.")}</strong><p>{current.gap > 0 ? t("Compare os caminhos abaixo. A falta em horários específicos pode existir mesmo quando há horas disponíveis na equipe.") : t("Confira os horários, intervalos e as condições da categoria antes de utilizar a sugestão.")}</p></div></div>
     {special && <div className="notice"><strong>{t("Regime exige análise própria.")}</strong> {t(" A comparação abaixo modela uma migração para 5×2. Não calcula nem valida a manutenção de ")}{scenario.scale === '12x36' ? '12×36' : t("turnos variados")}.</div>}
@@ -48,6 +49,7 @@ export function Results({ scenario, results, stage, setStage }: { scenario: Scen
     </section>
 
     </details>
+    </>}
 
     <section className="result-card">
       <div className="card-title"><div><span className="eyebrow">{t("ETAPA ")}{stage === 42 ? '01' : '02'} · {current.target} {t(" HORAS")}</span><h3><Clock3 size={20} /> {t(" Cobertura, hora a hora")}</h3></div><span className="coverage-number">{formatDecimal(current.coveragePercent)}<small>{t("% coberta")}</small></span></div>

@@ -7,6 +7,7 @@ import { planHiring } from '../src/staffing.ts';
 
 function readyScenario() {
   const scenario = defaultScenario();
+  scenario.planning!.comparisonBasis = 'monthly';
   scenario.planning!.taxConfirmed = true;
   scenario.planning!.overtimeAuthorized = true;
   return scenario;
