@@ -3351,5 +3351,145 @@ export default {
   "A aba 5 × 2 compara referências mensais por volume de horas, como na CNC. A aba de contratos compara novas admissões no período completo, incluindo encargos e encerramento. O detalhamento avançado verifica a cobertura por escala e permite combinar contratação com horas extras.": {
     "es": "La pestaña 5 × 2 compara referencias mensuales por volumen de horas, como CNC. La de contratos compara nuevas contrataciones durante todo el período, con cargas y liquidación. El detalle avanzado verifica cobertura de turnos y permite combinar contratación con horas extras.",
     "en": "The 5 × 2 tab compares monthly hours-based estimates, as in CNC. The contract tab compares new hires over the full period, including charges and termination. Advanced details check scheduled coverage and allow combining hiring with overtime."
+  },
+  "Cobertura completa · 100%": {
+    "es": "Cobertura completa · 100%",
+    "en": "Full coverage · 100%"
+  },
+  "Cobertura parcial · entre 0% e 100%": {
+    "es": "Cobertura parcial · entre 0% y 100%",
+    "en": "Partial coverage · between 0% and 100%"
+  },
+  "Sem cobertura · 0%": {
+    "es": "Sin cobertura · 0%",
+    "en": "No coverage · 0%"
+  },
+  "Sem demanda · ninguém necessário": {
+    "es": "Sin demanda · no se necesita personal",
+    "en": "No demand · nobody needed"
+  },
+  "Equipe atual": {
+    "es": "Plantilla actual",
+    "en": "Existing staff"
+  },
+  "Equipe atual + horas extras": {
+    "es": "Plantilla actual + horas extras",
+    "en": "Existing staff + overtime"
+  },
+  "Equipe atual + novas contratações": {
+    "es": "Plantilla actual + nuevas contrataciones",
+    "en": "Existing staff + new hires"
+  },
+  "Equipe atual + horas extras + contratações": {
+    "es": "Plantilla actual + horas extras + contrataciones",
+    "en": "Existing staff + overtime + new hires"
+  },
+  "HORAS POR SEMANA": {
+    "es": "HORAS POR SEMANA",
+    "en": "HOURS PER WEEK"
+  },
+  "da demanda coberta": {
+    "es": "de la demanda cubierta",
+    "en": "of demand covered"
+  },
+  "O que este mapa mostra?": {
+    "es": "¿Qué muestra este mapa?",
+    "en": "What does this map show?"
+  },
+  "novas pessoas posicionadas na escala": {
+    "es": "nuevas personas asignadas a los turnos",
+    "en": "new staff assigned to the schedule"
+  },
+  "Sem incluir novas contratações ou horas extras.": {
+    "es": "Sin incluir nuevas contrataciones ni horas extras.",
+    "en": "Excludes new hires and overtime."
+  },
+  "horas-pessoa cobertas": {
+    "es": "horas-persona cubiertas",
+    "en": "person-hours covered"
+  },
+  "horas-pessoa faltantes": {
+    "es": "horas-persona faltantes",
+    "en": "person-hours missing"
+  },
+  "horas-pessoa necessárias": {
+    "es": "horas-persona necesarias",
+    "en": "person-hours required"
+  },
+  "Leia o percentual em cada horário: 100% atende toda a demanda; 50% atende metade. Clique ou toque para ver quantas pessoas estão disponíveis e quantas faltam em cada intervalo.": {
+    "es": "Lea el porcentaje de cada hora: 100% cubre toda la demanda; 50% cubre la mitad. Haga clic o toque para ver cuántas personas están disponibles y cuántas faltan en cada intervalo.",
+    "en": "Read each hour's percentage: 100% meets all demand; 50% meets half. Click or tap to see how many people are available and how many are missing in each interval."
+  },
+  "Legenda da cobertura": {
+    "es": "Leyenda de cobertura",
+    "en": "Coverage legend"
+  },
+  "Mostrar as 24 horas do dia": {
+    "es": "Mostrar las 24 horas del día",
+    "en": "Show all 24 hours"
+  },
+  "Mapa de cobertura · role para ver todos os horários": {
+    "es": "Mapa de cobertura · deslice para ver todos los horarios",
+    "en": "Coverage map · scroll to view all hours"
+  },
+  "Todos os horários · 00h a 24h": {
+    "es": "Todos los horarios · 00h a 24h",
+    "en": "All hours · 00h to 24h"
+  },
+  "Horários com demanda · os demais não têm pessoas solicitadas": {
+    "es": "Horarios con demanda · en los demás no se solicita personal",
+    "en": "Hours with demand · no staff requested at other times"
+  },
+  "Pessoas necessárias": {
+    "es": "Personas necesarias",
+    "en": "People required"
+  },
+  "Pessoas disponíveis": {
+    "es": "Personas disponibles",
+    "en": "People available"
+  },
+  "Pessoas faltantes": {
+    "es": "Personas faltantes",
+    "en": "People missing"
+  },
+  "Os intervalos separam mudanças de equipe, demanda e pausas. Pessoas disponíveis acima da demanda não compensam faltas em outro horário.": {
+    "es": "Los intervalos separan cambios de plantilla, demanda y pausas. El personal disponible por encima de la demanda no compensa faltas en otro horario.",
+    "en": "Intervals separate changes in staffing, demand and breaks. Surplus people at one time do not offset shortages at another."
+  },
+  "Cobertura de cada dia · todas as 24 horas": {
+    "es": "Cobertura de cada día · las 24 horas",
+    "en": "Daily coverage · all 24 hours"
+  },
+  "Necessárias · h-pessoa": {
+    "es": "Necesarias · h-persona",
+    "en": "Required · person-hours"
+  },
+  "Cobertas · h-pessoa": {
+    "es": "Cubiertas · h-persona",
+    "en": "Covered · person-hours"
+  },
+  "Faltantes · h-pessoa": {
+    "es": "Faltantes · h-persona",
+    "en": "Missing · person-hours"
+  },
+  "Uma hora-pessoa é uma pessoa trabalhando por uma hora. Exemplo: 3 pessoas por 2 horas = 6 horas-pessoa. O percentual resume somente a demanda de trabalho daquele horário; pausas e minutos fora do funcionamento são tratados separadamente.": {
+    "es": "Una hora-persona es una persona trabajando una hora. Ejemplo: 3 personas durante 2 horas = 6 horas-persona. El porcentaje resume solo la demanda laboral de esa hora; las pausas y los minutos fuera del funcionamiento se tratan por separado.",
+    "en": "One person-hour is one person working for one hour. Example: 3 people for 2 hours = 6 person-hours. The percentage summarizes only work demand during that hour; breaks and minutes outside operating hours are handled separately."
+  },
+  "As novas contratações deste mapa são dimensionadas por horários e podem superar a referência de custo por volume de horas. A tabela de escala a seguir mostra a equipe atual.": {
+    "es": "Las nuevas contrataciones de este mapa se dimensionan por horarios y pueden superar la referencia de costo por volumen de horas. La tabla de turnos siguiente muestra la plantilla actual.",
+    "en": "New hires in this map are sized to actual time slots and may exceed the hours-based cost reference. The schedule table below shows existing staff."
+  },
+  "Por que algumas opções do mapa estão indisponíveis?": {
+    "es": "¿Por qué algunas opciones del mapa no están disponibles?",
+    "en": "Why are some map options unavailable?"
+  },
+  "Versão 1.4.1 · Referência jurídica: 15/11/2026": {
+    "es": "Versión 1.4.1 · Referencia jurídica: 15/11/2026",
+    "en": "Version 1.4.1 · Legal reference: 15 Nov 2026"
+  },
+  "Intervalo": {
+    "es": "Intervalo",
+    "en": "Interval"
   }
 };

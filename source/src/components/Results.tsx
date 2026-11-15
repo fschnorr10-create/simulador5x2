@@ -1,9 +1,10 @@
+import { CoverageMap } from './CoverageMap';
 import { EmploymentResults } from './EmploymentResults';
 import { useI18n } from '../i18n';
 import { useState } from 'react';
-import { ArrowUpRight, ChartNoAxesCombined, Clock3, Info, CalendarDays, CircleHelp } from 'lucide-react';
+import { ArrowUpRight, ChartNoAxesCombined, Info, CalendarDays, CircleHelp } from 'lucide-react';
 import type { Calculation, Scenario } from '../types';
-import { clockTime, duration, hourCoverage } from '../engine';
+import { clockTime, duration } from '../engine';
 import { shortDays } from '../defaults';
 
 export const money = (value: number, locale = 'pt-BR') => value.toLocaleString(locale, { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
@@ -15,7 +16,6 @@ export function Results({ scenario, results, stage, setStage, detailsOnly = fals
   const formatDecimal = (value: number) => decimal(value, locale);
   const [showAll, setShowAll] = useState(false);
   const current = results.find(result => result.stage === stage)!;
-  const activeHours = Array.from({ length: 24 }, (_, hour) => hour).filter(hour => results.some(result => Array.from({ length: 7 }, (_, day) => day).some(day => hourCoverage(result, day, hour).demand > 0)));
   const special = scenario.scale === '12x36' || scenario.scale === 'turnos';
   return <div className="results-panel">
     {!detailsOnly && <>
@@ -51,21 +51,7 @@ export function Results({ scenario, results, stage, setStage, detailsOnly = fals
     </details>
     </>}
 
-    <section className="result-card">
-      <div className="card-title"><div><span className="eyebrow">{t("ETAPA ")}{stage === 42 ? '01' : '02'} · {current.target} {t(" HORAS")}</span><h3><Clock3 size={20} /> {t(" Cobertura, hora a hora")}</h3></div><span className="coverage-number">{formatDecimal(current.coveragePercent)}<small>{t("% coberta")}</small></span></div>
-      <div className="coverage-summary"><span><strong>{duration(current.coveredHours)}</strong> {t(" cobertas")}</span><span><strong>{duration(current.gap)}</strong> {t(" descobertas")}</span><span><strong>{duration(current.demandedHours)}</strong> {t(" demandadas")}</span></div>
-      <div className="heatmap-scroll"><div className="heatmap" style={{ gridTemplateColumns: `38px repeat(${activeHours.length || 1}, minmax(25px, 1fr))` }} role="table" aria-label={t("Cobertura por dia e hora")}>
-        <span />{activeHours.map(hour => <span className="hour-label" key={hour}>{hour}h</span>)}
-        {shortDays.map((dayName, day) => <div className="heatmap-day" role="row" key={day}><span className="heatmap-day-label">{t(dayName)}</span>{activeHours.map(hour => {
-          const cell = hourCoverage(current, day, hour);
-          const status = !cell.demand ? 'closed' : cell.ratio >= 0.9999 ? 'covered' : cell.ratio > 0 ? 'partial' : 'empty';
-          const description = `${dayName} ${hour}h: ${duration(cell.covered)} de ${duration(cell.demand)}-pessoa cobertas (${formatDecimal(cell.ratio * 100)}%)`;
-          return <span tabIndex={0} role="cell" className={`heat-cell ${status}`} key={hour} title={t(description)} aria-label={t(description)}><span className="cell-detail">{!cell.demand ? '—' : cell.ratio >= 0.9999 ? '✓' : cell.ratio > 0 ? '◐' : '×'}</span></span>;
-        })}</div>)}
-      </div></div>
-      <div className="heat-legend"><span><i className="covered" /> {t(" Coberto")}</span><span><i className="partial" /> {t(" Parcial")}</span><span><i className="empty" /> {t(" Descoberto")}</span><span><i className="closed" /> {t(" Sem demanda")}</span></div>
-      <p className="field-help">{t("Cada célula resume 60 minutos. Passe o cursor ou use o teclado para consultar horas-pessoa. As pausas são descontadas minuto a minuto, inclusive após meia-noite.")}</p>
-    </section>
+    <CoverageMap scenario={scenario} result={current} />
 
     <section className="result-card">
       <div className="card-title"><div><span className="eyebrow">{t("PROPOSTA DE ORGANIZAÇÃO")}</span><h3><CalendarDays size={20} /> {t(" A escala da sua equipe")}</h3></div><span className="simulation-tag">{t("Sugestão automática")}</span></div>

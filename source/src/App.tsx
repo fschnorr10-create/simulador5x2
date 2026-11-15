@@ -122,7 +122,7 @@ export default function App() {
       {page === 'metodologia' && <Methodology />}
       <div className="professional-note"><Scale size={19} /><p>{t("Esta simulação não substitui parecer jurídico individualizado. Antes de implementar qualquer medida, revisar com o advogado responsável e validar a CCT vigente da categoria. A sugestão de escala depende também das condições reais de trabalho e de SST.")}</p></div>
     </main>
-    <footer><img className="footer-logo" src={schnorrLogo} alt="Schnorr & Advogados Associados" width="1165" height="551" /><p>{t("Simulador 5 × 2 · Planejamento trabalhista")}<br />{t("Versão 1.4 · Referência jurídica: 15/11/2026")}</p><button className="text-button" onClick={() => navigate('metodologia')}>{t("Método e limitações ")}<ArrowRight size={15} /></button></footer>
+    <footer><img className="footer-logo" src={schnorrLogo} alt="Schnorr & Advogados Associados" width="1165" height="551" /><p>{t("Simulador 5 × 2 · Planejamento trabalhista")}<br />{t("Versão 1.4.1 · Referência jurídica: 15/11/2026")}</p><button className="text-button" onClick={() => navigate('metodologia')}>{t("Método e limitações ")}<ArrowRight size={15} /></button></footer>
     {message && <div className="toast" role="status"><Check size={18} /><span>{t(message)}</span><button className="icon-button" aria-label={t("Fechar mensagem")} onClick={() => setMessage('')}><X size={16} /></button></div>}
   </div>;
 }
