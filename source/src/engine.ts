@@ -1,4 +1,5 @@
 import type { Calculation, Scenario, Shift, Worker } from './types.ts';
+import { MAX_WEEK_DAYS } from './week.ts';
 
 export const DAY = 1440;
 export const WEEK = 7 * DAY;
@@ -53,7 +54,7 @@ export function validateScenario(input: unknown): string[] {
   }
   if (typeof data.state === 'string' && !/^[A-Z]{2}$/.test(data.state)) errors.push('UF inválida.');
   for (const key of ['insalubrious', 'publicContract']) if (typeof data[key] !== 'boolean') errors.push(`Opção inválida: ${key}.`);
-  if (!Array.isArray(data.days) || data.days.length !== 7) return [...errors, 'Informe os sete dias da semana.'];
+  if (!Array.isArray(data.days) || data.days.length !== MAX_WEEK_DAYS) return [...errors, 'A semana está limitada aos sete dias, de segunda a domingo.'];
   const occupied = new Uint8Array(WEEK);
   for (const [dayIndex, rawDay] of data.days.entries()) {
     if (!rawDay || typeof rawDay !== 'object' || !Array.isArray(rawDay.bands) || rawDay.bands.length > 6) {

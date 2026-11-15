@@ -1,16 +1,19 @@
 import { Building2, Users, CalendarClock, Plus, X, SlidersHorizontal } from 'lucide-react';
 import type { Scenario } from '../types';
 import { shortDays, states } from '../defaults';
+import { MAX_WEEK_DAYS, removeOperatingDay, restoreOperatingDay } from '../week';
 
 interface Props { value: Scenario; onChange: (value: Scenario) => void }
 
 export function ScenarioForm({ value, onChange }: Props) {
   const set = <K extends keyof Scenario>(key: K, next: Scenario[K]) => onChange({ ...value, [key]: next });
+  const configuredDays = value.days.filter(day => day.bands.length > 0).length;
+  const excludedDays = value.days.map((day, index) => ({ day, index })).filter(({ day }) => !day.bands.length);
   function updateBand(day: number, index: number, key: 'open' | 'close' | 'people', next: string | number) {
     set('days', value.days.map((entry, d) => d === day ? { ...entry, bands: entry.bands.map((band, i) => i === index ? { ...band, [key]: next } : band) } : entry));
   }
   function copyWeekdays() {
-    set('days', value.days.map((day, index) => index > 0 && index < 5 ? { ...day, bands: value.days[0].bands.map((band, i) => ({ ...band, id: `day-${index}-${i}` })) } : day));
+    set('days', value.days.map((day, index) => index > 0 && index < 5 && day.bands.length ? { ...day, bands: value.days[0].bands.map((band, i) => ({ ...band, id: `day-${index}-${i}` })) } : day));
   }
   return <aside className="form-panel">
     <div className="panel-heading"><span className="eyebrow">DADOS DA SIMULAÇÃO</span><span className="live-dot">Em tempo real</span></div>
@@ -30,18 +33,21 @@ export function ScenarioForm({ value, onChange }: Props) {
     </section>
     <section className="form-section">
       <h3><CalendarClock size={18} /><span>03</span> Funcionamento e demanda</h3>
-      <p className="field-help">Informe quantas pessoas precisam trabalhar simultaneamente. Zero fecha a faixa. Horários iguais representam 24h; fechamento anterior à abertura termina no dia seguinte.</p>
+      <p className="field-help">Informe quantas pessoas precisam trabalhar simultaneamente. Use × para excluir um dia inteiro e + para adicionar apenas uma faixa de horário no mesmo dia. Zero fecha a faixa. Horários iguais representam 24h; fechamento anterior à abertura termina no dia seguinte.</p>
+      <div className="week-controls"><strong aria-live="polite">{configuredDays} de {MAX_WEEK_DAYS} dias cadastrados</strong><label className="add-weekday"><span className="visually-hidden">Adicionar dia de funcionamento</span><select aria-label="Adicionar dia de funcionamento" value="" disabled={!excludedDays.length} onChange={e => { if (e.target.value !== '') set('days', restoreOperatingDay(value.days, Number(e.target.value))); }}><option value="">{excludedDays.length ? '+ Adicionar dia' : 'Limite: 7 dias'}</option>{excludedDays.map(({ day, index }) => <option value={index} key={index}>{day.name}</option>)}</select></label></div>
+      <p className="field-help">A semana tem no máximo 7 dias, nas jornadas de 44h, 42h e 40h. Faixas adicionais pertencem ao mesmo dia. Os dias de funcionamento da empresa não substituem as folgas dos empregados.</p>
       <div className="hours-labels"><span>Dia</span><span>Abre</span><span>Fecha</span><span>Pessoas</span><span /></div>
-      {value.days.map((day, dayIndex) => <div className="day-fields" key={dayIndex}>
+      {value.days.map((day, dayIndex) => day.bands.length > 0 && <div className="day-fields" key={dayIndex}>
         {day.bands.map((band, index) => <div className="hours-row" key={band.id}>
           <span className="day-name">{index === 0 ? shortDays[dayIndex] : '↳'}</span>
           <input aria-label={`${day.name} faixa ${index + 1}: abre`} type="time" value={band.open} onChange={e => updateBand(dayIndex, index, 'open', e.target.value)} />
           <input aria-label={`${day.name} faixa ${index + 1}: fecha`} type="time" value={band.close} onChange={e => updateBand(dayIndex, index, 'close', e.target.value)} />
           <input aria-label={`${day.name} faixa ${index + 1}: pessoas`} type="number" min="0" max="500" value={band.people} onChange={e => updateBand(dayIndex, index, 'people', e.target.valueAsNumber || 0)} />
-          {index === 0 ? <button className="icon-button tiny" disabled={day.bands.length >= 6} title={`Adicionar faixa em ${day.name}`} aria-label={`Adicionar faixa em ${day.name}`} onClick={() => set('days', value.days.map((entry, i) => i === dayIndex ? { ...entry, bands: [...entry.bands, { id: crypto.randomUUID(), open: '18:00', close: '20:00', people: 0 }] } : entry))}><Plus size={14} /></button> : <button className="icon-button tiny" title="Remover faixa" aria-label={`Remover faixa ${index + 1} de ${day.name}`} onClick={() => set('days', value.days.map((entry, i) => i === dayIndex ? { ...entry, bands: entry.bands.filter((_, b) => b !== index) } : entry))}><X size={14} /></button>}
+          <div className="hours-actions">{index === 0 ? <><button className="icon-button tiny" disabled={day.bands.length >= 6} title={`Adicionar faixa de horário em ${day.name}`} aria-label={`Adicionar faixa em ${day.name}`} onClick={() => set('days', value.days.map((entry, i) => i === dayIndex ? { ...entry, bands: [...entry.bands, { id: crypto.randomUUID(), open: '18:00', close: '20:00', people: 0 }] } : entry))}><Plus size={14} /></button><button className="icon-button tiny" title={`Excluir ${day.name} e suas faixas de horário`} aria-label={`Excluir dia ${day.name}`} onClick={() => set('days', removeOperatingDay(value.days, dayIndex))}><X size={14} /></button></> : <button className="icon-button tiny" title="Excluir somente esta faixa de horário" aria-label={`Remover faixa ${index + 1} de ${day.name}`} onClick={() => set('days', value.days.map((entry, i) => i === dayIndex ? { ...entry, bands: entry.bands.filter((_, b) => b !== index) } : entry))}><X size={14} /></button>}</div>
         </div>)}
       </div>)}
-      <button className="text-button" onClick={copyWeekdays}>Aplicar segunda-feira a terça–sexta →</button>
+      {excludedDays.length > 0 && <p className="excluded-days">Dias excluídos: {excludedDays.map(({ day }) => day.name).join(', ')}. Use “Adicionar dia” para restaurar.</p>}
+      <button className="text-button" disabled={!value.days[0].bands.length} onClick={copyWeekdays}>Aplicar segunda-feira a terça–sexta →</button>
       <label>Intervalo para jornadas acima de 6h<select value={value.interval} onChange={e => set('interval', Number(e.target.value))}><option value={60}>1 hora · premissa geral</option><option value={30}>30 minutos · exige ACT/CCT aplicável</option><option value={90}>1 hora e 30 minutos</option><option value={120}>2 horas</option></select></label>
       <p className="field-help">O motor desconta pausas da cobertura: 15min nas jornadas acima de 4h até 6h; intervalo selecionado acima de 6h. No rural, validar também os usos locais e a norma coletiva.</p>
     </section>

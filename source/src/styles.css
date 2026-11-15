@@ -258,3 +258,15 @@ input.visually-hidden { width: 1px; height: 1px; min-height: 0; padding: 0; bord
 .footer-logo { display: block; width: 145px; height: auto; object-fit: contain; }
 @media (max-width: 650px) { .brand-logo { width: 155px; } .header-inner { min-height: 98px; } .footer-logo { width: 130px; } }
 @media print { .brand-logo { width: 150px; } .header-inner { min-height: 80px; } .footer-logo { width: 120px; } }
+
+.week-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.week-controls > strong { font-size: 10px; font-weight: 600; color: var(--gold); }
+.add-weekday { margin: 0; max-width: 155px; }
+.add-weekday select { margin: 0; min-height: 32px; font-size: 10px; }
+.add-weekday select:disabled { color: var(--muted); cursor: not-allowed; background: var(--surface-soft); }
+.hours-labels, .hours-row { grid-template-columns: 25px minmax(62px, 1fr) minmax(62px, 1fr) minmax(42px, .6fr) 40px; }
+.hours-actions { display: flex; align-items: center; justify-content: flex-end; gap: 0; }
+.hours-actions .tiny { padding: 3px; flex: 0 0 20px; }
+.excluded-days { color: var(--muted); font-size: 10px; line-height: 1.7; margin: 10px 0; }
+@media (max-width: 650px) { .hours-labels, .hours-row { grid-template-columns: 25px minmax(60px, 1fr) minmax(60px, 1fr) 48px 40px; gap: 5px; } }
+@media print { .add-weekday, .hours-actions { display: none; } .hours-labels, .hours-row { grid-template-columns: 25px 1fr 1fr 42px; } }
