@@ -1,4 +1,5 @@
-import { ArrowRight, BarChart3, CalendarDays, ClipboardList, Users } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ChevronLeft, ChevronRight, Pause, Play, ArrowRight, BarChart3, CalendarDays, ClipboardList, Users } from 'lucide-react';
 import sectorBanner from '../assets/setores-banner.webp';
 import { useI18n } from '../i18n';
 
@@ -15,13 +16,51 @@ const steps = [
   { icon: BarChart3, title: '4. Compare os caminhos', text: 'Analise reorganização, novas contratações e a referência de custo de horas extras.', visual: 'cost' },
 ];
 
+const SLIDE_INTERVAL_MS = 10000;
+
 export function VisualGuide({ onStart }: { onStart: () => void }) {
   const { t } = useI18n();
-  return <section className="visual-guide" aria-labelledby="visual-guide-title">
-    <div className="visual-guide-heading"><div><span className="eyebrow">{t('PESSOAS, OPERAÇÃO E CONTINUIDADE')}</span><h2 id="visual-guide-title">{t('Um planejamento para quem faz acontecer.')}</h2><p>{t('Antecipe o impacto da jornada na cobertura da equipe e no orçamento. Transforme os dados da sua operação em alternativas para discutir com segurança.')}</p></div><a className="text-button" href="#simulador" onClick={onStart}>{t('Começar meu planejamento')} <ArrowRight size={16} /></a></div>
-    <div className="sector-grid">{sectors.map((sector, index) => <article className="sector-card" key={sector.name}><div className="sector-photo"><img src={sectorBanner} alt={t(sector.alt)} width="2172" height="724" loading="lazy" decoding="async" style={{ left: `${-100 * index}%` }} /></div><div className="sector-copy"><h3>{t(sector.name)}</h3><p>{t(sector.caption)}</p></div></article>)}</div>
-    <div className="usage-heading"><span className="eyebrow">{t('COMO USAR · 4 PASSOS')}</span><h3>{t('Da sua equipe ao plano de ação.')}</h3></div>
-    <ol className="usage-steps">{steps.map(({ icon: Icon, title, text, visual }) => <li key={title}><div className={`step-visual ${visual}`} aria-hidden="true"><Icon size={22} />{visual === 'coverage' ? <span className="mini-heatmap">{Array.from({ length: 12 }, (_, i) => <i key={i} className={i === 6 || i === 10 ? 'gap' : ''} />)}</span> : visual === 'cost' ? <span className="mini-bars"><i /><i /><i /></span> : <span className="mini-fields"><i /><i /><i /></span>}</div><h4>{t(title)}</h4><p>{t(text)}</p></li>)}</ol>
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const [interacting, setInteracting] = useState(false);
+  const [hidden, setHidden] = useState(document.hidden);
+  const playing = !paused && !interacting && !hidden;
+
+  useEffect(() => {
+    const updateVisibility = () => setHidden(document.hidden);
+    document.addEventListener('visibilitychange', updateVisibility);
+    return () => document.removeEventListener('visibilitychange', updateVisibility);
+  }, []);
+
+  useEffect(() => {
+    if (!playing) return;
+    const timer = window.setTimeout(() => setActive(current => (current + 1) % sectors.length), SLIDE_INTERVAL_MS);
+    return () => window.clearTimeout(timer);
+  }, [active, playing]);
+
+  function selectSlide(index: number) {
+    setActive((index + sectors.length) % sectors.length);
+    setPaused(true);
+  }
+  const sector = sectors[active];
+  const step = steps[active];
+  const StepIcon = step.icon;
+
+  return <section className="visual-guide carousel" aria-label={t('Apresentação do simulador')} aria-roledescription={t('Carrossel')}
+    onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)}
+    onFocusCapture={event => { if (!event.currentTarget.contains(event.relatedTarget) && !(event.target as HTMLElement).closest('[data-playback-control]')) setPaused(true); }}>
+    <div className="carousel-slide" key={active} aria-live={paused ? 'polite' : 'off'} aria-atomic="true">
+      <div className="carousel-copy"><span className="eyebrow">{t('SIMULADOR 5 × 2')} · {t('PESSOAS, OPERAÇÃO E CONTINUIDADE')}</span>
+        <h2>{t(sector.name)}</h2><h3>{t('Um planejamento para quem faz acontecer.')}</h3><p>{t(sector.caption)}</p>
+        <div className="carousel-step"><StepIcon size={22} /><div><span className="eyebrow">{t('COMO USAR · 4 PASSOS')}</span><h4>{t(step.title)}</h4><p>{t(step.text)}</p></div></div>
+        <a className="primary-button" href="#simulador" onClick={onStart}>{t('Começar meu planejamento')} <ArrowRight size={16} /></a>
+      </div>
+      <div className="carousel-photo"><img src={sectorBanner} alt={t(sector.alt)} width="2172" height="724" decoding="async" fetchPriority="high" style={{ left: `${-100 * active}%` }} /><span>{t('Imagens ilustrativas')}</span></div>
+    </div>
+    <div className="carousel-controls"><div className="carousel-buttons"><button type="button" className="carousel-control" aria-label={t('Voltar imagem')} onClick={() => selectSlide(active - 1)}><ChevronLeft size={19} /></button><button type="button" className="carousel-control pause-control" data-playback-control="true" aria-label={paused ? t('Reproduzir apresentação') : t('Pausar apresentação')} aria-pressed={paused} onClick={() => { setPaused(current => !current); setInteracting(false); }}>{paused ? <Play size={16} /> : <Pause size={16} />}<span>{paused ? t('Reproduzir') : t('Pausar')}</span></button><button type="button" className="carousel-control" aria-label={t('Avançar imagem')} onClick={() => selectSlide(active + 1)}><ChevronRight size={19} /></button></div>
+      <div className="carousel-dots">{sectors.map((item, index) => <button type="button" key={item.name} aria-label={`${t('Exibir')}: ${t(item.name)}`} aria-current={index === active ? 'true' : undefined} className={index === active ? 'active' : ''} onClick={() => selectSlide(index)}><span /></button>)}</div>
+      <span className="carousel-counter">{active + 1} / {sectors.length} <span>· {t('Troca automática a cada 10 segundos')}</span></span>
+    </div>
     <p className="visual-guide-note">{t('Simule grupos da mesma função separadamente. Na educação e em outras categorias com jornada especial, valide a norma coletiva e os limites próprios antes de aplicar o resultado. Imagens ilustrativas.')}</p>
   </section>;
 }

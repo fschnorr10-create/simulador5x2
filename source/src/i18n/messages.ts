@@ -1727,5 +1727,49 @@ export default {
   "Valores ilustrativos. Revisão legal em 15/11/2026. Cautelar sujeita a referendo.": {
     "es": "Valores ilustrativos. Revisión jurídica del 15/11/2026. Medida cautelar sujeta a ratificación.",
     "en": "Illustrative figures. Legal review on 15 Nov 2026. Interim ruling subject to confirmation."
+  },
+  "Apresentação do simulador": {
+    "es": "Presentación del simulador",
+    "en": "Simulator presentation"
+  },
+  "Carrossel": {
+    "es": "Carrusel",
+    "en": "Carousel"
+  },
+  "Imagens ilustrativas": {
+    "es": "Imágenes ilustrativas",
+    "en": "Illustrative images"
+  },
+  "Voltar imagem": {
+    "es": "Imagen anterior",
+    "en": "Previous slide"
+  },
+  "Avançar imagem": {
+    "es": "Imagen siguiente",
+    "en": "Next slide"
+  },
+  "Reproduzir apresentação": {
+    "es": "Reproducir presentación",
+    "en": "Play presentation"
+  },
+  "Pausar apresentação": {
+    "es": "Pausar presentación",
+    "en": "Pause presentation"
+  },
+  "Reproduzir": {
+    "es": "Reproducir",
+    "en": "Play"
+  },
+  "Pausar": {
+    "es": "Pausar",
+    "en": "Pause"
+  },
+  "Exibir": {
+    "es": "Mostrar",
+    "en": "Show"
+  },
+  "Troca automática a cada 10 segundos": {
+    "es": "Cambio automático cada 10 segundos",
+    "en": "Automatic change every 10 seconds"
   }
 };

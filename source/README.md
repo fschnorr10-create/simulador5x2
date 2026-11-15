@@ -81,3 +81,7 @@ O seletor do cabeçalho oferece português (padrão), espanhol e inglês. As tra
 O banner `VisualGuide` apresenta agro, indústria, colégios e instituições beneficentes, seguido de quatro etapas de uso. As imagens são ilustrativas. Consulte `docs/IMAGENS.md` para origem e prompt. A logomarca oficial possui 1165 × 551 pixels e contraste reforçado por CSS no modo claro. Os arquivos WebP mantêm a página única compacta, sem chamadas a serviços de imagem ou tradução.
 
 Validação: `npm test` (22 testes) e `npm run build`. A publicação continua usando `dist/index.html` nos dois endereços documentados em `docs/PUBLICACAO.md`.
+
+### Banner rotativo no topo
+
+`VisualGuide` aparece imediatamente após o cabeçalho. Quatro slides sincronizam setor, fotografia, explicação e etapa de uso, com passagem automática a cada 10 segundos. Há pausa/reprodução, anterior/próximo e seleção direta pelos indicadores. A navegação manual pausa a apresentação para leitura; reproduzir retoma o ciclo. O temporizador é limpo na desmontagem e suspenso em abas ocultas e durante interação com o ponteiro. Pessoas com preferência por movimento reduzido recebem o banner pausado e sem animação. Controles e conteúdo acompanham PT/ES/EN, mantendo ambos os temas e os dados do simulador.
